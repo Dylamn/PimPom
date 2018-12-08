@@ -8,8 +8,7 @@
     <script src="https://code.highcharts.com/highcharts.js"></script>
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
     <script src="https://code.highcharts.com/modules/export-data.js"></script>
-    <script src={{ asset('js/charts.js') }}></script>
-    <link rel="stylesheet" href="../public/css/styles.css">
+    <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
 
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
 

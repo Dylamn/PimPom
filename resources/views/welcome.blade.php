@@ -9,7 +9,7 @@
         <title>Pimpom</title>
 
         <!-- Fonts -->
-        <link rel="stylesheet" href="../public/css/styles.css">
+        <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
 
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
         <div class="topnav">
