@@ -9,6 +9,6 @@ class Equipement extends Model
 {
     public function getAllEquipments()
     {
-        DB::select("SELECT libelle FROM categorie");
+        DB::select("Select * from equipement, categorie WHERE idEquipement = id");
     }
 }

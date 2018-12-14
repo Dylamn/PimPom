@@ -9,36 +9,24 @@
             <td>Taille</td>
             <td>Prix adulte</td>
             <td>Prix enfant</td>
+            <td>Modifier</td>
+            <td>Supprimer</td>
         </tr>
         </thead>
 
-        {{--<?php--}}
-
-        {{--//Connexion bdd--}}
-
-        {{--//Requete--}}
-        {{--$resultat = $cnx->query("Select * from equipement, categorie");--}}
-        {{--$resultat->setFetchMode(PDO::FETCH_OBJ);--}}
-
-        {{--//Lecture premiere ligne--}}
-        {{--$ligne = $resultat->fetch();--}}
 
         @foreach($stock as $statement)
-            {{ $stock->libelle }}
-            {{ $stock->idInterne }}
+            <tr>
+                <td>{{ $stock->libelle }}</td>
+                <td>{{ $stock->idInterne }}</td>
+                <td>{{ $stock->taille }}</td>
+                <td>{{ $stock->prixAdulte }}</td>
+                <td>{{ $stock->prixEnfant }}</td>
+                <td><span class="glyphicon glyphicon-pencil" style="color:orange"></span></td>
+                <td><span class="glyphicon glyphicon-remove" style="color:red"></span></td>
+            </tr>
         @endforeach
-            {{--<p><tr>--}}
-            {{--<td><?php echo ($ligne->libelle); ?></td>--}}
-            {{--<td><?php echo ($ligne->idInterne); ?></td>--}}
-            {{--<td><?php echo ($ligne->idInterne); ?></td>--}}
-            {{--<td><?php echo ($ligne->taille); ?></td>--}}
-            {{--<td><?php echo ($ligne->prixAdulte); ?></td>--}}
-            {{--<td><?php echo ($ligne->prixEnfant); ?></td>--}}
-            {{--</tr></p>--}}
-        {{--<?php--}}
-        {{--//lecture ligne suivante--}}
-        {{--$ligne = $resultat->fetch();--}}
-        {{--}--}}
-        {{--$resultat->closeCursor();--}}
-        {{--?>--}}
+
     </table>
+
+@endsection
