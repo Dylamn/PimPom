@@ -23,8 +23,10 @@
         {{--//Lecture premiere ligne--}}
         {{--$ligne = $resultat->fetch();--}}
 
-        {{--//tant qu'il y a des ligne a lire--}}
-        {{--while($ligne) { ?>--}}
+        @foreach($stock as $statement)
+            {{ $stock->libelle }}
+            {{ $stock->idInterne }}
+        @endforeach
             {{--<p><tr>--}}
             {{--<td><?php echo ($ligne->libelle); ?></td>--}}
             {{--<td><?php echo ($ligne->idInterne); ?></td>--}}
