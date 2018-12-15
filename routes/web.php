@@ -16,11 +16,19 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// Set all Routes for equipements
+Route::resource('equipements', 'EquipementController');
+
 // (helper) Routes for authentification
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+/*
+ |--------------------------------------------------------------------------
+ | Reservations Routes
+ |--------------------------------------------------------------------------
+ */
 Route::get('/reserver', 'ReserverController@getInfos');
 Route::post('/reserver', 'ReserverController@postInfos');
 

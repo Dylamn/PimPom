@@ -7,8 +7,8 @@ use Illuminate\Support\Facades\DB;
 
 class Equipement extends Model
 {
-    public function getAllEquipments()
+    public static function getAllEquipements()
     {
-        DB::select("Select * from equipement, categorie WHERE idEquipement = id");
+        return DB::select("SELECT * FROM vue_equipements;");
     }
 }
