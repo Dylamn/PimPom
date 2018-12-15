@@ -14,6 +14,6 @@ class Equipement extends Model
 
     public static function getEquipement(int $id)
     {
-        return DB::select("SELECT * FROM vue_equipements WHERE id = $id;");
+        return DB::select("SELECT * FROM vue_equipements WHERE id = ?;", [$id]);
     }
 }

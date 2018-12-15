@@ -39,10 +39,9 @@ class EquipementController extends Controller
     {
         $equipement = new Equipement();
 
+        return dd($request);
         // ToDo : Insertions SQL dans les tables catégories & équipements
         // Vérifier si catégorie est vide ? ne rien faire : ajouter la nouvelle catégorie
-
-        return dd($request);
     }
 
     /**
@@ -64,7 +63,7 @@ class EquipementController extends Controller
      */
     public function edit(Equipement $equipement)
     {
-        $equipment = Equipement::getEquipement($equipement->id);
+        $equipment = Equipement::getEquipement($equipement->id)[0];
 
         return view("equipement.edit", compact("equipment"));
     }

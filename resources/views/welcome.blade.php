@@ -12,12 +12,6 @@
         <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
 
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
-        <div class="topnav">
-            <a class="active" href="#home">Home</a>
-            <a href="#news">News</a>
-            <a href="#contact">Contact</a>
-            <a href="#about">About</a>
-        </div>
         <!-- Styles -->
         <style>
 
@@ -74,6 +68,13 @@
         </style>
     </head>
     <body>
+        <div class="topnav">
+            <a href="/" class="active">Acceuil</a>
+            <a href="/reserver">Réservation</a>
+            <a href="/equipements">Equipements</a>
+            <a href="#contact">Contact</a>
+            <a href="#about">About</a>
+        </div>
         <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
                 <div class="top-right links">
