@@ -64,7 +64,9 @@ class EquipementController extends Controller
      */
     public function edit(Equipement $equipement)
     {
-        //
+        $equipment = Equipement::getEquipement($equipement->id);
+
+        return view("equipement.edit", compact("equipment"));
     }
 
     /**

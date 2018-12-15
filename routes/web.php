@@ -32,3 +32,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/reserver', 'ReserverController@getInfos');
 Route::post('/reserver', 'ReserverController@postInfos');
 
+
+
