@@ -17,9 +17,12 @@ class EquipementController extends Controller
      */
     public function index()
     {
-        $equipements = Equipement::getAllEquipements();
+        $ski = Equipement::getAllSki();
+        $snow = Equipement::getAllSnow();
+        $luge = Equipement::getAllLuge();
+        $weed = Equipement::getAllWeed();
 
-        return view('equipement.index', compact('equipements'));
+        return view('equipement.index', compact('ski', 'snow', 'luge', 'weed'));
     }
 
     /**
