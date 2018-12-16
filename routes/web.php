@@ -19,8 +19,8 @@ Route::get('/', function () {
 // Set all Routes for equipements
 Route::resource('equipements', 'EquipementController');
 
-// (helper) Routes for authentification
-Auth::routes();
+// Routes for authentification (register page is disabled)
+Auth::routes(['register' => false]);
 
 Route::get('/home', 'HomeController@index')->name('home');
 
