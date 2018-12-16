@@ -6,12 +6,12 @@ use Illuminate\Http\Request;
 
 class ReserverController extends Controller
 {
-    public function getInfos()
+    public function index()
     {
-        return view('reserver/reserver');
+        return view('reserver.index');
     }
 
-    public function postInfos(Request $request)
+    public function store(Request $request)
     {
         return print_r($request);
     }

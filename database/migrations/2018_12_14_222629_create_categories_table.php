@@ -16,8 +16,9 @@ class CreateCategoriesTable extends Migration {
 		{
 			$table->integer('id', true);
 			$table->string('libelle', 30);
-			$table->integer('prixAdulte')->nullable();
-			$table->integer('prixEnfant')->nullable();
+			$table->double('prixAdulte')->nullable();
+			$table->double('prixEnfant')->nullable();
+			$table->timestamps();
 		});
 	}
 

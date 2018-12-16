@@ -18,6 +18,7 @@ class CreateEquipementsTable extends Migration {
 			$table->string('idInterne', 5);
 			$table->string('taille', 5);
 			$table->integer('idCategorie')->index('ceCategorie');
+			$table->timestamps();
 		});
 	}
 

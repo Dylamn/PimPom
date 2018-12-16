@@ -32,9 +32,13 @@
                         </a>
                     </td>
                     <td class="text-center">
-                        <a href="/equipements/{{ $statement->id }}">
-                            <span class="fa fa-times" style="color:red; font-size: 1.4em;"></span>
-                        </a>
+                        <FORM name="delete_form" action="/equipements/{{ $statement->id }}" method="POST">
+                            @method('DELETE')
+                            @csrf
+                            {{--<a href="/equipements/{{ $statement->id }}">--}}
+                                <span class="fa fa-times" style="color:red; font-size: 1.4em;" onclick="submit_form()"></span>
+                            {{--</a>--}}
+                        </FORM>
                     </td>
                 </tr>
             @endforeach
@@ -44,7 +48,20 @@
 @endsection
 
 @section('script')
+    <!-- Script for the sidebar -->
     <script src="{{asset('js/sidebar.js')}}"></script>
+
+    <script type="text/javascript">
+        function submit_form(ev) {
+            let ok = confirm('Voulez vous vraiment supprimer cet équipement ?');
+
+            if (ok) {
+                document.forms['delete_form'].submit();
+            } else {
+                 ev.preventDefault();
+            }
+        }
+    </script>
     <!-- jQuery CDN - Slim version (=without AJAX) -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <!-- Popper.JS -->

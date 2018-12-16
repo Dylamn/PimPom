@@ -14,7 +14,7 @@
 // Default homepage
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('acceuil');
 
 // Set all Routes for equipements
 Route::resource('equipements', 'EquipementController');
@@ -29,8 +29,8 @@ Route::get('/home', 'HomeController@index')->name('home');
  | Reservations Routes
  |--------------------------------------------------------------------------
  */
-Route::get('/reserver', 'ReserverController@getInfos');
-Route::post('/reserver', 'ReserverController@postInfos');
+Route::get('/reserver', 'ReserverController@index')->name('reserver.index');
+Route::post('/reserver', 'ReserverController@store')->name('reserver.store');
 
 
 

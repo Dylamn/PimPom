@@ -8,6 +8,11 @@
             @csrf
             <div class="row">
                 <label for="libelle">Libellé de l'équipement</label>
+                <select name="idCategorie" class="form-control">
+                    {{--@foreach()--}}
+
+                    {{--@endforeach--}}
+                </select>
                 <input type="text" id="libelle" name="libelle" class="form-control rounded">
             </div>
             <div class="row">
