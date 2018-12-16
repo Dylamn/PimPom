@@ -9,11 +9,11 @@ class Equipement extends Model
 {
     public static function getAllEquipements()
     {
-        return DB::select("SELECT * FROM vue_equipements;");
+        return DB::select("SELECT * FROM vue_equipments;");
     }
 
     public static function getOneEquipement(int $id)
     {
-        return DB::select("SELECT * FROM vue_equipements WHERE id = ?;", [$id]);
+        return DB::select("SELECT * FROM vue_equipments WHERE id = ?;", [$id]);
     }
 }

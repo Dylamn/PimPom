@@ -3,8 +3,8 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateLouerTable extends Migration {
-
+class CreateWeeksTable extends Migration
+{
 	/**
 	 * Run the migrations.
 	 *
@@ -12,14 +12,13 @@ class CreateLouerTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('louer', function(Blueprint $table)
+		Schema::create('weeks', function(Blueprint $table)
 		{
-			$table->integer('idLocation');
-			$table->integer('idEquip')->index('ceEquipement');
-			$table->primary(['idLocation','idEquip']);
+			$table->integer('weekNumber')->primary();
+			$table->date('startDate');
+			$table->date('endDate');
 		});
 	}
-
 
 	/**
 	 * Reverse the migrations.
@@ -28,7 +27,6 @@ class CreateLouerTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('louer');
+		Schema::drop('weeks');
 	}
-
 }

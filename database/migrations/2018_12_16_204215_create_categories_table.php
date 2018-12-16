@@ -3,8 +3,8 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateCategoriesTable extends Migration {
-
+class CreateCategoriesTable extends Migration
+{
 	/**
 	 * Run the migrations.
 	 *
@@ -15,13 +15,12 @@ class CreateCategoriesTable extends Migration {
 		Schema::create('categories', function(Blueprint $table)
 		{
 			$table->integer('id', true);
-			$table->string('libelle', 30);
-			$table->double('prixAdulte')->nullable();
-			$table->double('prixEnfant')->nullable();
+			$table->string('label', 30);
+			$table->float('adultPrice', 10, 0)->nullable();
+			$table->float('childrenPrice', 10, 0)->nullable();
 			$table->timestamps();
 		});
 	}
-
 
 	/**
 	 * Reverse the migrations.
@@ -32,5 +31,4 @@ class CreateCategoriesTable extends Migration {
 	{
 		Schema::drop('categories');
 	}
-
 }

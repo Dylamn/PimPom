@@ -3,8 +3,8 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateSemainesTable extends Migration {
-
+class CreateRentTable extends Migration
+{
 	/**
 	 * Run the migrations.
 	 *
@@ -12,14 +12,13 @@ class CreateSemainesTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('semaines', function(Blueprint $table)
+		Schema::create('rent', function(Blueprint $table)
 		{
-			$table->integer('numeroSemaine')->primary();
-			$table->date('dateDebut');
-			$table->date('dateFin');
+			$table->integer('rentalId');
+			$table->integer('equipmentId')->index('fkEquipement');
+			$table->primary(['rentalId','equipmentId']);
 		});
 	}
-
 
 	/**
 	 * Reverse the migrations.
@@ -28,7 +27,6 @@ class CreateSemainesTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('semaines');
+		Schema::drop('rent');
 	}
-
 }

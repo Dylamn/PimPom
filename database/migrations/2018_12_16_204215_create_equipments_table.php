@@ -3,8 +3,8 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateEquipementsTable extends Migration {
-
+class CreateEquipmentsTable extends Migration
+{
 	/**
 	 * Run the migrations.
 	 *
@@ -12,16 +12,15 @@ class CreateEquipementsTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('equipements', function(Blueprint $table)
+		Schema::create('equipments', function(Blueprint $table)
 		{
 			$table->integer('id', true);
-			$table->string('idInterne', 5);
-			$table->string('taille', 5);
-			$table->integer('idCategorie')->index('ceCategorie');
+			$table->string('internalId', 5);
+			$table->string('size', 5);
+			$table->integer('categoryId')->index('fkCategorie');
 			$table->timestamps();
 		});
 	}
-
 
 	/**
 	 * Reverse the migrations.
@@ -30,7 +29,6 @@ class CreateEquipementsTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('equipements');
+		Schema::drop('equipments');
 	}
-
 }

@@ -12,7 +12,7 @@ class User extends Authenticatable
 
     /**
      * The attributes that are mass assignable.
-     *
+     * $table->string('email')->unique();
      * @var array
      */
     protected $fillable = [
