@@ -3,7 +3,7 @@
     <nav id="sidebar">
         <ul class="list-unstyled components">
             <li class="active">
-                <a href="#">Équipements</a>
+                <a href="{{ route('equipements.index') }}">Équipements</a>
             </li>
             <li>
                 <a href="#">Catégories</a>

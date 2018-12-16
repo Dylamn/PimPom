@@ -29,5 +29,4 @@ Route::get('/home', 'HomeController@index')->name('home');
  | Reservations Routes
  |--------------------------------------------------------------------------
  */
-Route::get('/reserver', 'ReserverController@index')->name('reserver.index');
-Route::post('/reserver', 'ReserverController@store')->name('reserver.store');
+Route::resource('reserver', 'ReserverController');

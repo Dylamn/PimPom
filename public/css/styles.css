@@ -107,7 +107,7 @@
 
 #sidebar ul li a {
     padding: 10px;
-    font-size: 1.3em;
+    font-size: 1.1em;
     display: block;
     text-decoration: none;
     color: #fff;
@@ -121,7 +121,7 @@
 #sidebar ul li.active > a, a[aria-expanded="true"] {
     color: #fff;
     background: #595959;
-    font-size: 1.5em;
+    font-size: 1.3em;
 }
 
 @media (max-width: 768px) {
