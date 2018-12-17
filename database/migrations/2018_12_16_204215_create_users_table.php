@@ -20,6 +20,7 @@ class CreateUsersTable extends Migration
 			$table->string('email', 50)->unique();
 			$table->string('username', 20)->nullable();
 			$table->string('password', 60)->nullable();
+            $table->rememberToken();
 			$table->integer('privilege')->nullable();
 		});
 	}

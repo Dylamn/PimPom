@@ -32,35 +32,35 @@
                             {{ Form::checkbox('selectEquip[]', 'Skis', false, ['id' => 'Skis']) }}
 
                             {{ Form::label('Skis', 'Si oui, combien ?', ['class' => 'col-md-5 col-form-label text-md-right']) }}
-                            {{ Form::number('nbSkis', 0, ['class' => 'col-md-1 form-control', 'style' => 'display: inline']) }}
+                            {{ Form::number('nbSkis', 0, ['class' => 'col-md-1 form-control', 'style' => 'display: inline', 'min' => '0']) }}
                         </div>
                         <div class="form-group row">
                             {{ Form::label('Weedze', 'Weedze', ['class' => 'col-md-3 col-form-label text-md-right']) }}
-                            {{ Form::checkbox('selectEquip[]', 'Weedze', false, ['id' => 'Weedze']) }}
+                            {{ Form::checkbox('selectEquip[]', 'Weedze', false, ['id' => 'Weedze', 'min' => '0']) }}
 
                             {{ Form::label('Skis', 'Si oui, combien ?', ['class' => 'col-md-5 col-form-label text-md-right']) }}
-                            {{ Form::number('nbWeedze', 0, ['class' => 'col-md-1 form-control', 'style' => 'display: inline']) }}
+                            {{ Form::number('nbWeedze', 0, ['class' => 'col-md-1 form-control', 'style' => 'display: inline', 'min' => '0']) }}
                         </div>
                         <div class="form-group row">
                             {{ Form::label('Snow', 'Snow', ['class' => 'col-md-3 col-form-label text-md-right']) }}
                             {{ Form::checkbox('selectEquip[]', 'Snow', false, ['id' => 'Snow']) }}
 
                             {{ Form::label('Skis', 'Si oui, combien ?', ['class' => 'col-md-5 col-form-label text-md-right']) }}
-                            {{ Form::number('nbSnow', 0, ['class' => 'col-md-1 form-control', 'style' => 'display: inline']) }}
+                            {{ Form::number('nbSnow', 0, ['class' => 'col-md-1 form-control', 'style' => 'display: inline', 'min' => '0']) }}
                         </div>
                         <div class="form-group row">
                             {{ Form::label('Luge', 'Luge', ['class' => 'col-md-3 col-form-label text-md-right']) }}
                             {{ Form::checkbox('selectEquip[]', 'Luge', false, ['id' => 'Luge']) }}
 
                             {{ Form::label('Skis', 'Si oui, combien ?', ['class' => 'col-md-5 col-form-label text-md-right']) }}
-                            {{ Form::number('nbLuge', 0, ['class' => 'col-md-1 form-control', 'style' => 'display: inline']) }}
+                            {{ Form::number('nbLuge', 0, ['class' => 'col-md-1 form-control', 'style' => 'display: inline', 'min' => '0']) }}
                         </div>
                         <div class="form-group row">
                             {{ Form::label('Chaussures', 'Chaussures', ['class' => 'col-md-3 col-form-label text-md-right']) }}
                             {{ Form::checkbox('selectEquip[]', 'Chaussures', false, ['id' => 'Chaussures']) }}
 
                             {{ Form::label('Chaussures', 'Votre pointure ?', ['class' => 'col-md-5 col-form-label text-md-right']) }}
-                            {{ Form::number('nbChaussures', 0, ['class' => 'col-md-1 form-control', 'style' => 'display: inline']) }}
+                            {{ Form::number('nbChaussures', 0, ['class' => 'col-md-1 form-control', 'style' => 'display: inline', 'min' => '0']) }}
                         </div>
                         <div class="form-group row  offset-md-10">
                             <button type="submit" class="btn btn-primary">Suivant ></button>

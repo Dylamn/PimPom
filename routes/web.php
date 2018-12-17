@@ -41,3 +41,10 @@ Route::get('/home', 'HomeController@index')->name('home');
  |--------------------------------------------------------------------------
  */
 Route::resource('reserver', 'ReserverController');
+
+/*
+ |--------------------------------------------------------------------------
+ | Categorie Routes
+ |--------------------------------------------------------------------------
+ */
+Route::get('/categorie', 'CategorieController@index')->name('categorie.index');

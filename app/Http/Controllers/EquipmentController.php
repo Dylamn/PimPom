@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Model\Equipments;
 use App\Http\Requests\EquipmentRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 
 class EquipmentController extends Controller
@@ -16,6 +17,7 @@ class EquipmentController extends Controller
      */
     public function index()
     {
+
         $equipements = Equipments::getAllEquipments();
         $ski = Equipments::getAllSki();
         $snow = Equipments::getAllSnow();
