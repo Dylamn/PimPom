@@ -7,7 +7,6 @@ use App\Http\Requests\EquipmentRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
-
 class EquipmentController extends Controller
 {
     /**
@@ -17,7 +16,6 @@ class EquipmentController extends Controller
      */
     public function index()
     {
-
         $equipements = Equipments::getAllEquipments();
         $ski = Equipments::getAllSki();
         $snow = Equipments::getAllSnow();
@@ -26,7 +24,6 @@ class EquipmentController extends Controller
 
         return view('equipement.index', compact('ski', 'snow', 'luge', 'weed', 'equipements'));
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -36,7 +33,6 @@ class EquipmentController extends Controller
     {
         return view('equipement.create');
     }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -46,16 +42,12 @@ class EquipmentController extends Controller
     public function store(Request $request)
     {
         $equipement = new Equipments();
-
         $equipement->internalId = $request->internalId;
         $equipement->size = $request->size;
-
         // ToDo : Insertions SQL dans les tables catégories & équipements
         // Vérifier si catégorie est vide ? ne rien faire : ajouter la nouvelle catégorie
-
         return redirect('/equipements');
     }
-
     /**
      * Display the specified resource.
      *
@@ -65,10 +57,8 @@ class EquipmentController extends Controller
     public function show(Equipments $equipement)
     {
         $equipement = Equipments::getOneEquipment($equipement->id)[0];
-
         return view('equipement.show', compact('equipement'));
     }
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -78,10 +68,8 @@ class EquipmentController extends Controller
     public function edit(Equipments $equipement)
     {
         $equipement = Equipments::getOneEquipment($equipement->id)[0];
-
         return view("equipement.edit", compact("equipement"));
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -93,13 +81,10 @@ class EquipmentController extends Controller
     {
         $equipement->internalId = $request->internalId;
         $equipement->size = $request->size;
-
         $equipement->save();
         // ToDo : Question -> Le prix par catégorie ou par équipements ?
-
         return redirect('/equipements');
     }
-
     /**
      * Remove the specified resource from storage.
      *
@@ -110,7 +95,6 @@ class EquipmentController extends Controller
     public function destroy(Equipments $equipement)
     {
         $equipement->delete();
-
         return redirect('/equipements');
     }
 }

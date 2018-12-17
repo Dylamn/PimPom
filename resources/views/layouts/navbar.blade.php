@@ -44,7 +44,7 @@
 
     <div class="collapse navbar-collapse" id="navbarColor03">
         <ul class="navbar-nav mr-auto">
-            @if (Route::has('acceuil'))
+            @if (str_contains(Route::currentRouteName(), 'acceuil'))
                 <li class="nav-item active">
                     <a class="nav-link" href="{{ route('acceuil') }}">Acceuil <span class="sr-only">(current)</span></a>
                 </li>
@@ -53,7 +53,7 @@
                     <a class="nav-link" href="{{ route('acceuil') }}">Acceuil <span class="sr-only">(current)</span></a>
                 </li>
             @endif
-            @if (Route::has('reserver'))
+            @if (str_contains(Route::currentRouteName(), 'reserver'))
                 <li class="nav-item active">
                     <a class="nav-link" href="{{ route('reserver.index') }}">Réservation</a>
                 </li>
@@ -62,7 +62,7 @@
                     <a class="nav-link" href="{{ route('reserver.index') }}">Réservation</a>
                 </li>
             @endif
-            @if (Route::has('equipements.index'))
+            @if (str_contains(Route::currentRouteName(), 'equipements'))
                 <li class="nav-item active">
                     <a class="nav-link" href="{{ route('equipements.index') }}">Administration</a>
                 </li>

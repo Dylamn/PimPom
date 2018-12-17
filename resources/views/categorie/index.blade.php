@@ -25,12 +25,13 @@
                     <td class="text-center">{{ $statement->adultPrice }} €</td>
                     <td class="text-center">{{ $statement->childrenPrice }} €</td>
                     <td class="text-center">
-                        <a href="/categorie/{{ $statement->id }}/modifier">
+                        <a href="{{ Request::url() . '/' . $statement->id }}/modifier">
                             <i class="fa fa-pencil" style="color:orange; font-size: 1.4em;"></i>
                         </a>
                     </td>
                     <td class="text-center">
                         <form name="delete_form{{__($statement->id) }}" action="/equipements/{{ $statement->id }}" method="POST">
+                        <form name="delete_form" action="{{ Request::url() . '/' . $statement->id }}" method="POST">
                             @method('DELETE')
                             @csrf
                             <i id="btn-delete" class="fa fa-times" style="color:red; font-size: 1.4em;"></i>

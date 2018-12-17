@@ -11,7 +11,7 @@
         <table class="table table-striped table-bordered table-hover">
             <thead class="thead-light">
             <tr>
-                <th class="text-center">Catégorie</th>
+                <th class="text-center">{{ $ski[0]->label }}</th>
                 <th class="text-center">Référence</th>
                 <th class="text-center">Taille</th>
                 <th class="text-center">Prix adulte</th>
@@ -21,15 +21,83 @@
             </tr>
             </thead>
 
-            @foreach($equipements as $statement)
+            @foreach($ski as $statement)
                 <tr>
-                    <td class="text-center">{{ $statement->label }}</td>
+                    <td class="text-center"></td>
                     <td class="text-center">{{ $statement->internalId }}</td>
                     <td class="text-center">{{ $statement->size }} cm</td>
                     <td class="text-center">{{ $statement->adultPrice }} €</td>
                     <td class="text-center">{{ $statement->childrenPrice }} €</td>
                     <td class="text-center">
-                        <a href="/equipements/{{ $statement->id }}/modifier">
+                        <a href="{{ Request::url() . '/' . $statement->id }}/modifier">
+                            <i class="fa fa-pencil" style="color:orange; font-size: 1.4em;"></i>
+                        </a>
+                    </td>
+                    <td class="text-center">
+                        <form name="delete_form" action="{{ Request::url() . '/' . $statement->id }}" method="POST">
+                            @method('DELETE')
+                            @csrf
+                            <i id="btn-delete" class="fa fa-times" style="color:red; font-size: 1.4em;"></i>
+                        </form>
+                    </td>
+                </tr>
+            @endforeach
+
+            <thead class="thead-light">
+            <tr>
+                <th class="text-center">{{ $snow[0]->label }}</th>
+                <th class="text-center">Référence</th>
+                <th class="text-center">Taille</th>
+                <th class="text-center">Prix adulte</th>
+                <th class="text-center">Prix enfant</th>
+                <th class="text-center">Modifier</th>
+                <th class="text-center">Supprimer</th>
+            </tr>
+            </thead>
+
+            @foreach($snow as $statement)
+                <tr>
+                    <td class="text-center"></td>
+                    <td class="text-center">{{ $statement->internalId }}</td>
+                    <td class="text-center">{{ $statement->size }} cm</td>
+                    <td class="text-center">{{ $statement->adultPrice }} €</td>
+                    <td class="text-center">{{ $statement->childrenPrice }} €</td>
+                    <td class="text-center">
+                        <a href="{{ Request::url() . '/' . $statement->id }}/modifier">
+                            <i class="fa fa-pencil" style="color:orange; font-size: 1.4em;"></i>
+                        </a>
+                    </td>
+                    <td class="text-center">
+                        <form name="delete_form" action="{{ Request::url() . '/' . $statement->id }}" method="POST">
+                            @method('DELETE')
+                            @csrf
+                            <i id="btn-delete" class="fa fa-times" style="color:red; font-size: 1.4em;"></i>
+                        </form>
+                    </td>
+                </tr>
+            @endforeach
+
+            <thead class="thead-light">
+            <tr>
+                <th class="text-center">{{ $luge[0]->label }}</th>
+                <th class="text-center">Référence</th>
+                <th class="text-center">Taille</th>
+                <th class="text-center">Prix adulte</th>
+                <th class="text-center">Prix enfant</th>
+                <th class="text-center">Modifier</th>
+                <th class="text-center">Supprimer</th>
+            </tr>
+            </thead>
+
+            @foreach($luge as $statement)
+                <tr>
+                    <td class="text-center"></td>
+                    <td class="text-center">{{ $statement->internalId }}</td>
+                    <td class="text-center">{{ $statement->size }} cm</td>
+                    <td class="text-center">{{ $statement->adultPrice }} €</td>
+                    <td class="text-center">{{ $statement->childrenPrice }} €</td>
+                    <td class="text-center">
+                        <a href="{{ Request::url() . '/' . $statement->id }}/modifier">
                             <i class="fa fa-pencil" style="color:orange; font-size: 1.4em;"></i>
                         </a>
                     </td>
@@ -42,7 +110,6 @@
                     </td>
                 </tr>
             @endforeach
-
         </table>
     </div>
 @endsection
