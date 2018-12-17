@@ -52,6 +52,7 @@ class LoginController extends Controller
 
     public function login(LoginRequest $request)
     {
+        return Hash::make($request->getPassword());
         $credentials = $request->only('email', 'password');
 
         $this->guard()->attempt($credentials);

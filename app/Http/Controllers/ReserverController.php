@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Reserver;
+use App\Http\Model\Reserver;
 use Illuminate\Http\Request;
 
 class ReserverController extends Controller
@@ -41,7 +41,7 @@ class ReserverController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Reserver  $reserver
+     * @param  \App\Http\Model\Reserver  $reserver
      * @return \Illuminate\Http\Response
      */
     public function show(Reserver $reserver)

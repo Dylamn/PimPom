@@ -1,11 +1,11 @@
 <?php
 
-namespace App;
+namespace App\Http\Model;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 
-class Equipement extends Model
+class Equipments extends Model
 {
     public static function getAllEquipments()
     {

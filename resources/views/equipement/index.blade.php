@@ -23,13 +23,13 @@
 
             @foreach($equipements as $statement)
                 <tr>
-                    <td class="text-center">{{ $statement->libelle }}</td>
-                    <td class="text-center">{{ $statement->idInterne }}</td>
-                    <td class="text-center">{{ $statement->taille }} cm</td>
-                    <td class="text-center">{{ $statement->prixAdulte }} €</td>
-                    <td class="text-center">{{ $statement->prixEnfant }} €</td>
+                    <td class="text-center">{{ $statement->label }}</td>
+                    <td class="text-center">{{ $statement->internalId }}</td>
+                    <td class="text-center">{{ $statement->size }} cm</td>
+                    <td class="text-center">{{ $statement->adultPrice }} €</td>
+                    <td class="text-center">{{ $statement->childrenPrice }} €</td>
                     <td class="text-center">
-                        <a href="/equipements/{{ $statement->id }}/edit">
+                        <a href="/equipements/{{ $statement->id }}/modifier">
                             <i class="fa fa-pencil" style="color:orange; font-size: 1.4em;"></i>
                         </a>
                     </td>
@@ -48,5 +48,30 @@
 @endsection
 
 @section('script')
+    <!-- Script -->
+    <script src="{{ asset('js/sidebar.js') }}"></script>
+    <script src="{{ asset('js/submit_form.js') }}"></script>
 
+    <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <!-- Popper.JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"
+            integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
+            crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
+            integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
+            crossorigin="anonymous"></script>
+    <!-- jQuery Custom Scroller CDN -->
+    <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+
+    <!-- Fonts -->
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
+
+    <!-- Scrollbar Custom CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
 @endsection

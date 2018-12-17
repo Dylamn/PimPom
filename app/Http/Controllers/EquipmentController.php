@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Categorie;
-use App\Equipement;
-use App\Http\Requests\EquipementRequest;
+use App\Http\Model\Equipments;
+use App\Http\Requests\EquipmentRequest;
 use Illuminate\Http\Request;
 
 
-class EquipementController extends Controller
+class EquipmentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,12 +16,13 @@ class EquipementController extends Controller
      */
     public function index()
     {
-        $ski = Equipement::getAllSki();
-        $snow = Equipement::getAllSnow();
-        $luge = Equipement::getAllLuge();
-        $weed = Equipement::getAllWeed();
+        $equipements = Equipments::getAllEquipments();
+        $ski = Equipments::getAllSki();
+        $snow = Equipments::getAllSnow();
+        $luge = Equipments::getAllLuge();
+        $weed = Equipments::getAllWeed();
 
-        return view('equipement.index', compact('ski', 'snow', 'luge', 'weed'));
+        return view('equipement.index', compact('ski', 'snow', 'luge', 'weed', 'equipements'));
     }
 
     /**
@@ -43,10 +43,10 @@ class EquipementController extends Controller
      */
     public function store(Request $request)
     {
-        $equipement = new Equipement();
+        $equipement = new Equipments();
 
-        $equipement->idInterne = $request->idInterne;
-        $equipement->taille = $request->taille;
+        $equipement->internalId = $request->internalId;
+        $equipement->size = $request->size;
 
         // ToDo : Insertions SQL dans les tables catégories & équipements
         // Vérifier si catégorie est vide ? ne rien faire : ajouter la nouvelle catégorie
@@ -57,38 +57,40 @@ class EquipementController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Equipement $equipement
+     * @param  \App\Http\Model\Equipments $equipement
      * @return \Illuminate\Http\Response
      */
-    public function show(Equipement $equipement)
+    public function show(Equipments $equipement)
     {
+        $equipement = Equipments::getOneEquipment($equipement->id)[0];
+
         return view('equipement.show', compact('equipement'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Equipement $equipement
+     * @param  \App\Http\Model\Equipments $equipement
      * @return \Illuminate\Http\Response
      */
-    public function edit(Equipement $equipement)
+    public function edit(Equipments $equipement)
     {
-        $equipment = Equipement::getOneEquipement($equipement->id)[0];
+        $equipement = Equipments::getOneEquipment($equipement->id)[0];
 
-        return view("equipement.edit", compact("equipment"));
+        return view("equipement.edit", compact("equipement"));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\EquipementRequest $request
-     * @param  \App\Equipement $equipement
+     * @param  \App\Http\Requests\EquipmentRequest $request
+     * @param  \App\Http\Model\Equipments $equipement
      * @return \Illuminate\Http\Response
      */
-    public function update(EquipementRequest $request, Equipement $equipement)
+    public function update(EquipmentRequest $request, Equipments $equipement)
     {
-        $equipement->idInterne = $request->idInterne;
-        $equipement->taille = $request->taille;
+        $equipement->internalId = $request->internalId;
+        $equipement->size = $request->size;
 
         $equipement->save();
         // ToDo : Question -> Le prix par catégorie ou par équipements ?
@@ -99,11 +101,11 @@ class EquipementController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Equipement $equipement
+     * @param  \App\Http\Model\Equipments $equipement
      * @return \Illuminate\Http\Response
      * @throws \Exception
      */
-    public function destroy(Equipement $equipement)
+    public function destroy(Equipments $equipement)
     {
         $equipement->delete();
 

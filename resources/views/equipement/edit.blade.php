@@ -3,55 +3,56 @@
 @section('content')
     <div class="container">
         <h1>Modifier un équipement</h1>
-
-        <form method="POST" action="/equipements/{{ $equipment->id }}" class="form-group">
+        {{ var_dump($errors) }}
+        {{-- ToDo : Check les problèmes rules --}}
+        <form method="POST" action="/equipements/{{ $equipement->id }}" class="form-group">
             @method('PATCH')
             @csrf
 
             <div class="row">
-                <label for="idInterne">Référence</label>
-                <input type="text" id="idInterne" name="idInterne" value="{{ $equipment->idInterne }}"
-                       class="form-control rounded {{ $errors->has('idInterne') ? 'is-invalid' : '' }}">
+                <label for="internalId">Référence</label>
+                <input type="text" id="internalId" name="internalId" value="{{ $equipement->internalId }}"
+                       class="form-control rounded {{ $errors->has('internalId') ? 'is-invalid' : '' }}">
 
-                @if ($errors->has('idInterne'))
+                @if ($errors->has('internalId'))
                     <span class="invalid-feedback" role="alert">
-                        <strong>{{ __($errors->first('idInterne')) }}</strong>
+                        <strong>{{ __($errors->first('internalId')) }}</strong>
                     </span>
                 @endif
             </div>
 
             <div class="row">
-                <label for="taille">Taille de l'équipement (en cm)</label>
-                <input type="number" min="0" max="999" step="0.01" id="taille" name="taille" value="{{ $equipment->taille }}"
-                       class="form-control rounded {{ $errors->has('taille') ? 'is-invalid' : '' }}">
+                <label for="size">taille de l'équipement (en cm)</label>
+                <input type="number" min="0" max="999" step="0.01" id="size" name="size" value="{{ $equipement->size }}"
+                       class="form-control rounded {{ $errors->has('size') ? 'is-invalid' : '' }}">
 
-                @if ($errors->has('taille'))
+                @if ($errors->has('size'))
                     <span class="invalid-feedback" role="alert">
-                        <strong>{{ __($errors->first('taille')) }}</strong>
+                        <strong>{{ __($errors->first('size')) }}</strong>
                     </span>
                 @endif
             </div>
 
             <div class="row">
-                <label for="prixAdulte">Prix adulte de l'équipement</label>
-                <input type="number" min="0" step="0.01" id="prixAdulte" name="prixAdulte" value="{{ $equipment->prixAdulte}}"
-                       class="form-control rounded {{ $errors->has('prixAdulte') ? 'is-invalid' : '' }}">
+                <label for="adultPrice">Prix adulte de l'équipement</label>
+                <input type="number" min="0" step="0.01" id="adultPrice" name="adultPrice" value="{{ $equipement->adultPrice}}"
+                       class="form-control rounded {{ $errors->has('adultPrice') ? 'is-invalid' : '' }}">
 
-                @if ($errors->has('prixAdulte'))
+                @if ($errors->has('adultPrice'))
                     <span class="invalid-feedback" role="alert">
-                        <strong>{{ __($errors->first('prixAdulte')) }}</strong>
+                        <strong>{{ __($errors->first('adultPrice')) }}</strong>
                     </span>
                 @endif
             </div>
 
             <div class="row" style="margin-bottom: 1.2em">
-                <label for="prixEnfant">Prix enfant de l'équipement</label>
-                <input type="number" min="0" step="0.01" id="prixEnfant" name="prixEnfant" value="{{ $equipment->prixEnfant }}"
-                       class="form-control rounded {{ $errors->has('prixEnfant') ? 'is-invalid' : '' }}">
+                <label for="childrenPrice">Prix enfant de l'équipement</label>
+                <input type="number" min="0" step="0.01" id="childrenPrice" name="childrenPrice" value="{{ $equipement->childrenPrice }}"
+                       class="form-control rounded {{ $errors->has('childrenPrice') ? 'is-invalid' : '' }}">
 
-                @if ($errors->has('prixEnfant'))
+                @if ($errors->has('childrenPrice'))
                     <span class="invalid-feedback" role="alert">
-                        <strong>{{ __($errors->first('prixEnfant')) }}</strong>
+                        <strong>{{ __($errors->first('childrenPrice')) }}</strong>
                     </span>
                 @endif
             </div>
