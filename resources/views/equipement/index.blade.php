@@ -11,7 +11,7 @@
         <table class="table table-striped table-bordered table-hover">
             <thead class="thead-light">
             <tr>
-                <th class="text-center">{{ $ski[0]->label }}</th>
+                <th class="text-center">{{ ! empty($ski) ? $ski[0]->label : 'Ski' }}</th>
                 <th class="text-center">Référence</th>
                 <th class="text-center">Taille</th>
                 <th class="text-center">Prix adulte</th>
@@ -20,6 +20,7 @@
                 <th class="text-center">Supprimer</th>
             </tr>
             </thead>
+            {!! empty($ski) ? '<tr><td colspan="7" class="text-center alert alert-info"><b>Aucun ski enregistré.</b></td></tr>' : '' !!}
 
             @foreach($ski as $statement)
                 <tr>
@@ -45,7 +46,7 @@
 
             <thead class="thead-light">
             <tr>
-                <th class="text-center">{{ $snow[0]->label }}</th>
+                <th class="text-center">{{ ! empty($snow) ? $snow[0]->label : 'Snowboard'  }}</th>
                 <th class="text-center">Référence</th>
                 <th class="text-center">Taille</th>
                 <th class="text-center">Prix adulte</th>
@@ -54,6 +55,7 @@
                 <th class="text-center">Supprimer</th>
             </tr>
             </thead>
+            {!! empty($snow) ? '<tr><td colspan="7" class="text-center alert alert-info"><b>Aucun snowboard enregistré.</b></td></tr>' : '' !!}
 
             @foreach($snow as $statement)
                 <tr>
@@ -79,7 +81,7 @@
 
             <thead class="thead-light">
             <tr>
-                <th class="text-center">{{ $luge[0]->label }}</th>
+                <th class="text-center">{{ ! empty($luge) ? $luge[0]->label : 'Luge'  }}</th>
                 <th class="text-center">Référence</th>
                 <th class="text-center">Taille</th>
                 <th class="text-center">Prix adulte</th>
@@ -88,6 +90,7 @@
                 <th class="text-center">Supprimer</th>
             </tr>
             </thead>
+            {!! empty($luge) ? '<tr><td colspan="7" class="text-center alert alert-info"><b>Aucune luge enregistrée.</b></td></tr>' : '' !!}
 
             @foreach($luge as $statement)
                 <tr>

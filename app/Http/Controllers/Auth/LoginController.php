@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\LoginRequest;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
@@ -52,12 +53,16 @@ class LoginController extends Controller
 
     public function login(LoginRequest $request)
     {
-        return Hash::make($request->getPassword());
         $credentials = $request->only('email', 'password');
 
-        $this->guard()->attempt($credentials);
+        $authenticated = $this->guard()->attempt($credentials);
 
-        return redirect('/home');
+        if ($authenticated) {
+            return $this->redirectTo;
+        } else {
+            return view('auth.login');
+        }
+
     }
 
     /**

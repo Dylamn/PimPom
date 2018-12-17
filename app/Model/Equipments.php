@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Model;
+namespace App\Model;
 
 
 use Illuminate\Database\Eloquent\Model;
@@ -33,7 +33,7 @@ class Equipments extends Model
         return DB::select("SELECT * FROM view_equipments WHERE label = 'Luge';");
     }
 
-    public static function getAllWeed()
+    public static function getAllWeedze()
     {
         return DB::select("SELECT * FROM view_equipments WHERE label = 'Weedze';");
     }

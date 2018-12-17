@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Model\Equipments;
+use App\Model\Equipments;
 use App\Http\Requests\EquipmentRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -16,13 +16,12 @@ class EquipmentController extends Controller
      */
     public function index()
     {
-        $equipements = Equipments::getAllEquipments();
         $ski = Equipments::getAllSki();
         $snow = Equipments::getAllSnow();
         $luge = Equipments::getAllLuge();
-        $weed = Equipments::getAllWeed();
+        $weedze = Equipments::getAllWeedze();
 
-        return view('equipement.index', compact('ski', 'snow', 'luge', 'weed', 'equipements'));
+        return view('equipement.index', compact('ski', 'snow', 'luge', 'weedze', 'equipements'));
     }
     /**
      * Show the form for creating a new resource.
@@ -51,7 +50,7 @@ class EquipmentController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Http\Model\Equipments $equipement
+     * @param  \App\Model\Equipments $equipement
      * @return \Illuminate\Http\Response
      */
     public function show(Equipments $equipement)
@@ -62,7 +61,7 @@ class EquipmentController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Http\Model\Equipments $equipement
+     * @param  \App\Model\Equipments $equipement
      * @return \Illuminate\Http\Response
      */
     public function edit(Equipments $equipement)
@@ -74,7 +73,7 @@ class EquipmentController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \App\Http\Requests\EquipmentRequest $request
-     * @param  \App\Http\Model\Equipments $equipement
+     * @param  \App\Model\Equipments $equipement
      * @return \Illuminate\Http\Response
      */
     public function update(EquipmentRequest $request, Equipments $equipement)
@@ -88,7 +87,7 @@ class EquipmentController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Http\Model\Equipments $equipement
+     * @param  \App\Model\Equipments $equipement
      * @return \Illuminate\Http\Response
      * @throws \Exception
      */

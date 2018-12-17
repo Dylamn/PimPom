@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Model\Reserver;
+use App\Model\Reserver;
 use Illuminate\Http\Request;
 
 class ReserverController extends Controller
@@ -41,7 +41,7 @@ class ReserverController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Http\Model\Reserver  $reserver
+     * @param  \App\Model\Reserver  $reserver
      * @return \Illuminate\Http\Response
      */
     public function show(Reserver $reserver)
@@ -52,7 +52,7 @@ class ReserverController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Reserver  $reserver
+     * @param  \App\Model\Reserver  $reserver
      * @return \Illuminate\Http\Response
      */
     public function edit(Reserver $reserver)
@@ -64,7 +64,7 @@ class ReserverController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Reserver  $reserver
+     * @param  \App\Model\Reserver  $reserver
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Reserver $reserver)
@@ -75,7 +75,7 @@ class ReserverController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Reserver  $reserver
+     * @param  \App\Model\Reserver  $reserver
      * @return \Illuminate\Http\Response
      */
     public function destroy(Reserver $reserver)
