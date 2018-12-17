@@ -48,3 +48,4 @@ Route::resource('reserver', 'ReserverController');
  |--------------------------------------------------------------------------
  */
 Route::get('/categorie', 'CategorieController@index')->name('categorie.index');
+Route::get('/categorie/{categorie}/modifier', 'CategorieController@edit')->name('categorie.edit');
