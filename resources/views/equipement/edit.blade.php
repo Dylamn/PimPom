@@ -3,7 +3,6 @@
 @section('content')
     <div class="container">
         <h1>Modifier un équipement</h1>
-        {{ var_dump($errors) }}
         {{-- ToDo : Check les problèmes rules --}}
         <form method="POST" action="/equipements/{{ $equipement->id }}" class="form-group">
             @method('PATCH')

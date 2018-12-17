@@ -34,10 +34,10 @@
                         </a>
                     </td>
                     <td class="text-center">
-                        <form name="delete_form" action="/equipements/{{ $statement->id }}" method="POST">
+                        <form name="deleteForm{{ $statement->id }}" action="/equipements/{{ $statement->id }}" method="POST">
                             @method('DELETE')
                             @csrf
-                            <i id="btn-delete" class="fa fa-times" style="color:red; font-size: 1.4em;"></i>
+                            <i class="fa fa-times btn-delete" style="color:red; font-size: 1.4em;"></i>
                         </form>
                     </td>
                 </tr>
