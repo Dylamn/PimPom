@@ -47,5 +47,13 @@ Route::resource('reserver', 'ReserverController');
  | Categorie Routes
  |--------------------------------------------------------------------------
  */
-Route::get('/categorie', 'CategorieController@index')->name('categorie.index');
-Route::get('/categorie/{categorie}/modifier', 'CategorieController@edit')->name('categorie.edit');
+Route::get('/categories', 'CategorieController@index')->name('categorie.index');
+Route::get('/categories/{categorie}/modifier', 'CategorieController@edit')->name('categorie.edit');
+
+/*
+ |--------------------------------------------------------------------------
+ | Utilisateurs Routes
+ |--------------------------------------------------------------------------
+ */
+Route::get('/utilisateurs', 'UserController@index')->name('user.index');
+Route::get('/utilisateurs/{utilisateur}/modifier', 'UserController@edit')->name('user.edit');

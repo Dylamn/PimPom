@@ -7,7 +7,7 @@
 @extends('layouts.sidebar')
 
 @section('content')
-    <div class="container table-responsive" style="padding-top: 3%">
+    <div id="table" class="container table-responsive" style="padding-top: 3%">
         <table class="table table-striped table-bordered table-hover">
             <thead class="thead-light">
             <tr>

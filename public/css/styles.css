@@ -84,7 +84,7 @@
  |--------------------------------------------------------------------------
  */
 #sidebar {
-    width: 250px;
+    width: 200px;
     position: fixed;
     top: 55px;
     left: 0;
@@ -131,5 +131,11 @@
 
     #sidebar.active {
         margin-left: 0;
+    }
+}
+
+@media screen and (min-width:769px) and (max-width: 1920px) {
+    #table {
+        padding-left: 200px;
     }
 }

@@ -20,13 +20,13 @@
                     <a href="{{ route('categorie.index') }}">Catégories</a>
                 </li>
             @endif
-            @if(str_contains(Route::currentRouteName(), 'utilisateurs'))
+            @if(str_contains(Route::currentRouteName(), 'user'))
                 <li class="active">
-                    <a href="#">Utilisateurs</a>
+                    <a href="{{ route('user.index') }}">Utilisateurs</a>
                 </li>
             @else
                 <li>
-                    <a href="#">Utilisateurs</a>
+                    <a href="{{ route('user.index') }}">Utilisateurs</a>
                 </li>
             @endif
         </ul>

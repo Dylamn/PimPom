@@ -62,7 +62,7 @@
                     <a class="nav-link" href="{{ route('reserver.index') }}">Réservation</a>
                 </li>
             @endif
-            @if (str_contains(Route::currentRouteName(), 'equipements'))
+            @if (str_contains(Route::currentRouteName(), 'equipements') || str_contains(Route::currentRouteName(), 'categorie') || str_contains(Route::currentRouteName(), 'utilisateur'))
                 <li class="nav-item active">
                     <a class="nav-link" href="{{ route('equipements.index') }}">Administration</a>
                 </li>
