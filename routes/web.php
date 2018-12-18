@@ -47,8 +47,11 @@ Route::resource('reserver', 'ReserverController');
  | Categorie Routes
  |--------------------------------------------------------------------------
  */
+
 Route::get('/categories', 'CategorieController@index')->name('categorie.index');
 Route::get('/categories/{categorie}/modifier', 'CategorieController@edit')->name('categorie.edit');
+Route::patch('/categories/{categorie}/', 'CategorieController@update')->name('categorie.update');
+Route::get('/categories/creer', 'CategorieController@create')->name('categorie.create');
 
 /*
  |--------------------------------------------------------------------------
@@ -57,3 +60,9 @@ Route::get('/categories/{categorie}/modifier', 'CategorieController@edit')->name
  */
 Route::get('/utilisateurs', 'UserController@index')->name('user.index');
 Route::get('/utilisateurs/{utilisateur}/modifier', 'UserController@edit')->name('user.edit');
+
+
+
+
+
+

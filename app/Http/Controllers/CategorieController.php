@@ -25,7 +25,7 @@ class CategorieController extends Controller
      */
     public function create()
     {
-        //
+        return view('categorie.create');
     }
 
     /**
@@ -72,13 +72,14 @@ class CategorieController extends Controller
      */
     public function update(Request $request, Categorie $categorie)
     {
-        $categorie->internalId = $request->internalId;
-        $categorie->size = $request->size;
+        $categorie->label = $request->label;
+        $categorie->adultPrice = $request->adultPrice;
+        $categorie->childrenPrice = $request->childrenPrice;
 
         $categorie->save();
         // ToDo : Question -> Le prix par catégorie ou par équipements ?
 
-        return redirect('/categorie');
+        return redirect('/categories');
     }
 
     /**
