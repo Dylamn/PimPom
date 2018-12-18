@@ -5,13 +5,13 @@
         <h1>Modifier une catégorie</h1>
         {{ var_dump($errors) }}
         {{-- ToDo : Check les problèmes rules --}}
-        <form method="POST" action="/categorie/{{ $categorie->id }}" class="form-group">
+        <form method="POST" action="/categories/{{ $categorie->id }}" class="form-group">
             @method('PATCH')
             @csrf
 
             <div class="row">
                 <label for="label">Categorie</label>
-                <input type="text" id="internalId" name="internalId" value="{{ $categorie->label }}"
+                <input type="text" id="label" name="label" value="{{ $categorie->label }}"
                        class="form-control rounded {{ $errors->has('label') ? 'is-invalid' : '' }}">
 
                 @if ($errors->has('label'))
@@ -23,7 +23,7 @@
 
             <div class="row">
                 <label for="adultPrice">Prix adulte (en €)</label>
-                <input type="number" min="0" max="999" step="0.01" id="size" name="size" value="{{ $categorie->adultPrice }}"
+                <input type="number" min="0" max="999" step="0.01" id="adultPrice" name="adultPrice" value="{{ $categorie->adultPrice }}"
                        class="form-control rounded {{ $errors->has('adultPrice') ? 'is-invalid' : '' }}">
 
                 @if ($errors->has('adultPrice'))
@@ -34,8 +34,8 @@
             </div>
 
             <div class="row">
-                <label for="adultPrice">Prix enfant (en €)</label>
-                <input type="number" min="0" step="0.01" id="adultPrice" name="adultPrice" value="{{ $categorie->childrenPrice}}"
+                <label for="childrenPrice">Prix enfant (en €)</label>
+                <input type="number" min="0" step="0.01" id="childrenPrice" name="childrenPrice" value="{{ $categorie->childrenPrice}}"
                        class="form-control rounded {{ $errors->has('childrenPrice') ? 'is-invalid' : '' }}">
 
                 @if ($errors->has('childrenPrice'))
