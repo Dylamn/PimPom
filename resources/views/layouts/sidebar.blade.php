@@ -30,5 +30,22 @@
                 </li>
             @endif
         </ul>
+        <ul class="list-unstyled text-center">
+            {{--<div class="text-center">--}}
+            @if(str_contains(Route::currentRouteName(), 'equipements'))
+                <a href="{{ route('equipements.create') }}">
+                    <button type="button" class="btn btn-outline-dark">Ajouter un équipement</button>
+                </a>
+            @elseif(str_contains(Route::currentRouteName(), 'categorie'))
+                <a href="{{ route('categorie.create') }}">
+                    <button type="button" class="btn btn-outline-dark">Ajouter une catégorie</button>
+                </a>
+            @elseif(str_contains(Route::currentRouteName(), 'user'))
+                <a href="{{ route('utilisateurs.create') }}">
+                    <button type="button" class="btn btn-outline-dark">Ajouter un utilisateur</button>
+                </a>
+            @endif
+            {{--</div>--}}
+        </ul>
     </nav>
 </div>

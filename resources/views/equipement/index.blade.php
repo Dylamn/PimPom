@@ -7,113 +7,116 @@
 @extends('layouts.sidebar')
 
 @section('content')
-    <div id="table" class="container table-responsive" style="padding-top: 3%">
-        <table class="table table-striped table-bordered table-hover">
-            <thead class="thead-light">
-            <tr>
-                <th class="text-center">{{ ! empty($ski) ? $ski[0]->label : 'Ski' }}</th>
-                <th class="text-center">Référence</th>
-                <th class="text-center">Taille</th>
-                <th class="text-center">Prix adulte</th>
-                <th class="text-center">Prix enfant</th>
-                <th class="text-center">Modifier</th>
-                <th class="text-center">Supprimer</th>
-            </tr>
-            </thead>
-            {!! empty($ski) ? '<tr><td colspan="7" class="text-center alert alert-info"><b>Aucun ski enregistré.</b></td></tr>' : '' !!}
-
-            @foreach($ski as $statement)
+    <div class="container" id="side">
+        <div class="container table-responsive" style="padding-top: 3%">
+            <table class="table table-striped table-bordered table-hover">
+                <thead class="thead-light">
                 <tr>
-                    <td class="text-center"></td>
-                    <td class="text-center">{{ $statement->internalId }}</td>
-                    <td class="text-center">{{ $statement->size }} cm</td>
-                    <td class="text-center">{{ $statement->adultPrice }} €</td>
-                    <td class="text-center">{{ $statement->childrenPrice }} €</td>
-                    <td class="text-center">
-                        <a href="{{ Request::url() . '/' . $statement->id }}/modifier">
-                            <i class="fa fa-pencil" style="color:orange; font-size: 1.4em;"></i>
-                        </a>
-                    </td>
-                    <td class="text-center">
-                        <form name="delete_form" action="{{ Request::url() . '/' . $statement->id }}" method="POST">
-                            @method('DELETE')
-                            @csrf
-                            <i id="btn-delete" class="fa fa-times" style="color:red; font-size: 1.4em;"></i>
-                        </form>
-                    </td>
+                    <th class="text-center">{{ ! empty($ski) ? $ski[0]->label : 'Ski' }}</th>
+                    <th class="text-center">Référence</th>
+                    <th class="text-center">Taille</th>
+                    <th class="text-center">Prix adulte</th>
+                    <th class="text-center">Prix enfant</th>
+                    <th class="text-center">Modifier</th>
+                    <th class="text-center">Supprimer</th>
                 </tr>
-            @endforeach
+                </thead>
+                {!! empty($ski) ? '<tr><td colspan="7" class="text-center alert alert-info"><b>Aucun ski enregistré.</b></td></tr>' : '' !!}
 
-            <thead class="thead-light">
-            <tr>
-                <th class="text-center">{{ ! empty($snow) ? $snow[0]->label : 'Snowboard'  }}</th>
-                <th class="text-center">Référence</th>
-                <th class="text-center">Taille</th>
-                <th class="text-center">Prix adulte</th>
-                <th class="text-center">Prix enfant</th>
-                <th class="text-center">Modifier</th>
-                <th class="text-center">Supprimer</th>
-            </tr>
-            </thead>
-            {!! empty($snow) ? '<tr><td colspan="7" class="text-center alert alert-info"><b>Aucun snowboard enregistré.</b></td></tr>' : '' !!}
+                @foreach($ski as $statement)
+                    <tr>
+                        <td class="text-center"></td>
+                        <td class="text-center">{{ $statement->internalId }}</td>
+                        <td class="text-center">{{ $statement->size }} cm</td>
+                        <td class="text-center">{{ $statement->adultPrice }} €</td>
+                        <td class="text-center">{{ $statement->childrenPrice }} €</td>
+                        <td class="text-center">
+                            <a href="{{ Request::url() . '/' . $statement->id }}/modifier">
+                                <i class="fa fa-pencil" style="color:orange; font-size: 1.4em;"></i>
+                            </a>
+                        </td>
+                        <td class="text-center">
+                            <form name="delete_form" action="{{ Request::url() . '/' . $statement->id }}" method="POST">
+                                @method('DELETE')
+                                @csrf
+                                <i id="btn-delete" class="fa fa-times" style="color:red; font-size: 1.4em;"></i>
+                            </form>
+                        </td>
+                    </tr>
+                @endforeach
 
-            @foreach($snow as $statement)
+                <thead class="thead-light">
                 <tr>
-                    <td class="text-center"></td>
-                    <td class="text-center">{{ $statement->internalId }}</td>
-                    <td class="text-center">{{ $statement->size }} cm</td>
-                    <td class="text-center">{{ $statement->adultPrice }} €</td>
-                    <td class="text-center">{{ $statement->childrenPrice }} €</td>
-                    <td class="text-center">
-                        <a href="{{ Request::url() . '/' . $statement->id }}/modifier">
-                            <i class="fa fa-pencil" style="color:orange; font-size: 1.4em;"></i>
-                        </a>
-                    </td>
-                    <td class="text-center">
-                        <form name="delete_form" action="{{ Request::url() . '/' . $statement->id }}" method="POST">
-                            @method('DELETE')
-                            @csrf
-                            <i id="btn-delete" class="fa fa-times" style="color:red; font-size: 1.4em;"></i>
-                        </form>
-                    </td>
+                    <th class="text-center">{{ ! empty($snow) ? $snow[0]->label : 'Snowboard'  }}</th>
+                    <th class="text-center">Référence</th>
+                    <th class="text-center">Taille</th>
+                    <th class="text-center">Prix adulte</th>
+                    <th class="text-center">Prix enfant</th>
+                    <th class="text-center">Modifier</th>
+                    <th class="text-center">Supprimer</th>
                 </tr>
-            @endforeach
+                </thead>
+                {!! empty($snow) ? '<tr><td colspan="7" class="text-center alert alert-info"><b>Aucun snowboard enregistré.</b></td></tr>' : '' !!}
 
-            <thead class="thead-light">
-            <tr>
-                <th class="text-center">{{ ! empty($luge) ? $luge[0]->label : 'Luge'  }}</th>
-                <th class="text-center">Référence</th>
-                <th class="text-center">Taille</th>
-                <th class="text-center">Prix adulte</th>
-                <th class="text-center">Prix enfant</th>
-                <th class="text-center">Modifier</th>
-                <th class="text-center">Supprimer</th>
-            </tr>
-            </thead>
-            {!! empty($luge) ? '<tr><td colspan="7" class="text-center alert alert-info"><b>Aucune luge enregistrée.</b></td></tr>' : '' !!}
+                @foreach($snow as $statement)
+                    <tr>
+                        <td class="text-center"></td>
+                        <td class="text-center">{{ $statement->internalId }}</td>
+                        <td class="text-center">{{ $statement->size }} cm</td>
+                        <td class="text-center">{{ $statement->adultPrice }} €</td>
+                        <td class="text-center">{{ $statement->childrenPrice }} €</td>
+                        <td class="text-center">
+                            <a href="{{ Request::url() . '/' . $statement->id }}/modifier">
+                                <i class="fa fa-pencil" style="color:orange; font-size: 1.4em;"></i>
+                            </a>
+                        </td>
+                        <td class="text-center">
+                            <form name="delete_form" action="{{ Request::url() . '/' . $statement->id }}" method="POST">
+                                @method('DELETE')
+                                @csrf
+                                <i id="btn-delete" class="fa fa-times" style="color:red; font-size: 1.4em;"></i>
+                            </form>
+                        </td>
+                    </tr>
+                @endforeach
 
-            @foreach($luge as $statement)
+                <thead class="thead-light">
                 <tr>
-                    <td class="text-center"></td>
-                    <td class="text-center">{{ $statement->internalId }}</td>
-                    <td class="text-center">{{ $statement->size }} cm</td>
-                    <td class="text-center">{{ $statement->adultPrice }} €</td>
-                    <td class="text-center">{{ $statement->childrenPrice }} €</td>
-                    <td class="text-center">
-                        <a href="{{ Request::url() . '/' . $statement->id }}/modifier">
-                            <i class="fa fa-pencil" style="color:orange; font-size: 1.4em;"></i>
-                        </a>
-                    </td>
-                    <td class="text-center">
-                        <form name="deleteForm{{ $statement->id }}" action="/equipements/{{ $statement->id }}" method="POST">
-                            @method('DELETE')
-                            @csrf
-                            <i class="fa fa-times btn-delete" style="color:red; font-size: 1.4em;"></i>
-                        </form>
-                    </td>
+                    <th class="text-center">{{ ! empty($luge) ? $luge[0]->label : 'Luge'  }}</th>
+                    <th class="text-center">Référence</th>
+                    <th class="text-center">Taille</th>
+                    <th class="text-center">Prix adulte</th>
+                    <th class="text-center">Prix enfant</th>
+                    <th class="text-center">Modifier</th>
+                    <th class="text-center">Supprimer</th>
                 </tr>
-            @endforeach
-        </table>
+                </thead>
+                {!! empty($luge) ? '<tr><td colspan="7" class="text-center alert alert-info"><b>Aucune luge enregistrée.</b></td></tr>' : '' !!}
+
+                @foreach($luge as $statement)
+                    <tr>
+                        <td class="text-center"></td>
+                        <td class="text-center">{{ $statement->internalId }}</td>
+                        <td class="text-center">{{ $statement->size }} cm</td>
+                        <td class="text-center">{{ $statement->adultPrice }} €</td>
+                        <td class="text-center">{{ $statement->childrenPrice }} €</td>
+                        <td class="text-center">
+                            <a href="{{ Request::url() . '/' . $statement->id }}/modifier">
+                                <i class="fa fa-pencil" style="color:orange; font-size: 1.4em;"></i>
+                            </a>
+                        </td>
+                        <td class="text-center">
+                            <form name="deleteForm{{ $statement->id }}" action="/equipements/{{ $statement->id }}"
+                                  method="POST">
+                                @method('DELETE')
+                                @csrf
+                                <i class="fa fa-times btn-delete" style="color:red; font-size: 1.4em;"></i>
+                            </form>
+                        </td>
+                    </tr>
+                @endforeach
+            </table>
+        </div>
     </div>
 @endsection
 
@@ -136,12 +139,13 @@
             crossorigin="anonymous"></script>
     <!-- jQuery Custom Scroller CDN -->
     <script
-            src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+        src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
 
     <!-- Scrollbar Custom CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
 @endsection

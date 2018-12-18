@@ -36,7 +36,12 @@ class CategorieController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $categorie = new Categorie();
+        $categorie->label = $request->label;
+        $categorie->adultPrice = $request->adultPrice;
+        $categorie->childrenPrice = $request->childrenPrice;
+        Categorie::insertCat($categorie);
+        return redirect('/categories');
     }
 
     /**
@@ -72,6 +77,7 @@ class CategorieController extends Controller
      */
     public function update(Request $request, Categorie $categorie)
     {
+
         $categorie->label = $request->label;
         $categorie->adultPrice = $request->adultPrice;
         $categorie->childrenPrice = $request->childrenPrice;

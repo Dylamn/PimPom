@@ -124,6 +124,11 @@
     font-size: 1.3em;
 }
 
+/*
+ |--------------------------------------------------------------------------
+ | Media Queries
+ |--------------------------------------------------------------------------
+ */
 @media (max-width: 768px) {
     #sidebar {
         margin-left: -250px;
@@ -135,7 +140,7 @@
 }
 
 @media screen and (min-width:769px) and (max-width: 1920px) {
-    #table {
+    #side {
         padding-left: 200px;
     }
 }
