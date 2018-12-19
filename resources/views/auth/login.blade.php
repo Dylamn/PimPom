@@ -11,6 +11,13 @@
                         <form method="POST" action="{{ route('login') }}">
                             @csrf
 
+                            <div class="form-group" >
+                                @if (Request::has('previous'))
+                                    <input type="hidden" name="previous" value="{{ Request::get('previous') }}">
+                                @else
+                                    <input type="hidden" name="previous" value="{{ URL::previous() }}">
+                                @endif
+                            </div>
                             <div class="form-group row">
                                 <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Adresse email') }}</label>
 

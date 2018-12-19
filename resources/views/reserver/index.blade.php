@@ -99,35 +99,19 @@
 @endsection
 
 @section('script')
-    <script src="">
-      siOui = $(function () {
-        $('div.CheckBoxes input[type=checkbox]').click(function () {
-          let cochee = $(this).is(':checked'); // je regarde si la case est cochée ou non
-          let page = $(this).attr("name"); // je capture l'attibut name
-          let cible = page + ".php"; // je créer une variable lien pour ma requete ajax
-
-          if (cochee) {
-            $(function () {
-              $.ajax({
-                url: "contenu/" + cible, // j'utilise le lien pour aller cherche les contenus à rajouter
-                cache: false,
-                success: function (html) {
-                  $("#Form" + page).append(html); // j'ajoute le contenu dans ma div
-                },
-                error: function (XMLHttpRequest, textStatus, errorThrown) {
-                  alert(textStatus);
-                },
-              });
-              return false;
-            });
-          } else {
-            $(function () {
-              $("#Form" + page).empty(); // je supprime le contenu dans ma div
-              return false;
-            });
-          }
-
-        });
-      });
-    </script>
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/sidebar.js') }}"></script>
+    <script src="{{ asset('js/submit_form.js') }}"></script>
+    <script src="{{ asset('js/get_nb_equipments.js') }}"></script>
+    <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <!-- Popper.JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"
+            integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
+            crossorigin="anonymous"></script>
+    <!-- jQuery Custom Scroller CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
 @endsection

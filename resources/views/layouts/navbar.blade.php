@@ -43,8 +43,8 @@
                             {{ Auth::user()->surname }}
                         </button>
                         <div class="dropdown-menu dropdown-menu-right">
-                            <a href="{{ route('home') }}" class="dropdown-item" type="button">Profil</a>
-                            <a class="dropdown-item" type="button">...</a>
+                            <a href="{{ route('home') }}" class="dropdown-item">Profil</a>
+                            <a class="dropdown-item">...</a>
                             <button href="{{ route('logout') }}" class="dropdown-item" onclick="event.preventDefault();
                             document.getElementById('logout-form').submit();">Déconnexion</button>
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

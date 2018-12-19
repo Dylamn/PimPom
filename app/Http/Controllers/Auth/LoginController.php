@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
@@ -29,16 +30,18 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+        protected $redirectTo = '/home';
 
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(Request $request)
     {
         $this->middleware('guest')->except('logout');
+
+        $this->request = $request;
     }
 
     /**
@@ -58,11 +61,19 @@ class LoginController extends Controller
         $authenticated = $this->guard()->attempt($credentials);
 
         if ($authenticated) {
-            return redirect($this->redirectTo);
+            return redirect($this->redirectTo());
         } else {
             return view('auth.login');
         }
 
+    }
+
+    public function redirectTo() {
+        if ($this->request->has('previous')) {
+            $this->redirectTo = $this->request->get('previous');
+        }
+
+        return $this->redirectTo ?? '/home';
     }
 
     /**
