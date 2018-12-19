@@ -59,11 +59,10 @@ Route::patch('/categories/{categorie}/', 'CategorieController@update')->name('ca
  | Utilisateurs Routes
  |--------------------------------------------------------------------------
  */
-Route::get('/utilisateurs', 'UserController@index')->name('user.index');
-Route::get('/utilisateurs/{utilisateur}/modifier', 'UserController@edit')->name('user.edit');
-
-
-
-
-
-
+Route::get('/utilisateurs', 'UserController@index')->name('utilisateurs.index');
+Route::post('/utilisateurs', 'UserController@store')->name('utilisateurs.store');
+Route::get('/utilisateurs/creer', 'UserController@create')->name('utilisateurs.create');
+Route::get('/utilisateurs/{utilisateur}', 'UserController@show')->name('utilisateurs.show');
+Route::get('/utilisateurs/{utilisateur}/modifier', 'UserController@edit')->name('utilisateurs.edit');
+Route::patch('/utilisateurs/{utilisateur}/', 'UserController@update')->name('utilisateurs.update');
+Route::delete('/utilisateurs/{utilisateur}', 'UserController@destroy')->name('utilisateurs.destroy');

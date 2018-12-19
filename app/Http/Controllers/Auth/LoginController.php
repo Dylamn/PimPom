@@ -58,7 +58,7 @@ class LoginController extends Controller
         $authenticated = $this->guard()->attempt($credentials);
 
         if ($authenticated) {
-            return $this->redirectTo;
+            return redirect($this->redirectTo);
         } else {
             return view('auth.login');
         }
