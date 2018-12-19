@@ -35,6 +35,7 @@
                                 {{ Form::label('Skis', 'Si oui, combien ?', ['class' => 'col-md-5 col-form-label text-md-right']) }}
                                 {{ Form::number('nbSkis', 0, ['class' => 'col-md-1 form-control', 'style' => 'display: inline', 'min' => '0']) }}
                             </div>
+                            <p>Ski(s) disponible(s) : {{ Count($ski) }}</p>
                         </div>
                         <div class="row">
                             <div class="col-md form-group">
@@ -44,6 +45,7 @@
                                 {{ Form::label('Skis', 'Si oui, combien ?', ['class' => 'col-md-5 col-form-label text-md-right']) }}
                                 {{ Form::number('nbWeedze', 0, ['class' => 'col-md-1 form-control', 'style' => 'display: inline', 'min' => '0']) }}
                             </div>
+                            <p>Weedze disponible(s) : {{ Count($weedze) }}</p>
                         </div>
                         <div class="row">
                             <div class="col-md form-group">
@@ -53,6 +55,7 @@
                                 {{ Form::label('Skis', 'Si oui, combien ?', ['class' => 'col-md-5 col-form-label text-md-right']) }}
                                 {{ Form::number('nbSnow', 0, ['class' => 'col-md-1 form-control', 'style' => 'display: inline', 'min' => '0']) }}
                             </div>
+                            <p>Snow disponible(s) : {{ Count($snow) }}</p>
                         </div>
                         <div class="row">
                             <div class="col-md form-group">
@@ -62,6 +65,7 @@
                                 {{ Form::label('Skis', 'Si oui, combien ?', ['class' => 'col-md-5 col-form-label text-md-right']) }}
                                 {{ Form::number('nbLuge', 0, ['class' => 'col-md-1 form-control', 'style' => 'display: inline', 'min' => '0']) }}
                             </div>
+                            <p>Luge(s) disponible(s) : {{ Count($luge) }}</p>
                         </div>
                         <div class="row">
                             <div class="col-md form-group">
@@ -71,6 +75,7 @@
                                 {{ Form::label('Chaussures', 'Si oui, combien ?', ['class' => 'col-md-5 col-form-label text-md-right']) }}
                                 {{ Form::number('nbChaussures', 0, ['class' => 'col-md-1 form-control', 'style' => 'display: inline', 'min' => '0']) }}
                             </div>
+                            <p>Chaussures disponible(s) : {{ Count($shoes) }}</p>
                         </div>
                         <div class="row">
                             <div class="col-md form-group">

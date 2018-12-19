@@ -37,4 +37,9 @@ class Equipments extends Model
     {
         return DB::select("SELECT * FROM view_equipments WHERE label = 'Weedze';");
     }
+
+    public static function getAllShoes()
+    {
+        return DB::select("SELECT * FROM view_equipments WHERE label = 'Shoes';");
+    }
 }

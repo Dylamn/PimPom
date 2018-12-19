@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Model\Reserver;
+use App\Model\Equipments;
 use Illuminate\Http\Request;
 
 class ReserverController extends Controller
@@ -14,7 +15,12 @@ class ReserverController extends Controller
      */
     public function index()
     {
-        return view('reserver.index');
+        $ski = Equipments::getAllSki();
+        $snow = Equipments::getAllSnow();
+        $luge = Equipments::getAllLuge();
+        $weedze = Equipments::getAllWeedze();
+        $shoes = Equipments::getAllShoes();
+        return view('reserver.index', compact('ski', 'snow', 'luge', 'weedze', 'equipements', 'shoes'));
     }
 
     /**
