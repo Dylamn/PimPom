@@ -8,9 +8,21 @@ use Illuminate\Support\Facades\DB;
 
 class Equipments extends Model
 {
+    /**
+     * The attributes that aren't mass assignable.
+     *
+     * @var array
+     */
+    protected $guarded = [];
+
+    /**
+     * The attributes that aren't mass assignable.
+     *
+     * @return
+     */
     public static function getAllEquipments()
     {
-        return DB::select("SELECT * FROM view_equipments;");
+        return dd(DB::select("SELECT * FROM view_equipments;"));
     }
 
     public static function getOneEquipment(int $id)

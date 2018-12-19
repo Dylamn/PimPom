@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Model\Categorie;
 use App\Model\Equipments;
 use App\Http\Requests\EquipmentRequest;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
 
 class EquipmentController extends Controller
 {
@@ -23,6 +23,7 @@ class EquipmentController extends Controller
 
         return view('equipement.index', compact('ski', 'snow', 'luge', 'weedze', 'equipements'));
     }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -30,21 +31,20 @@ class EquipmentController extends Controller
      */
     public function create()
     {
-        return view('equipement.create');
+        $categories = Categorie::all();
+
+        return view('equipement.create', compact('categories'));
     }
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
+     *
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store()
     {
-        $equipement = new Equipments();
-        $equipement->internalId = $request->internalId;
-        $equipement->size = $request->size;
-        // ToDo : Insertions SQL dans les tables catégories & équipements
-        // Vérifier si catégorie est vide ? ne rien faire : ajouter la nouvelle catégorie
+        Equipments::create(request(['internalId', 'size', 'categoryId']));
+
         return redirect('/equipements');
     }
     /**
@@ -78,10 +78,12 @@ class EquipmentController extends Controller
      */
     public function update(EquipmentRequest $request, Equipments $equipement)
     {
-        $equipement->internalId = $request->internalId;
-        $equipement->size = $request->size;
-        $equipement->save();
-        // ToDo : Question -> Le prix par catégorie ou par équipements ?
+        $equipement->update([
+            'categoryId' => $request->categoryId,
+            'internalId' => $request->internalId,
+            'size' => $request->size,
+        ]);
+
         return redirect('/equipements');
     }
     /**

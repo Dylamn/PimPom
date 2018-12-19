@@ -77,13 +77,11 @@ class CategorieController extends Controller
      */
     public function update(Request $request, Categorie $categorie)
     {
-
-        $categorie->label = $request->label;
-        $categorie->adultPrice = $request->adultPrice;
-        $categorie->childrenPrice = $request->childrenPrice;
-
-        $categorie->save();
-        // ToDo : Question -> Le prix par catégorie ou par équipements ?
+        Categorie::create([
+            'label' => $request->label,
+            'adultPrice' => $request->adultPrice,
+            'childrenPrice' => $request->childrenPrice,
+        ]);
 
         return redirect('/categories');
     }
@@ -96,7 +94,7 @@ class CategorieController extends Controller
      */
     public function destroy(Categorie $categorie)
     {
-        $$categorie->delete();
+        $categorie->delete();
 
         return redirect('/categorie');
     }

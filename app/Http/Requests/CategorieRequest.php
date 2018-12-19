@@ -33,7 +33,7 @@ class CategorieRequest extends FormRequest
     public function messages()
     {
         return [
-            'label.required' => 'Il faut renseigner un nom de catégorie',
+            'label.required' => 'Il faut renseigner un nom de catégorie.',
             'label.string' => 'Le nom de catégorie doit être renseigner en lettre.',
 
             'adultPrice.required' => 'Un prix pour adulte doit être renseigné.',
