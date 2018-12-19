@@ -40,7 +40,7 @@ class CategorieController extends Controller
         $categorie->label = $request->label;
         $categorie->adultPrice = $request->adultPrice;
         $categorie->childrenPrice = $request->childrenPrice;
-        Categorie::insertCat($categorie);
+        $categorie->save();
         return redirect('/categories');
     }
 

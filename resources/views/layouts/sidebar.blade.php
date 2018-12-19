@@ -2,6 +2,15 @@
     <!-- Sidebar -->
     <nav id="sidebar">
         <ul class="list-unstyled components">
+            {{--@if()--}}
+                <li class="">
+                    <a href="#">Réservations</a>
+                </li>
+            {{--@else--}}
+                {{--<li>--}}
+                    {{--<a href="{{ route('equipements.index') }}">Équipements</a>--}}
+                {{--</li>--}}
+            {{--@endif--}}
             @if(str_contains(Route::currentRouteName(), 'equipements'))
                 <li class="active">
                     <a href="{{ route('equipements.index') }}">Équipements</a>
@@ -40,7 +49,7 @@
                 <a href="{{ route('categorie.create') }}">
                     <button type="button" class="btn btn-outline-dark">Ajouter une catégorie</button>
                 </a>
-            @elseif(str_contains(Route::currentRouteName(), 'user'))
+            @elseif(str_contains(Route::currentRouteName(), 'utilisateurs'))
                 <a href="{{ route('utilisateurs.create') }}">
                     <button type="button" class="btn btn-outline-dark">Ajouter un utilisateur</button>
                 </a>

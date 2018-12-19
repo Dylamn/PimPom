@@ -6,6 +6,7 @@ use App\Model\Categorie;
 use App\Model\Equipments;
 use App\Http\Requests\EquipmentRequest;
 use Illuminate\Http\Request;
+use DB;
 
 class EquipmentController extends Controller
 {
@@ -16,12 +17,25 @@ class EquipmentController extends Controller
      */
     public function index()
     {
-        $ski = Equipments::getAllSki();
-        $snow = Equipments::getAllSnow();
-        $luge = Equipments::getAllLuge();
-        $weedze = Equipments::getAllWeedze();
+        $ski = $this->bigData('Ski');
 
+        $snow = $this->bigData('Snowboard');
+
+        $luge = $this->bigData('Luge');
+
+        $weedze = $this->bigData('Weedze');
+
+        //return response()->json(compact('ski', 'snow', 'luge', 'weedze', 'equipements', 'bigTable'));
         return view('equipement.index', compact('ski', 'snow', 'luge', 'weedze', 'equipements'));
+    }
+
+    public function bigData($label)
+    {
+        $bigTable = Equipments::select('*')
+            ->join('categories AS c', 'equipments.categoryId', '=', 'c.id')
+            ->where('c.label', $label)->get();
+
+        return $bigTable;
     }
 
     /**

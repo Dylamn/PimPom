@@ -29,68 +29,78 @@
                         </div>
                         <div class="row">
                             <div class="col-md form-group">
-                                {{ Form::label('Skis', 'Skis', ['class' => 'col-md-3 col-form-label text-md-right']) }}
+                                {{ Form::label('Skis', 'Skis', ['class' => 'col-md-2 col-form-label text-md-right']) }}
                                 {{ Form::checkbox('selectEquip[]', 'Skis', false, ['id' => 'Skis']) }}
 
-                                {{ Form::label('Skis', 'Si oui, combien ?', ['class' => 'col-md-5 col-form-label text-md-right']) }}
+                                {{ Form::label('Skis', 'Si oui, combien ?', ['class' => 'col-md-4 col-form-label text-md-right']) }}
                                 {{ Form::number('nbSkis', 0, ['class' => 'col-md-1 form-control', 'style' => 'display: inline', 'min' => '0']) }}
+
+                                <p class="col-md-3 pull-right" style="display: inline">Ski(s) disponible(s)
+                                    : {{ Count($ski) }}</p>
                             </div>
-                            <p>Ski(s) disponible(s) : {{ Count($ski) }}</p>
                         </div>
                         <div class="row">
                             <div class="col-md form-group">
-                                {{ Form::label('Weedze', 'Weedze', ['class' => 'col-md-3 col-form-label text-md-right']) }}
+                                {{ Form::label('Weedze', 'Weedze', ['class' => 'col-md-2 col-form-label text-md-right']) }}
                                 {{ Form::checkbox('selectEquip[]', 'Weedze', false, ['id' => 'Weedze', 'min' => '0']) }}
 
-                                {{ Form::label('Skis', 'Si oui, combien ?', ['class' => 'col-md-5 col-form-label text-md-right']) }}
+                                {{ Form::label('Skis', 'Si oui, combien ?', ['class' => 'col-md-4 col-form-label text-md-right']) }}
                                 {{ Form::number('nbWeedze', 0, ['class' => 'col-md-1 form-control', 'style' => 'display: inline', 'min' => '0']) }}
+
+                                <p class="col-md-3 pull-right" style="display: inline">Weedze disponible(s)
+                                    : {{ Count($weedze) }}</p>
                             </div>
-                            <p>Weedze disponible(s) : {{ Count($weedze) }}</p>
                         </div>
                         <div class="row">
                             <div class="col-md form-group">
-                                {{ Form::label('Snow', 'Snow', ['class' => 'col-md-3 col-form-label text-md-right']) }}
+                                {{ Form::label('Snow', 'Snow', ['class' => 'col-md-2 col-form-label text-md-right']) }}
                                 {{ Form::checkbox('selectEquip[]', 'Snow', false, ['id' => 'Snow']) }}
 
-                                {{ Form::label('Skis', 'Si oui, combien ?', ['class' => 'col-md-5 col-form-label text-md-right']) }}
+                                {{ Form::label('Skis', 'Si oui, combien ?', ['class' => 'col-md-4 col-form-label text-md-right']) }}
                                 {{ Form::number('nbSnow', 0, ['class' => 'col-md-1 form-control', 'style' => 'display: inline', 'min' => '0']) }}
+
+                                <p class="col-md-3 pull-right" style="display: inline">Snow disponible(s)
+                                    : {{ Count($snow) }}</p>
                             </div>
-                            <p>Snow disponible(s) : {{ Count($snow) }}</p>
                         </div>
                         <div class="row">
                             <div class="col-md form-group">
-                                {{ Form::label('Luge', 'Luge', ['class' => 'col-md-3 col-form-label text-md-right']) }}
+                                {{ Form::label('Luge', 'Luge', ['class' => 'col-md-2 col-form-label text-md-right']) }}
                                 {{ Form::checkbox('selectEquip[]', 'Luge', false, ['id' => 'Luge']) }}
 
-                                {{ Form::label('Skis', 'Si oui, combien ?', ['class' => 'col-md-5 col-form-label text-md-right']) }}
+                                {{ Form::label('Skis', 'Si oui, combien ?', ['class' => 'col-md-4 col-form-label text-md-right']) }}
                                 {{ Form::number('nbLuge', 0, ['class' => 'col-md-1 form-control', 'style' => 'display: inline', 'min' => '0']) }}
+                                <p class="col-md-3 pull-right" style="display: inline">Luge(s) disponible(s)
+                                    : {{ Count($luge) }}</p>
                             </div>
-                            <p>Luge(s) disponible(s) : {{ Count($luge) }}</p>
                         </div>
                         <div class="row">
                             <div class="col-md form-group">
-                                {{ Form::label('Chaussures', 'Chaussures', ['class' => 'col-md-3 col-form-label text-md-right']) }}
+                                {{ Form::label('Chaussures', 'Chaussures', ['class' => 'col-md-2 col-form-label text-md-right']) }}
                                 {{ Form::checkbox('selectEquip[]', 'Chaussures', false, ['id' => 'Chaussures']) }}
 
-                                {{ Form::label('Chaussures', 'Si oui, combien ?', ['class' => 'col-md-5 col-form-label text-md-right']) }}
+                                {{ Form::label('Chaussures', 'Si oui, combien ?', ['class' => 'col-md-4 col-form-label text-md-right']) }}
                                 {{ Form::number('nbChaussures', 0, ['class' => 'col-md-1 form-control', 'style' => 'display: inline', 'min' => '0']) }}
+
+                                <p class="col-md-3 pull-right" style="display: inline">Chaussures disponible(s)
+                                    : {{ Count($shoes) }}</p>
                             </div>
-                            <p>Chaussures disponible(s) : {{ Count($shoes) }}</p>
                         </div>
                         <div class="row">
                             <div class="col-md form-group">
-                                {{ Form::label('dateDebut', 'Date début réservation :', ['class' => 'col-md-6 col-form-label text-md-right']) }}
-                                {{ Form::date('dateDebut', 1, ['class' => 'col-md form-control', 'style' => 'display: inline']) }}
+                                {{ Form::label('dateDebut', 'Date de début de la réservation :', ['class' => 'col-md-7 col-form-label text-md-right']) }}
+                                {{ Form::date('dateDebut', 1, ['class' => 'col-md form-control col-md-4', 'style' => 'display: inline']) }}
                             </div>
                             <div class="col-md form-group">
-                                {{ Form::label('dateFin', 'Date fin réservation :', ['class' => 'col-md-6 col-form-label text-md-right']) }}
-                                {{ Form::date('dateFin', 0, ['class' => 'col-md form-control', 'style' => 'margin-bottom: 5%; display: inline']) }}
+                                {{ Form::label('dateFin', 'Date de fin de la réservation :', ['class' => 'col-md-7 col-form-label text-md-right']) }}
+                                {{ Form::date('dateFin', 0, ['class' => 'col-md form-control col-md-4', 'style' => 'margin-bottom: 5%; display: inline']) }}
                             </div>
-                            <div class="row offset-md-10">
-                                <button type="submit" class="btn btn-primary">Suivant ></button>
-                            </div>
-                            {{ Form::close() }}
                         </div>
+
+                        <div class="row offset-md-10">
+                            <button type="submit" class="btn btn-primary">Suivant ></button>
+                        </div>
+                        {{ Form::close() }}
                     </div>
                 </div>
             </div>
@@ -113,5 +123,6 @@
             integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
             crossorigin="anonymous"></script>
     <!-- jQuery Custom Scroller CDN -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
 @endsection
