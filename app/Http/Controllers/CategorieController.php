@@ -77,7 +77,7 @@ class CategorieController extends Controller
      */
     public function update(Request $request, Categorie $categorie)
     {
-        Categorie::create([
+        $categorie->update([
             'label' => $request->label,
             'adultPrice' => $request->adultPrice,
             'childrenPrice' => $request->childrenPrice,
@@ -91,6 +91,7 @@ class CategorieController extends Controller
      *
      * @param  \App\Model\Categorie  $categorie
      * @return \Illuminate\Http\Response
+     * @throws \Exception
      */
     public function destroy(Categorie $categorie)
     {

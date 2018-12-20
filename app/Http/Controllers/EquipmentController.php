@@ -7,6 +7,7 @@ use App\Model\Equipments;
 use App\Http\Requests\EquipmentRequest;
 use Illuminate\Http\Request;
 use DB;
+use PhpParser\Node\Expr\Array_;
 
 class EquipmentController extends Controller
 {
@@ -25,10 +26,16 @@ class EquipmentController extends Controller
 
         $weedze = $this->bigData('Weedze');
 
-        //return response()->json(compact('ski', 'snow', 'luge', 'weedze', 'equipements', 'bigTable'));
         return view('equipement.index', compact('ski', 'snow', 'luge', 'weedze', 'equipements'));
     }
 
+    /**
+     *  Function that return a table with the label passed in the parameter
+     *
+     *  @param String $label
+     *
+     * @return array*
+     */
     public function bigData($label)
     {
         $bigTable = Equipments::select('*')
@@ -49,6 +56,7 @@ class EquipmentController extends Controller
 
         return view('equipement.create', compact('categories'));
     }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -61,6 +69,7 @@ class EquipmentController extends Controller
 
         return redirect('/equipements');
     }
+
     /**
      * Display the specified resource.
      *
@@ -72,6 +81,7 @@ class EquipmentController extends Controller
         $equipement = Equipments::getOneEquipment($equipement->id)[0];
         return view('equipement.show', compact('equipement'));
     }
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -83,6 +93,7 @@ class EquipmentController extends Controller
         $equipement = Equipments::getOneEquipment($equipement->id)[0];
         return view("equipement.edit", compact("equipement"));
     }
+
     /**
      * Update the specified resource in storage.
      *
@@ -100,6 +111,7 @@ class EquipmentController extends Controller
 
         return redirect('/equipements');
     }
+
     /**
      * Remove the specified resource from storage.
      *
