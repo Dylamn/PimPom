@@ -68,6 +68,11 @@ class LoginController extends Controller
 
     }
 
+    /**
+     * Function that retrieve the last URI where the user was before access to the login form.
+     *
+     * @return mixed|string
+     */
     public function redirectTo() {
         if ($this->request->has('previous')) {
             $this->redirectTo = $this->request->get('previous');

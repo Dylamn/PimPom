@@ -15,6 +15,7 @@ class CategorieController extends Controller
     public function index()
     {
         $categories = Categorie::all();
+
         return view("categorie.index", compact("categories"));
     }
 
@@ -36,11 +37,12 @@ class CategorieController extends Controller
      */
     public function store(Request $request)
     {
-        $categorie = new Categorie();
-        $categorie->label = $request->label;
-        $categorie->adultPrice = $request->adultPrice;
-        $categorie->childrenPrice = $request->childrenPrice;
-        $categorie->save();
+        Categorie::create([
+        'label' => $request->label,
+        'adultPrice' => $request->adultPrice,
+        'childrenPrice' => $request->childrenPrice,
+        ]);
+
         return redirect('/categories');
     }
 
@@ -52,7 +54,9 @@ class CategorieController extends Controller
      */
     public function show(Categorie $categorie)
     {
-        //
+        // Todo : Créer la vue categorie.show
+
+        return response($categorie)->json();
     }
 
     /**

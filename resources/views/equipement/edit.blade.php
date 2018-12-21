@@ -13,7 +13,6 @@
                 <div class="card">
                     <div class="card-header">Modifier un équipement</div>
                     <div class="card-body">
-                        {{-- ToDo : Check les problèmes rules --}}
                         <form method="POST" action="/equipements/{{ $equipement->id }}" class="form-group">
                             @method('PATCH')
                             @csrf

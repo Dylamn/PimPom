@@ -41,7 +41,7 @@ class ReserverController extends Controller
      */
     public function store(Request $request)
     {
-        return $request;
+        return dd($request);
     }
 
     /**

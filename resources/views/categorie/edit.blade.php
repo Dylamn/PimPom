@@ -13,8 +13,6 @@
                 <div class="card">
                     <div class="card-header">Modifier une catégorie</div>
                     <div class="card-body">
-
-                        {{-- ToDo : Check les problèmes rules --}}
                         <form method="POST" action="/categories/{{ $categorie->id }}" class="form-group">
                             @method('PATCH')
                             @csrf

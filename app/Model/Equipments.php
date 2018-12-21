@@ -16,42 +16,23 @@ class Equipments extends Model
     protected $guarded = [];
 
     /**
-     * The attributes that aren't mass assignable.
+     * Retrieve all equipments from the view.
      *
-     * @return
+     * @return array
      */
     public static function getAllEquipments()
     {
         return dd(DB::select("SELECT * FROM view_equipments;"));
     }
 
+    /**
+     * Retrieve a requested equipment from the view.
+     *
+     * @param int $id
+     * @return array
+     */
     public static function getOneEquipment(int $id)
     {
         return DB::select("SELECT * FROM view_equipments WHERE id = ?;", [$id]);
-    }
-
-    public static function getAllSki()
-    {
-        return DB::select("SELECT * FROM view_equipments WHERE label = 'Ski';");
-    }
-
-    public static function getAllSnow()
-    {
-        return DB::select("SELECT * FROM view_equipments WHERE label = 'Snowboard';");
-    }
-
-    public static function getAllLuge()
-    {
-        return DB::select("SELECT * FROM view_equipments WHERE label = 'Luge';");
-    }
-
-    public static function getAllWeedze()
-    {
-        return DB::select("SELECT * FROM view_equipments WHERE label = 'Weedze';");
-    }
-
-    public static function getAllShoes()
-    {
-        return DB::select("SELECT * FROM view_equipments WHERE label = 'Shoes';");
     }
 }

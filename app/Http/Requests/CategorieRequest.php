@@ -37,12 +37,12 @@ class CategorieRequest extends FormRequest
             'label.string' => 'Le nom de catégorie doit être renseigner en lettre.',
 
             'adultPrice.required' => 'Un prix pour adulte doit être renseigné.',
-            'adultPrice.integer'  => 'Le prix renseigné doit être supérieur à 0.',
-            'adultPrice.min'      => 'Le prix pour adulte doit être supérieur ou égale à 0.',
+            'adultPrice.integer' => 'Le prix renseigné doit être supérieur à 0.',
+            'adultPrice.min' => 'Le prix pour adulte doit être supérieur ou égale à 0.',
 
             'childrenPrice.required' => 'Un prix pour enfant doit être renseigné.',
-            'childrenPrice.integer'  => 'Le prix renseigné doit être supérieur à 0.',
-            'childrenPrice.min'      => 'Le prix pour enfant doit être supérieur ou égale à 0.',
+            'childrenPrice.integer' => 'Le prix renseigné doit être supérieur à 0.',
+            'childrenPrice.min' => 'Le prix pour enfant doit être supérieur ou égale à 0.',
         ];
     }
 }

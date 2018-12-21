@@ -25,24 +25,7 @@ class EquipmentController extends Controller
 
         $weedze = $this->bigData('Weedze');
 
-        //return response()->json(compact('ski', 'snow', 'luge', 'weedze', 'equipements', 'bigTable'));
         return view('equipement.index', compact('ski', 'snow', 'luge', 'weedze', 'equipements'));
-    }
-
-    /**
-     *  Function that return a table with the label passed in the parameter
-     *
-     *  @param String $label
-     *
-     * @return array*
-     */
-    public static function bigData($label)
-    {
-        $bigTable = Equipments::select('*')
-            ->join('categories AS c', 'equipments.categoryId', '=', 'c.id')
-            ->where('c.label', $label)->get();
-
-        return $bigTable;
     }
 
     /**
@@ -60,14 +43,13 @@ class EquipmentController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     *
      * @return \Illuminate\Http\Response
      */
     public function store()
     {
         Equipments::create(request(['internalId', 'size', 'categoryId']));
 
-        return redirect('/equipements');
+        return redirect(route('equipements'));
     }
 
     /**
@@ -79,6 +61,7 @@ class EquipmentController extends Controller
     public function show(Equipments $equipement)
     {
         $equipement = Equipments::getOneEquipment($equipement->id)[0];
+
         return view('equipement.show', compact('equipement'));
     }
 
@@ -91,6 +74,7 @@ class EquipmentController extends Controller
     public function edit(Equipments $equipement)
     {
         $equipement = Equipments::getOneEquipment($equipement->id)[0];
+
         return view("equipement.edit", compact("equipement"));
     }
 
@@ -109,7 +93,7 @@ class EquipmentController extends Controller
             'size' => $request->size,
         ]);
 
-        return redirect('/equipements');
+        return redirect(route('equipements.index'));
     }
 
     /**
@@ -122,6 +106,22 @@ class EquipmentController extends Controller
     public function destroy(Equipments $equipement)
     {
         $equipement->delete();
-        return redirect('/equipements');
+
+        return redirect(route('equipements.index'));
+    }
+
+    /**
+     * Function that returns a table for the requested equipment.
+     *
+     * @param String $label
+     * @return array
+     */
+    public static function bigData($label)
+    {
+        $bigTable = Equipments::select('*')
+            ->join('categories AS c', 'equipments.categoryId', '=', 'c.id')
+            ->where('c.label', $label)->get();
+
+        return $bigTable;
     }
 }
