@@ -7,7 +7,6 @@ use App\Model\Equipments;
 use App\Http\Requests\EquipmentRequest;
 use Illuminate\Http\Request;
 use DB;
-use PhpParser\Node\Expr\Array_;
 
 class EquipmentController extends Controller
 {
@@ -26,6 +25,7 @@ class EquipmentController extends Controller
 
         $weedze = $this->bigData('Weedze');
 
+        //return response()->json(compact('ski', 'snow', 'luge', 'weedze', 'equipements', 'bigTable'));
         return view('equipement.index', compact('ski', 'snow', 'luge', 'weedze', 'equipements'));
     }
 
@@ -36,7 +36,7 @@ class EquipmentController extends Controller
      *
      * @return array*
      */
-    public function bigData($label)
+    public static function bigData($label)
     {
         $bigTable = Equipments::select('*')
             ->join('categories AS c', 'equipments.categoryId', '=', 'c.id')

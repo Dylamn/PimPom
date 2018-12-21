@@ -35,8 +35,7 @@
                                 {{ Form::label('Skis', 'Si oui, combien ?', ['class' => 'col-md-4 col-form-label text-md-right']) }}
                                 {{ Form::number('nbSkis', 0, ['class' => 'col-md-1 form-control', 'style' => 'display: inline', 'min' => '0']) }}
 
-                                <p class="col-md-3 pull-right" style="display: inline">Ski(s) disponible(s)
-                                    : {{ Count($ski) }}</p>
+                                <p class="col-md-3 pull-right" style="display: inline">Ski(s) disponible(s) : {{ Count($ski) }}</p>
                             </div>
                         </div>
                         <div class="row">

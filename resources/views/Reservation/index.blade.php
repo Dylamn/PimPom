@@ -12,34 +12,35 @@
             <table class="table table-striped table-bordered table-hover">
                 <thead class="thead-light">
                 <tr>
-                    <th class="text-center">Catégorie</th>
-                    <th class="text-center">Prix adulte</th>
-                    <th class="text-center">Prix enfant</th>
+                    <th class="text-center">Client</th>
+                    <th class="text-center">Equipements</th>
+                    <th class="text-center">Début</th>
+                    <th class="text-center">Fin</th>
                     <th class="text-center">Modifier</th>
                     <th class="text-center">Supprimer</th>
                 </tr>
                 </thead>
 
-                @foreach($categories as $statement)
-                    <tr>
-                        <td class="text-center">{{ $statement->label }}</td>
-                        <td class="text-center">{{ $statement->adultPrice }} €</td>
-                        <td class="text-center">{{ $statement->childrenPrice }} €</td>
-                        <td class="text-center">
-                            <a href="{{ Request::url() . '/' . $statement->id }}/modifier">
-                                <i class="fa fa-pencil" style="color:orange; font-size: 1.4em;"></i>
-                            </a>
-                        </td>
-                        <td class="text-center">
-                            <form name="delete_form{{__($statement->id) }}"
-                                  action="{{ Request::url() . '/' . $statement->id }}" method="POST">
-                                @method('DELETE')
-                                @csrf
-                                <i id="btn-delete" class="fa fa-times" style="color:red; font-size: 1.4em;"></i>
-                            </form>
-                        </td>
-                    </tr>
-                @endforeach
+                {{--@foreach($categories as $statement)--}}
+                    {{--<tr>--}}
+                        {{--<td class="text-center">{{ $statement->label }}</td>--}}
+                        {{--<td class="text-center">{{ $statement->adultPrice }} €</td>--}}
+                        {{--<td class="text-center">{{ $statement->childrenPrice }} €</td>--}}
+                        {{--<td class="text-center">--}}
+                            {{--<a href="{{ Request::url() . '/' . $statement->id }}/modifier">--}}
+                                {{--<i class="fa fa-pencil" style="color:orange; font-size: 1.4em;"></i>--}}
+                            {{--</a>--}}
+                        {{--</td>--}}
+                        {{--<td class="text-center">--}}
+                            {{--<form name="delete_form{{__($statement->id) }}"--}}
+                                  {{--action="{{ Request::url() . '/' . $statement->id }}" method="POST">--}}
+                                {{--@method('DELETE')--}}
+                                {{--@csrf--}}
+                                {{--<i id="btn-delete" class="fa fa-times" style="color:red; font-size: 1.4em;"></i>--}}
+                            {{--</form>--}}
+                        {{--</td>--}}
+                    {{--</tr>--}}
+                {{--@endforeach--}}
 
             </table>
         </div>

@@ -41,7 +41,7 @@ Route::get('/home', 'HomeController@index')->name('home');
  |--------------------------------------------------------------------------
  */
 Route::resource('reserver', 'ReserverController');
-
+Route::middleware('auth:web')->get('/reservation', 'ReservationController@index')->name('reservation.index');
 /*
  |--------------------------------------------------------------------------
  | Categorie Routes

@@ -2,15 +2,15 @@
     <!-- Sidebar -->
     <nav id="sidebar">
         <ul class="list-unstyled components">
-            {{--@if()--}}
-                <li class="">
-                    <a href="#">Réservations</a>
+            @if(str_contains(Route::currentRouteName(), 'reservation'))
+                <li class="active">
+                    <a href="{{ route('reservation.index') }}">Réservations</a>
                 </li>
-            {{--@else--}}
-                {{--<li>--}}
-                    {{--<a href="{{ route('equipements.index') }}">Équipements</a>--}}
-                {{--</li>--}}
-            {{--@endif--}}
+            @else
+                <li>
+                    <a href="{{ route('reservation.index') }}">Réservations</a>
+                </li>
+            @endif
             @if(str_contains(Route::currentRouteName(), 'equipements'))
                 <li class="active">
                     <a href="{{ route('equipements.index') }}">Équipements</a>

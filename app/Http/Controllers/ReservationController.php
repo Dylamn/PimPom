@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Model\Reserver;
-use App\Model\Equipments;
+use App\Reservation;
 use Illuminate\Http\Request;
 
-class ReserverController extends Controller
+class ReservationController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,12 +14,7 @@ class ReserverController extends Controller
      */
     public function index()
     {
-        $ski = EquipmentController::bigData('Ski');
-        $snow = EquipmentController::bigData('Snowboard');
-        $luge = EquipmentController::bigData('Luge');
-        $weedze = EquipmentController::bigData('Weedze');
-        $shoes = EquipmentController::bigData('Chaussure');
-        return view('reserver.index', compact('ski', 'snow', 'luge', 'weedze', 'equipements', 'shoes'));
+        return view('reservation.index');
     }
 
     /**
@@ -41,16 +35,16 @@ class ReserverController extends Controller
      */
     public function store(Request $request)
     {
-        return $request;
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Model\Reserver  $reserver
+     * @param  \App\Reservation  $reservation
      * @return \Illuminate\Http\Response
      */
-    public function show(Reserver $reserver)
+    public function show(Reservation $reservation)
     {
         //
     }
@@ -58,10 +52,10 @@ class ReserverController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Model\Reserver  $reserver
+     * @param  \App\Reservation  $reservation
      * @return \Illuminate\Http\Response
      */
-    public function edit(Reserver $reserver)
+    public function edit(Reservation $reservation)
     {
         //
     }
@@ -70,10 +64,10 @@ class ReserverController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Model\Reserver  $reserver
+     * @param  \App\Reservation  $reservation
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Reserver $reserver)
+    public function update(Request $request, Reservation $reservation)
     {
         //
     }
@@ -81,10 +75,10 @@ class ReserverController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Model\Reserver  $reserver
+     * @param  \App\Reservation  $reservation
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Reserver $reserver)
+    public function destroy(Reservation $reservation)
     {
         //
     }
