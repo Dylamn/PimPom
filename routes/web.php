@@ -31,9 +31,9 @@ Route::middleware('auth:web')->patch('/equipements/{equipement}/', 'EquipmentCon
 Route::middleware('auth:web')->delete('/equipements/{equipement}', 'EquipmentController@destroy')->name('equipements.destroy');
 
 // Routes for authentification (register page is disabled)
-Auth::routes(['register' => false]);
+Auth::routes(['middleware' => 'doNotSave', 'register' => false]);
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', ['middleware' => 'doNotSave', 'uses' => 'HomeController@index'])->name('home');
 
 /*
  |--------------------------------------------------------------------------
@@ -41,7 +41,7 @@ Route::get('/home', 'HomeController@index')->name('home');
  |--------------------------------------------------------------------------
  */
 Route::resource('reserver', 'ReserverController');
-Route::middleware('auth:web')->get('/reservation', 'ReservationController@index')->name('reservation.index');
+//Route::middleware('auth:web')->get('/reservation', 'ReservationController@index')->name('reservation.index');
 /*
  |--------------------------------------------------------------------------
  | Categorie Routes

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b759443eb310ee63f5718aadea19de75",
+    "content-hash": "21f6b85e6964a5afd264484d6478ccbc",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -3170,6 +3170,57 @@
                 "environment"
             ],
             "time": "2018-07-29T20:33:41+00:00"
+        },
+        {
+            "name": "waavi/save-url",
+            "version": "1.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Waavi/save-url.git",
+                "reference": "997133a2dbb5966516583a901095718fc7af1470"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Waavi/save-url/zipball/997133a2dbb5966516583a901095718fc7af1470",
+                "reference": "997133a2dbb5966516583a901095718fc7af1470",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/config": "^5.1",
+                "illuminate/session": "^5.1",
+                "illuminate/support": "^5.1"
+            },
+            "require-dev": {
+                "mockery/mockery": "^0.9.4",
+                "orchestra/testbench": "^3.1",
+                "phpunit/phpunit": "^4"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Waavi\\SaveUrl\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Waavi",
+                    "email": "info@waavi.com",
+                    "homepage": "http://waavi.com"
+                }
+            ],
+            "description": "Laravel 5 package to redirect users to the last visited page on login.",
+            "keywords": [
+                "laravel",
+                "login",
+                "redirect after login",
+                "save-url",
+                "waavi"
+            ],
+            "time": "2017-08-10T15:20:52+00:00"
         },
         {
             "name": "zendframework/zend-diactoros",

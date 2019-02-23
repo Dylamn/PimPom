@@ -6,8 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\LoginRequest;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
+use doNotSave;
 use Illuminate\Http\Request;
 
 class LoginController extends Controller
@@ -35,13 +34,14 @@ class LoginController extends Controller
     /**
      * Create a new controller instance.
      *
+     * @param \App\Http\Requests\LoginRequest $request
      * @return void
      */
-    public function __construct(Request $request)
+    public function __construct(LoginRequest $request)
     {
         $this->middleware('guest')->except('logout');
 
-        $this->request = $request;
+//        $this->request = $request;
     }
 
     /**
@@ -61,7 +61,8 @@ class LoginController extends Controller
         $authenticated = $this->guard()->attempt($credentials);
 
         if ($authenticated) {
-            return redirect($this->redirectTo());
+            $e = redirect()->toSavedUrl();
+            return $e;
         } else {
             return view('auth.login');
         }
@@ -73,13 +74,13 @@ class LoginController extends Controller
      *
      * @return mixed|string
      */
-    public function redirectTo() {
-        if ($this->request->has('previous')) {
-            $this->redirectTo = $this->request->get('previous');
-        }
-
-        return $this->redirectTo ?? '/home';
-    }
+//    public function redirectTo() {
+//        if ($this->request->has('previous')) {
+//            $this->redirectTo = $this->request->get('previous');
+//        }
+//
+//        return $this->redirectTo ?? '/home';
+//    }
 
     /**
      * Get the guard to be used during authentication.
