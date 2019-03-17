@@ -3,11 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\LoginRequest;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use Illuminate\Support\Facades\Auth;
-use doNotSave;
-use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
@@ -29,66 +25,47 @@ class LoginController extends Controller
      *
      * @var string
      */
-        protected $redirectTo = '/home';
+    protected $redirectTo = '/home';
+
+    /**
+     * Login username to be used by the controller.
+     *
+     * @var string
+     */
+    protected $username;
 
     /**
      * Create a new controller instance.
      *
-     * @param \App\Http\Requests\LoginRequest $request
      * @return void
      */
-    public function __construct(LoginRequest $request)
+    public function __construct()
     {
         $this->middleware('guest')->except('logout');
-
-//        $this->request = $request;
+        $this->username = $this->findUsername();
     }
 
     /**
-     * Show the application's login form.
+     * Check if the user enters a username or email
      *
-     * @return \Illuminate\Http\Response
+     * @return string
      */
-    public function showLoginForm()
+    public function findUsername()
     {
-        return view('auth.login');
-    }
+        $login = request()->input('login');
+        $fieldType = filter_var($login, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
+        request()->merge([$fieldType => $login]);
 
-    public function login(LoginRequest $request)
-    {
-        $credentials = $request->only('email', 'password');
-
-        $authenticated = $this->guard()->attempt($credentials);
-
-        if ($authenticated) {
-            $e = redirect()->toSavedUrl();
-            return $e;
-        } else {
-            return view('auth.login');
-        }
-
+        return $fieldType;
     }
 
     /**
-     * Function that retrieve the last URI where the user was before access to the login form.
+     * Get the login username to be used by the controller.
      *
-     * @return mixed|string
+     * @return string
      */
-//    public function redirectTo() {
-//        if ($this->request->has('previous')) {
-//            $this->redirectTo = $this->request->get('previous');
-//        }
-//
-//        return $this->redirectTo ?? '/home';
-//    }
-
-    /**
-     * Get the guard to be used during authentication.
-     *
-     * @return \Illuminate\Contracts\Auth\Guard
-     */
-    public function guard()
+    public function username()
     {
-        return Auth::guard();
+        return $this->username;
     }
 }

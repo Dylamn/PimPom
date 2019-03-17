@@ -40,7 +40,6 @@
             @endif
         </ul>
         <ul class="list-unstyled text-center">
-            {{--<div class="text-center">--}}
             @if(str_contains(Route::currentRouteName(), 'equipements'))
                 <a href="{{ route('equipements.create') }}">
                     <button type="button" class="btn btn-outline-dark">Ajouter un équipement</button>
@@ -54,7 +53,6 @@
                     <button type="button" class="btn btn-outline-dark">Ajouter un utilisateur</button>
                 </a>
             @endif
-            {{--</div>--}}
         </ul>
     </nav>
 </div>

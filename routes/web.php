@@ -16,6 +16,13 @@ Route::get('/', function () {
     return view('welcome');
 })->name('acceuil');
 
+
+// Routes for authentification (register page is disabled)
+Auth::routes(['register' => false]);
+
+// Route for the application dashboard
+Route::get('/home', 'HomeController@index')->name('home');
+
 /*
  |--------------------------------------------------------------------------
  | Equipements Routes
@@ -30,18 +37,13 @@ Route::middleware('auth:web')->get('/equipements/{equipement}/modifier', 'Equipm
 Route::middleware('auth:web')->patch('/equipements/{equipement}/', 'EquipmentController@update')->name('equipements.update');
 Route::middleware('auth:web')->delete('/equipements/{equipement}', 'EquipmentController@destroy')->name('equipements.destroy');
 
-// Routes for authentification (register page is disabled)
-Auth::routes(['middleware' => 'doNotSave', 'register' => false]);
-
-Route::get('/home', ['middleware' => 'doNotSave', 'uses' => 'HomeController@index'])->name('home');
-
 /*
  |--------------------------------------------------------------------------
  | Reservations Routes
  |--------------------------------------------------------------------------
  */
 Route::resource('reserver', 'ReserverController');
-//Route::middleware('auth:web')->get('/reservation', 'ReservationController@index')->name('reservation.index');
+Route::middleware('auth:web')->get('/reservation', 'ReservationController@index')->name('reservation.index');
 /*
  |--------------------------------------------------------------------------
  | Categorie Routes
