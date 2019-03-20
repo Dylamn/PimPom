@@ -27,64 +27,78 @@
                                 <p>Sélectionner un ou plusieurs équipement(s) :</p>
                             </div>
                         </div>
+                        <?php foreach($categorie as $cat) { ?>
                         <div class="row">
                             <div class="col-md form-group">
-                                {{ Form::label('Skis', 'Skis', ['class' => 'col-md-2 col-form-label text-md-right']) }}
-                                {{ Form::checkbox('selectEquip[]', 'Skis', false, ['id' => 'Skis']) }}
+                                {{ Form::label($cat['label'], $cat['label'], ['class' => 'col-md-2 col-form-label text-md-right']) }}
+                                {{ Form::checkbox('selectEquip[]', $cat['label'], false, ['id' => $cat['label']]) }}
 
-                                {{ Form::label('Skis', 'Si oui, combien ?', ['class' => 'col-md-4 col-form-label text-md-right']) }}
+                                {{ Form::label($cat['label'], 'Si oui, combien ?', ['class' => 'col-md-4 col-form-label text-md-right']) }}
                                 {{ Form::number('nbSkis', 0, ['class' => 'col-md-1 form-control', 'style' => 'display: inline', 'min' => '0']) }}
 
-                                <p class="col-md-3 pull-right" style="display: inline">Ski(s) disponible(s) : {{ Count($ski) }}</p>
+
+                                <p class="col-md-3 pull-right" style="display: inline">Ski(s) disponible(s) :</p>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-md form-group">
-                                {{ Form::label('Weedze', 'Weedze', ['class' => 'col-md-2 col-form-label text-md-right']) }}
-                                {{ Form::checkbox('selectEquip[]', 'Weedze', false, ['id' => 'Weedze', 'min' => '0']) }}
+                        <?php } ?>
+                        {{--<div class="row">--}}
+                            {{--<div class="col-md form-group">--}}
+                                {{--{{ Form::label('Skis', 'Skis', ['class' => 'col-md-2 col-form-label text-md-right']) }}--}}
+                                {{--{{ Form::checkbox('selectEquip[]', 'Skis', false, ['id' => 'Skis']) }}--}}
 
-                                {{ Form::label('Skis', 'Si oui, combien ?', ['class' => 'col-md-4 col-form-label text-md-right']) }}
-                                {{ Form::number('nbWeedze', 0, ['class' => 'col-md-1 form-control', 'style' => 'display: inline', 'min' => '0']) }}
+                                {{--{{ Form::label('Skis', 'Si oui, combien ?', ['class' => 'col-md-4 col-form-label text-md-right']) }}--}}
+                                {{--{{ Form::number('nbSkis', 0, ['class' => 'col-md-1 form-control', 'style' => 'display: inline', 'min' => '0']) }}--}}
 
-                                <p class="col-md-3 pull-right" style="display: inline">Weedze disponible(s)
-                                    : {{ Count($weedze) }}</p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md form-group">
-                                {{ Form::label('Snow', 'Snow', ['class' => 'col-md-2 col-form-label text-md-right']) }}
-                                {{ Form::checkbox('selectEquip[]', 'Snow', false, ['id' => 'Snow']) }}
+                                {{--<p class="col-md-3 pull-right" style="display: inline">Ski(s) disponible(s) : {{ $equipment }}</p>--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
+                        {{--<div class="row">--}}
+                            {{--<div class="col-md form-group">--}}
+                                {{--{{ Form::label('Weedze', 'Weedze', ['class' => 'col-md-2 col-form-label text-md-right']) }}--}}
+                                {{--{{ Form::checkbox('selectEquip[]', 'Weedze', false, ['id' => 'Weedze', 'min' => '0']) }}--}}
 
-                                {{ Form::label('Skis', 'Si oui, combien ?', ['class' => 'col-md-4 col-form-label text-md-right']) }}
-                                {{ Form::number('nbSnow', 0, ['class' => 'col-md-1 form-control', 'style' => 'display: inline', 'min' => '0']) }}
+                                {{--{{ Form::label('Skis', 'Si oui, combien ?', ['class' => 'col-md-4 col-form-label text-md-right']) }}--}}
+                                {{--{{ Form::number('nbWeedze', 0, ['class' => 'col-md-1 form-control', 'style' => 'display: inline', 'min' => '0']) }}--}}
 
-                                <p class="col-md-3 pull-right" style="display: inline">Snow disponible(s)
-                                    : {{ Count($snow) }}</p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md form-group">
-                                {{ Form::label('Luge', 'Luge', ['class' => 'col-md-2 col-form-label text-md-right']) }}
-                                {{ Form::checkbox('selectEquip[]', 'Luge', false, ['id' => 'Luge']) }}
+                                {{--<p class="col-md-3 pull-right" style="display: inline">Weedze disponible(s)--}}
+                                    {{--: {{ Count($weedze) }}</p>--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
+                        {{--<div class="row">--}}
+                            {{--<div class="col-md form-group">--}}
+                                {{--{{ Form::label('Snow', 'Snow', ['class' => 'col-md-2 col-form-label text-md-right']) }}--}}
+                                {{--{{ Form::checkbox('selectEquip[]', 'Snow', false, ['id' => 'Snow']) }}--}}
 
-                                {{ Form::label('Skis', 'Si oui, combien ?', ['class' => 'col-md-4 col-form-label text-md-right']) }}
-                                {{ Form::number('nbLuge', 0, ['class' => 'col-md-1 form-control', 'style' => 'display: inline', 'min' => '0']) }}
-                                <p class="col-md-3 pull-right" style="display: inline">Luge(s) disponible(s)
-                                    : {{ Count($luge) }}</p>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md form-group">
-                                {{ Form::label('Chaussures', 'Chaussures', ['class' => 'col-md-2 col-form-label text-md-right']) }}
-                                {{ Form::checkbox('selectEquip[]', 'Chaussures', false, ['id' => 'Chaussures']) }}
+                                {{--{{ Form::label('Skis', 'Si oui, combien ?', ['class' => 'col-md-4 col-form-label text-md-right']) }}--}}
+                                {{--{{ Form::number('nbSnow', 0, ['class' => 'col-md-1 form-control', 'style' => 'display: inline', 'min' => '0']) }}--}}
 
-                                {{ Form::label('Chaussures', 'Si oui, combien ?', ['class' => 'col-md-4 col-form-label text-md-right']) }}
-                                {{ Form::number('nbChaussures', 0, ['class' => 'col-md-1 form-control', 'style' => 'display: inline', 'min' => '0']) }}
+                                {{--<p class="col-md-3 pull-right" style="display: inline">Snow disponible(s)--}}
+                                    {{--: {{ Count($snow) }}</p>--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
+                        {{--<div class="row">--}}
+                            {{--<div class="col-md form-group">--}}
+                                {{--{{ Form::label('Luge', 'Luge', ['class' => 'col-md-2 col-form-label text-md-right']) }}--}}
+                                {{--{{ Form::checkbox('selectEquip[]', 'Luge', false, ['id' => 'Luge']) }}--}}
 
-                                <p class="col-md-3 pull-right" style="display: inline">Chaussures disponible(s)
-                                    : {{ Count($shoes) }}</p>
-                            </div>
-                        </div>
+                                {{--{{ Form::label('Skis', 'Si oui, combien ?', ['class' => 'col-md-4 col-form-label text-md-right']) }}--}}
+                                {{--{{ Form::number('nbLuge', 0, ['class' => 'col-md-1 form-control', 'style' => 'display: inline', 'min' => '0']) }}--}}
+                                {{--<p class="col-md-3 pull-right" style="display: inline">Luge(s) disponible(s)--}}
+                                    {{--: {{ Count($luge) }}</p>--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
+                        {{--<div class="row">--}}
+                            {{--<div class="col-md form-group">--}}
+                                {{--{{ Form::label('Chaussures', 'Chaussures', ['class' => 'col-md-2 col-form-label text-md-right']) }}--}}
+                                {{--{{ Form::checkbox('selectEquip[]', 'Chaussures', false, ['id' => 'Chaussures']) }}--}}
+
+                                {{--{{ Form::label('Chaussures', 'Si oui, combien ?', ['class' => 'col-md-4 col-form-label text-md-right']) }}--}}
+                                {{--{{ Form::number('nbChaussures', 0, ['class' => 'col-md-1 form-control', 'style' => 'display: inline', 'min' => '0']) }}--}}
+
+                                {{--<p class="col-md-3 pull-right" style="display: inline">Chaussures disponible(s)--}}
+                                    {{--: {{ Count($shoes) }}</p>--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
                         <div class="row">
                             <div class="col-md form-group">
                                 {{ Form::label('dateDebut', 'Date de début de la réservation :', ['class' => 'col-md-7 col-form-label text-md-right']) }}

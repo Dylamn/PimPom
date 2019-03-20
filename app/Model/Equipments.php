@@ -22,7 +22,12 @@ class Equipments extends Model
      */
     public static function getAllEquipments()
     {
-        return dd(DB::select("SELECT * FROM view_equipments;"));
+        return DB::select("SELECT * FROM view_equipments;");
+    }
+
+    public static function getCountEquipment()
+    {
+        return DB::select("SELECT * FROM view_count_equipments;");
     }
 
     /**

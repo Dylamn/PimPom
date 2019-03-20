@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Model\Categorie;
 use App\Model\Reserver;
 use App\Model\Equipments;
 use Illuminate\Http\Request;
@@ -15,12 +16,16 @@ class ReserverController extends Controller
      */
     public function index()
     {
-        $ski = EquipmentController::bigData('Ski');
-        $snow = EquipmentController::bigData('Snowboard');
-        $luge = EquipmentController::bigData('Luge');
-        $weedze = EquipmentController::bigData('Weedze');
-        $shoes = EquipmentController::bigData('Chaussure');
-        return view('reserver.index', compact('ski', 'snow', 'luge', 'weedze', 'equipements', 'shoes'));
+//        $ski = EquipmentController::bigData('Ski');
+//        $snow = EquipmentController::bigData('Snowboard');
+//        $luge = EquipmentController::bigData('Luge');
+//        $weedze = EquipmentController::bigData('Weedze');
+//        $shoes = EquipmentController::bigData('Chaussure');
+        $equipment = Equipments::getCountEquipment();
+        $categorie = Categorie::all('label');
+        //return view('reserver.index', compact('ski', 'snow', 'luge', 'weedze', 'equipements', 'shoes'));
+        //return dd(compact('equipment'));
+        return view('reserver.index', compact( 'equipment','categorie'));
     }
 
     /**

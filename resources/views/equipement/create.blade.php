@@ -4,6 +4,9 @@
     @extends('layouts.navbar')
 @endsection
 
+@extends('layouts.sidebar')
+
+
 @section('content')
     <div class="container">
         <h1>Ajouter un équipement</h1>

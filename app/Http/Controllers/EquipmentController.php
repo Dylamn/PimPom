@@ -118,9 +118,15 @@ class EquipmentController extends Controller
      */
     public static function bigData($label)
     {
-        $bigTable = Equipments::select('*')
-            ->join('categories AS c', 'equipments.categoryId', '=', 'c.id')
-            ->where('c.label', $label)->get();
+        if ($label === 'all') {
+            $bigTable = Equipments::select('*')
+                ->join('categories AS c', 'equipments.categoryId', '=', 'c.id')
+                ->get();
+        } else {
+            $bigTable = Equipments::select('*')
+                ->join('categories AS c', 'equipments.categoryId', '=', 'c.id')
+                ->where('c.label', $label)->get();
+        }
 
         return $bigTable;
     }
