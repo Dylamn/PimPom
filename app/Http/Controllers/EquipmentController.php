@@ -49,7 +49,7 @@ class EquipmentController extends Controller
     {
         Equipments::create(request(['internalId', 'size', 'categoryId']));
 
-        return redirect(route('equipements'));
+        return redirect(route('equipements.index'));
     }
 
     /**
