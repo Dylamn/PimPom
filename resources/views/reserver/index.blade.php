@@ -14,11 +14,17 @@
                         {{ Form::open(['url' => 'reserver']) }}
                         <div class="row">
                             <div class="col-md form-group">
-                                {{ Form::label('nbAdultes', 'Nombre d\'adultes :', ['class' => 'col-md-6 col-form-label text-md-right']) }}
+                                {{ Form::label('nomClient', 'Nom du client :', ['class' => 'col-md-3 col-form-label text-md-right']) }}
+                                {{ Form::text('nomClient', '',['class' => 'col-md-3 form-control', 'style' => 'display: inline']) }}
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md form-group">
+                                {{ Form::label('nbAdultes', 'Nombre d\'adulte(s) :', ['class' => 'col-md-6 col-form-label text-md-right']) }}
                                 {{ Form::number('nbAdultes', 1, ['class' => 'col-md-2 form-control', 'style' => 'display: inline', 'min' => '0']) }}
                             </div>
                             <div class="col-md form-group">
-                                {{ Form::label('nbEnfants', 'Nombre d\'enfants :', ['class' => 'col-md-6 col-form-label text-md-right']) }}
+                                {{ Form::label('nbEnfants', 'Nombre d\'enfant(s) :', ['class' => 'col-md-6 col-form-label text-md-right']) }}
                                 {{ Form::number('nbEnfants', 0, ['class' => 'col-md-2 form-control', 'style' => 'margin-bottom: 5%; display: inline', 'min' => '0']) }}
                             </div>
                         </div>
@@ -27,91 +33,78 @@
                                 <p>Sélectionner un ou plusieurs équipement(s) :</p>
                             </div>
                         </div>
-                        <?php foreach($categorie as $cat) { ?>
-                        <div class="row">
-                            <div class="col-md form-group">
-                                {{ Form::label($cat['label'], $cat['label'], ['class' => 'col-md-2 col-form-label text-md-right']) }}
-                                {{ Form::checkbox('selectEquip[]', $cat['label'], false, ['id' => $cat['label']]) }}
+                        @foreach($categorie as $cat)
+                            <div class="row">
+                                <div class="col-md form-group">
+                                    @foreach($equipment as $equip)
+                                        @if($equip->label == $cat['label'])
+                                            {{ Form::label('nbr'.$cat['label'], $cat['label'], ['class' => 'col-md-2 col-form-label text-md-right']) }}
+                                            {{ Form::number('nbr'.$cat['label'], 0, ['class' => 'col-md-1 form-control', 'style' => 'display: inline', 'min' => '0', 'max' => $equip->countEquipment]) }}
 
-                                {{ Form::label($cat['label'], 'Si oui, combien ?', ['class' => 'col-md-4 col-form-label text-md-right']) }}
-                                {{ Form::number('nbSkis', 0, ['class' => 'col-md-1 form-control', 'style' => 'display: inline', 'min' => '0']) }}
+                                            {{ Form::label('taille'.$cat['label'], 'taille : ', ['class' => 'col-md-2 col-form-label text-md-right']) }}
+                                            {{ Form::number('taille'.$cat['label'], 0, ['class' => 'col-md-2 form-control', 'style' => 'display: inline', 'min' => '0', ]) }}
 
-
-                                <p class="col-md-3 pull-right" style="display: inline">Ski(s) disponible(s) :</p>
+                                            <p class="col-md-4 pull-right" style="display: inline">{{ $cat['label'] }} disponible(s) : {{ $equip->countEquipment }}</p>
+                                        @endif
+                                    @endforeach
+                                </div>
                             </div>
-                        </div>
-                        <?php } ?>
-                        {{--<div class="row">--}}
-                            {{--<div class="col-md form-group">--}}
-                                {{--{{ Form::label('Skis', 'Skis', ['class' => 'col-md-2 col-form-label text-md-right']) }}--}}
-                                {{--{{ Form::checkbox('selectEquip[]', 'Skis', false, ['id' => 'Skis']) }}--}}
-
-                                {{--{{ Form::label('Skis', 'Si oui, combien ?', ['class' => 'col-md-4 col-form-label text-md-right']) }}--}}
-                                {{--{{ Form::number('nbSkis', 0, ['class' => 'col-md-1 form-control', 'style' => 'display: inline', 'min' => '0']) }}--}}
-
-                                {{--<p class="col-md-3 pull-right" style="display: inline">Ski(s) disponible(s) : {{ $equipment }}</p>--}}
-                            {{--</div>--}}
-                        {{--</div>--}}
-                        {{--<div class="row">--}}
-                            {{--<div class="col-md form-group">--}}
-                                {{--{{ Form::label('Weedze', 'Weedze', ['class' => 'col-md-2 col-form-label text-md-right']) }}--}}
-                                {{--{{ Form::checkbox('selectEquip[]', 'Weedze', false, ['id' => 'Weedze', 'min' => '0']) }}--}}
-
-                                {{--{{ Form::label('Skis', 'Si oui, combien ?', ['class' => 'col-md-4 col-form-label text-md-right']) }}--}}
-                                {{--{{ Form::number('nbWeedze', 0, ['class' => 'col-md-1 form-control', 'style' => 'display: inline', 'min' => '0']) }}--}}
-
-                                {{--<p class="col-md-3 pull-right" style="display: inline">Weedze disponible(s)--}}
-                                    {{--: {{ Count($weedze) }}</p>--}}
-                            {{--</div>--}}
-                        {{--</div>--}}
-                        {{--<div class="row">--}}
-                            {{--<div class="col-md form-group">--}}
-                                {{--{{ Form::label('Snow', 'Snow', ['class' => 'col-md-2 col-form-label text-md-right']) }}--}}
-                                {{--{{ Form::checkbox('selectEquip[]', 'Snow', false, ['id' => 'Snow']) }}--}}
-
-                                {{--{{ Form::label('Skis', 'Si oui, combien ?', ['class' => 'col-md-4 col-form-label text-md-right']) }}--}}
-                                {{--{{ Form::number('nbSnow', 0, ['class' => 'col-md-1 form-control', 'style' => 'display: inline', 'min' => '0']) }}--}}
-
-                                {{--<p class="col-md-3 pull-right" style="display: inline">Snow disponible(s)--}}
-                                    {{--: {{ Count($snow) }}</p>--}}
-                            {{--</div>--}}
-                        {{--</div>--}}
-                        {{--<div class="row">--}}
-                            {{--<div class="col-md form-group">--}}
-                                {{--{{ Form::label('Luge', 'Luge', ['class' => 'col-md-2 col-form-label text-md-right']) }}--}}
-                                {{--{{ Form::checkbox('selectEquip[]', 'Luge', false, ['id' => 'Luge']) }}--}}
-
-                                {{--{{ Form::label('Skis', 'Si oui, combien ?', ['class' => 'col-md-4 col-form-label text-md-right']) }}--}}
-                                {{--{{ Form::number('nbLuge', 0, ['class' => 'col-md-1 form-control', 'style' => 'display: inline', 'min' => '0']) }}--}}
-                                {{--<p class="col-md-3 pull-right" style="display: inline">Luge(s) disponible(s)--}}
-                                    {{--: {{ Count($luge) }}</p>--}}
-                            {{--</div>--}}
-                        {{--</div>--}}
-                        {{--<div class="row">--}}
-                            {{--<div class="col-md form-group">--}}
-                                {{--{{ Form::label('Chaussures', 'Chaussures', ['class' => 'col-md-2 col-form-label text-md-right']) }}--}}
-                                {{--{{ Form::checkbox('selectEquip[]', 'Chaussures', false, ['id' => 'Chaussures']) }}--}}
-
-                                {{--{{ Form::label('Chaussures', 'Si oui, combien ?', ['class' => 'col-md-4 col-form-label text-md-right']) }}--}}
-                                {{--{{ Form::number('nbChaussures', 0, ['class' => 'col-md-1 form-control', 'style' => 'display: inline', 'min' => '0']) }}--}}
-
-                                {{--<p class="col-md-3 pull-right" style="display: inline">Chaussures disponible(s)--}}
-                                    {{--: {{ Count($shoes) }}</p>--}}
-                            {{--</div>--}}
-                        {{--</div>--}}
+                        @endforeach
                         <div class="row">
                             <div class="col-md form-group">
                                 {{ Form::label('dateDebut', 'Date de début de la réservation :', ['class' => 'col-md-7 col-form-label text-md-right']) }}
-                                {{ Form::date('dateDebut', 1, ['class' => 'col-md form-control col-md-4', 'style' => 'display: inline']) }}
+                                {{ Form::date('dateDebut', '', ['class' => 'col-md form-control col-md-4', 'style' => 'display: inline']) }}
                             </div>
                             <div class="col-md form-group">
                                 {{ Form::label('dateFin', 'Date de fin de la réservation :', ['class' => 'col-md-7 col-form-label text-md-right']) }}
-                                {{ Form::date('dateFin', 0, ['class' => 'col-md form-control col-md-4', 'style' => 'margin-bottom: 5%; display: inline']) }}
+                                {{ Form::date('dateFin', '', ['class' => 'col-md form-control col-md-4', 'style' => 'margin-bottom: 5%; display: inline']) }}
                             </div>
                         </div>
 
                         <div class="row offset-md-10">
-                            <button type="submit" class="btn btn-primary">Suivant ></button>
+                            <button type="button" id="btn" class="btn btn-primary" data-toggle="modal" data-target="#confirmation">Suivant ></button>
+                        </div>
+
+                        <div class="modal fade" id="confirmation" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Récapitulatif</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="container-fluid">
+                                            <div class="row">
+                                                <div class="col-md-8">
+                                                    Nom du client : <span id="nomClientC"></span>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    Nombre d'adulte(s) : <span id="nbrAdultesC"></span>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    Nombre d'enfant(s) : <span id="nbrEnfantC"></span>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    Date de début : <span id="dateDebutC"></span>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    Date de fin : <span id="dateFinC"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                                        <button type="submit" class="btn btn-primary">Confirmer</button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         {{ Form::close() }}
                     </div>
@@ -119,6 +112,7 @@
             </div>
         </div>
     </div>
+
 @endsection
 
 @section('script')
@@ -127,6 +121,7 @@
     <script src="{{ asset('js/sidebar.js') }}"></script>
     <script src="{{ asset('js/submit_form.js') }}"></script>
     <script src="{{ asset('js/get_nb_equipments.js') }}"></script>
+    <script src="{{ asset('js/selectValues.js') }}"></script>
     <!-- jQuery CDN - Slim version (=without AJAX) -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
             integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

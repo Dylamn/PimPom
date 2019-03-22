@@ -16,15 +16,9 @@ class ReserverController extends Controller
      */
     public function index()
     {
-//        $ski = EquipmentController::bigData('Ski');
-//        $snow = EquipmentController::bigData('Snowboard');
-//        $luge = EquipmentController::bigData('Luge');
-//        $weedze = EquipmentController::bigData('Weedze');
-//        $shoes = EquipmentController::bigData('Chaussure');
         $equipment = Equipments::getCountEquipment();
         $categorie = Categorie::all('label');
-        //return view('reserver.index', compact('ski', 'snow', 'luge', 'weedze', 'equipements', 'shoes'));
-        //return dd(compact('equipment'));
+
         return view('reserver.index', compact( 'equipment','categorie'));
     }
 
@@ -92,5 +86,9 @@ class ReserverController extends Controller
     public function destroy(Reserver $reserver)
     {
         //
+    }
+
+    public function confirmation(Request $request) {
+        return 'test';
     }
 }
