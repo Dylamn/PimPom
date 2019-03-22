@@ -83,6 +83,26 @@
  | Sidebar style
  |--------------------------------------------------------------------------
  */
+.calendar__container {
+    margin: 8px;
+}
+
+.calendar__table {
+    width: 100%;
+}
+
+.calendar__table td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    vertical-align: top;
+    width: 14.29%;
+}
+
+/*
+ |--------------------------------------------------------------------------
+ | Sidebar style
+ |--------------------------------------------------------------------------
+ */
 #sidebar {
     width: 200px;
     position: fixed;
