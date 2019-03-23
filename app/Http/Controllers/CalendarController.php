@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Services\CalendarService;
 use Illuminate\Http\Request;
-use mysql_xdevapi\Exception;
-use Carbon\CarbonPeriod;
 
 class CalendarController extends Controller
 {
@@ -16,9 +14,9 @@ class CalendarController extends Controller
      */
     public function index()
     {
-        $calendar = new CalendarService(01, 2019);
+        $calendar = new CalendarService(date('m'), date('Y'));
 
-        return view('calendar', compact('calendar'));
+        return view('calendar.index', compact('calendar'));
     }
 
     /**
@@ -45,12 +43,15 @@ class CalendarController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $month
+     * @param int $year
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($month, $year)
     {
-        //
+        $calendar = new CalendarService($month, $year);
+
+        return view('calendar.index', compact('calendar'));
     }
 
     /**

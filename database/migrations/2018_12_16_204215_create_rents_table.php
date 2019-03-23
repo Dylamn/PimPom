@@ -18,8 +18,8 @@ class CreateRentsTable extends Migration
 			$table->integer('userId')->nullable();
 			$table->integer('settled')->nullable()->default(0);
 			$table->string('localization', 20);
-			$table->integer('startWeek')->nullable()->index('fkStartDate');
-			$table->integer('endWeek')->nullable()->index('fkEndDate');
+			$table->dateTime('start')->nullable()->index('fkStartDate');
+			$table->dateTime('end')->nullable()->index('fkEndDate');
 		});
 	}
 
