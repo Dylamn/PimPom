@@ -11,6 +11,11 @@
     <div class="calendar__container">
         <div class="d-flex flex-row align-items-center justify-content-between m-4">
             <h1>{{ $calendar->toString() }}</h1>
+            <div class="col-md-4 m-0 form-group">
+                {{ Form::open(['url' => 'reserver']) }}
+                {{ Form::label('date', 'Filtre : ', ['class' => 'col-md-1 form-label text-md-right', 'style' => 'display: inline']) }}
+                {{ Form::text('Date', '', ['id' => 'datepicker', 'class' => 'col-md-3 form-control', 'style' => 'display: inline']) }}
+            </div>
             <div>
                 <a href="{{ route('calendar.show', ['month' => $calendar->previousMonth()->month, 'year' => $calendar->previousMonth()->year])}}"
                    class="btn btn-primary">
@@ -22,8 +27,7 @@
                 </a>
             </div>
         </div>
-
-        <table class="calendar__table">
+        <table class="calendar__table table-responsive-md">
             @for($i = 0; $i < $calendar->getWeeks(); $i++)
                 <tr>
                     @foreach($calendar->days as $k => $day)
@@ -41,4 +45,31 @@
             @endfor
         </table>
     </div>
+@endsection
+
+@section('script')
+    <script src="{{ asset('js/app.js') }}" defer></script>
+    <!-- jQuery CDN - Minified version -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous">
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        })
+    </script>
+    <!-- jQueryUI CDN - Minified version -->
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
+        crossorigin="anonymous">
+    </script>
+    <!-- Popper.JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"
+            integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
+            crossorigin="anonymous"></script>
+    <!-- jQuery Custom Scroller CDN -->
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+
+
+
 @endsection

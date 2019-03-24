@@ -9,11 +9,11 @@
         <ul class="navbar-nav mr-auto">
             @if (str_contains(Route::currentRouteName(), 'acceuil'))
                 <li class="nav-item active">
-                    <a class="nav-link" href="{{ route('acceuil') }}">Acceuil <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="{{ route('calendar.index') }}">Calendrier <span class="sr-only">(current)</span></a>
                 </li>
             @else
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('acceuil') }}">Acceuil <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="{{ route('calendar.index') }}">Calendrier<span class="sr-only">(current)</span></a>
                 </li>
             @endif
             @if (str_contains(Route::currentRouteName(), 'reserver'))
@@ -52,7 +52,6 @@
                             </form>
                         </div>
                     </div>
-                    {{--<a href="{{ url('/home') }}">{{Auth::user()->firstName}}</a>--}}
                 @else
                     <a href="{{ route('login') }}">Connexion</a>
                 @endauth
