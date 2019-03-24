@@ -63,7 +63,6 @@ class CalendarService
         $weeks = intval($end->format('W')) - intval($start->format('W')) + 1;
 
         if ($weeks < 0) {
-//            $weeks = intval($end->format('W'));
             $weeks = 6;
         }
         return $weeks;

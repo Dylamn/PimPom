@@ -56,7 +56,8 @@
     "config": {
         "preferred-install": "dist",
         "sort-packages": true,
-        "optimize-autoloader": true
+        "optimize-autoloader": true,
+        "component-dir": "resources/components"
     },
     "minimum-stability": "dev",
     "prefer-stable": true

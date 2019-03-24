@@ -48,6 +48,7 @@ Route::middleware('auth:web')->delete('/equipements/{equipement}', 'EquipmentCon
  */
 Route::resource('reserver', 'ReserverController');
 Route::middleware('auth:web')->get('/reservation', 'ReservationController@index')->name('reservation.index');
+
 /*
  |--------------------------------------------------------------------------
  | Categorie Routes
