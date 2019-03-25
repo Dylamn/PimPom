@@ -108,29 +108,23 @@
                                                     Date de fin : <span id="dateFinC"></span>
                                                 </div>
                                             </div>
-                                            <table class="table table-striped table-bordered table-hover">
-                                                <div class="row">
-                                                    <div class="col-md">
-                                                        <thead class="thead-light">
-                                                        <tr>
-                                                            <th class="text-center">Equipements</th>
-                                                            <th class="text-center">Taille</th>
-                                                            <th class="text-center">Enfant</th>
-                                                            <th class="text-center">Quantité</th>
-                                                            <th class="text-center">Prix</th>
-                                                        </tr>
-                                                        </thead>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-md">
-                                                        <td><span id="equipment"></span></td>
-                                                        <td><span id="taille"></span></td>
-                                                        <td><span id="enfant"></span></td>
-                                                        <td><span id="quantite"></span></td>
-                                                        <td><span id="prix"></span></td>
-                                                    </div>
-                                                </div>
+                                            <table class="table table-striped table-bordered table-hover" id="table_recap">
+                                                <thead class="thead-light">
+                                                <tr>
+                                                    <th class="text-center">Equipements</th>
+                                                    <th class="text-center">Taille</th>
+                                                    <th class="text-center">Enfant</th>
+                                                    <th class="text-center">Quantité</th>
+                                                    <th class="text-center">Prix TTC</th>
+                                                </tr>
+                                                </thead>
+                                                <tr>
+                                                    <td><span id="equipment"></span></td>
+                                                    <td><span id="taille"></span></td>
+                                                    <td><span id="enfant"></span></td>
+                                                    <td><span id="quantite"></span></td>
+                                                    <td><span id="prix"></span></td>
+                                                </tr>
                                             </table>
                                         </div>
                                         <div class="row">
@@ -175,5 +169,5 @@
             crossorigin="anonymous"></script>
     <!-- jQuery Custom Scroller CDN -->
     <script
-        src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+            src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
 @endsection
