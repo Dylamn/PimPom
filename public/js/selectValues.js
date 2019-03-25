@@ -1,11 +1,12 @@
 (function() {
     //add eventListener au boutton suivant ev.preventDefault()
     document.getElementById('btn').addEventListener('click', function () {
-        let nomClient, nbAdultes, nbEnfants, dateDebut, dateFin;
+        let nomClient, nbAdultes, nbEnfants, dateDebut, dateFin, table, tr, td;
         const FILTEREQUIP = /^nbr.+$/;
         const FILTERTAILLE = /^taille.+$/;
         let array = [];
 
+        table = document.getElementById('table_recap');
         nomClient = document.getElementById('nomClient').value;
         nbAdultes = document.getElementById('nbAdultes').value;
         nbEnfants = document.getElementById('nbEnfants').value;
@@ -39,13 +40,16 @@
         document.getElementById('dateDebutC').innerHTML = array['dateDebut'];
         document.getElementById('dateFinC').innerHTML = array['dateFin'];
 
-        JSON.stringify(array);
+        for (let taille in array['taille']) {
+            tr = document.createElement('tr');
+            td = document.createElement('td');
 
-        // for (let taille in array['taille']) {
-        //     document.getElementById('equipment').innerHTML = taille.substr(6);
-        //     document.getElementById('taille').innerHTML = array['taille'][taille];
-        //     console.log(taille.substr(6) + " " + array['taille'][taille]);
-        // }
+            //document.getElementById('equipment').innerHTML = taille.substr(6);
+            //document.getElementById('taille').innerHTML = array['taille'][taille];
+
+            td.createTextNode(taille.substr(6))
+        }
+
         console.log(array);
     });
 })();
