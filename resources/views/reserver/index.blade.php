@@ -33,19 +33,19 @@
                                 <p>Sélectionner un ou plusieurs équipement(s) :</p>
                             </div>
                         </div>
+                        <?php $i = 1; ?>
                         @foreach($categorie as $cat)
                             <div class="row">
                                 <div class="col-md form-group">
-                                    <?php $i = 1; ?>
                                     @foreach($equipment as $equip)
                                         @if($equip->label == $cat['label'])
                                             {{ Form::label('nbr'.$cat['label'], $cat['label'], ['class' => 'col-md-2 col-form-label text-md-right']) }}
                                             {{ Form::number('nbr'.$cat['label'], 0, ['class' => 'col-md-1 form-control', 'style' => 'display: inline', 'min' => '0', 'max' => $equip->countEquipment]) }}
 
 
-                                            {{ Form::label('taille'.$cat['label'].$i, 'taille : ', ['class' => 'col-md-1 col-form-label text-md-right']) }}
+                                            {{--{{ Form::label('taille'.$cat['label'].$i, 'taille : ', ['class' => 'col-md-1 col-form-label text-md-right']) }}--}}
                                             {{--{{ Form::number('taille'.$cat['label'], 0, ['class' => 'col-md-2 form-control', 'style' => 'display: inline', 'min' => '0']) }}--}}
-
+                                            <div id="taille{{ $cat['label'] }}"></div>
 
                                             {{ Form::label('enfant'.$cat['label'], 'Enfant ? ', ['class' => 'col-md-1 col-form-label text-md-right form-check-label']) }}
                                             {{ Form::checkbox('enfant'.$cat['label'], 'enfant'.$cat['label'], '', ['class' => 'col-md-2 form-check-input', 'style' => 'display: inline']) }}
