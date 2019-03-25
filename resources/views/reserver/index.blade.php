@@ -7,15 +7,15 @@
 @section('content')
     <div class="container" style="padding-top: 3%">
         <div class="row justify-content-center">
-            <div class="col-md-10">
+            <div class="col-md">
                 <div class="card">
                     <div class="card-header">{{ __('Effectuer une réservation') }}</div>
                     <div class="card-body">
                         {{ Form::open(['url' => 'reserver']) }}
                         <div class="row">
                             <div class="col-md form-group">
-                                {{ Form::label('nomClient', 'Nom du client :', ['class' => 'col-md-3 col-form-label text-md-right']) }}
-                                {{ Form::text('nomClient', '',['class' => 'col-md-3 form-control', 'style' => 'display: inline']) }}
+                                {{ Form::label('nomClient', 'Nom du client :', ['class' => 'col-md-auto col-form-label text-md-right']) }}
+                                {{ Form::text('nomClient', '',['class' => 'col-md-3 form-control', 'style' => 'display: inline', 'required']) }}
                             </div>
                         </div>
                         <div class="row">
@@ -29,7 +29,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md form-group">
+                            <div class="col-md-auto form-group">
                                 <p>Sélectionner un ou plusieurs équipement(s) :</p>
                             </div>
                         </div>
@@ -41,10 +41,14 @@
                                             {{ Form::label('nbr'.$cat['label'], $cat['label'], ['class' => 'col-md-2 col-form-label text-md-right']) }}
                                             {{ Form::number('nbr'.$cat['label'], 0, ['class' => 'col-md-1 form-control', 'style' => 'display: inline', 'min' => '0', 'max' => $equip->countEquipment]) }}
 
-                                            {{ Form::label('taille'.$cat['label'], 'taille : ', ['class' => 'col-md-2 col-form-label text-md-right']) }}
-                                            {{ Form::number('taille'.$cat['label'], 0, ['class' => 'col-md-2 form-control', 'style' => 'display: inline', 'min' => '0', ]) }}
+                                            {{ Form::label('taille'.$cat['label'], 'taille : ', ['class' => 'col-md-1 col-form-label text-md-right']) }}
+                                            {{ Form::number('taille'.$cat['label'], 0, ['class' => 'col-md-2 form-control', 'style' => 'display: inline', 'min' => '0']) }}
 
-                                            <p class="col-md-4 pull-right" style="display: inline">{{ $cat['label'] }} disponible(s) : {{ $equip->countEquipment }}</p>
+                                            {{ Form::label('enfant'.$cat['label'], 'Enfant ? ', ['class' => 'col-md-1 col-form-label text-md-right form-check-label']) }}
+                                            {{ Form::checkbox('enfant'.$cat['label'], 'enfant'.$cat['label'], '', ['class' => 'col-md-2 form-check-input', 'style' => 'display: inline']) }}
+
+                                            <p class="col-md-4 pull-right" style="display: inline">{{ $cat['label'] }}
+                                                disponible(s) : {{ $equip->countEquipment }}</p>
                                         @endif
                                     @endforeach
                                 </div>
@@ -52,21 +56,24 @@
                         @endforeach
                         <div class="row">
                             <div class="col-md form-group">
-                                {{ Form::label('dateDebut', 'Date de début de la réservation :', ['class' => 'col-md-7 col-form-label text-md-right']) }}
-                                {{ Form::date('dateDebut', '', ['class' => 'col-md form-control col-md-4', 'style' => 'display: inline']) }}
+                                {{ Form::label('dateDebut', 'Date de début de la réservation :', ['class' => 'col-form-label col-md-auto text-md-right']) }}
+                                {{ Form::date('dateDebut', '', ['class' => 'col-md form-control col-md-5' , 'style' => 'display: inline', 'required']) }}
                             </div>
                             <div class="col-md form-group">
-                                {{ Form::label('dateFin', 'Date de fin de la réservation :', ['class' => 'col-md-7 col-form-label text-md-right']) }}
-                                {{ Form::date('dateFin', '', ['class' => 'col-md form-control col-md-4', 'style' => 'margin-bottom: 5%; display: inline']) }}
+                                {{ Form::label('dateFin', 'Date de fin de la réservation :', ['class' => 'col-md-auto col-form-label text-md-right']) }}
+                                {{ Form::date('dateFin', '', ['class' => 'col-md form-control col-md-5', 'style' => 'margin-bottom: 5%; display: inline', 'required']) }}
                             </div>
                         </div>
 
                         <div class="row offset-md-10">
-                            <button type="button" id="btn" class="btn btn-primary" data-toggle="modal" data-target="#confirmation">Suivant ></button>
+                            <button type="button" id="btn" class="btn btn-primary" data-toggle="modal"
+                                    data-target="#confirmation">Suivant >
+                            </button>
                         </div>
 
-                        <div class="modal fade" id="confirmation" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
+                        <div class="modal fade" id="confirmation" tabindex="-1" role="dialog"
+                             aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-lg" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <h5 class="modal-title" id="exampleModalLabel">Récapitulatif</h5>
@@ -97,10 +104,41 @@
                                                     Date de fin : <span id="dateFinC"></span>
                                                 </div>
                                             </div>
+                                            <table class="table table-striped table-bordered table-hover">
+                                                <div class="row">
+                                                    <div class="col-md">
+                                                        <thead class="thead-light">
+                                                        <tr>
+                                                            <th class="text-center">Equipements</th>
+                                                            <th class="text-center">Taille</th>
+                                                            <th class="text-center">Enfant</th>
+                                                            <th class="text-center">Quantité</th>
+                                                            <th class="text-center">Prix</th>
+                                                        </tr>
+                                                        </thead>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md">
+                                                        <td><span id="equipment"></span></td>
+                                                        <td><span id="taille"></span></td>
+                                                        <td><span id="enfant"></span></td>
+                                                        <td><span id="quantite"></span></td>
+                                                        <td><span id="prix"></span></td>
+                                                    </div>
+                                                </div>
+                                            </table>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md">
+                                                {{ json_decode('array') }}
+                                                <p><b>Total TTC : <span id="total">0.00</span> €</b></p>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer
+                                        </button>
                                         <button type="submit" class="btn btn-primary">Confirmer</button>
                                     </div>
                                 </div>
