@@ -14,8 +14,8 @@ class AddForeignKeysToRentsTable extends Migration
     {
         Schema::table('rents', function(Blueprint $table)
         {
-            $table->foreign('startWeek', 'fkStartDate')->references('weekNumber')->on('weeks')->onUpdate('RESTRICT')->onDelete('RESTRICT');
-            $table->foreign('endWeek', 'fkEndDate')->references('weekNumber')->on('weeks')->onUpdate('RESTRICT')->onDelete('RESTRICT');
+            $table->foreign('start', 'fkStartDate')->references('weekNumber')->on('weeks')->onUpdate('RESTRICT')->onDelete('RESTRICT');
+            $table->foreign('end', 'fkEndDate')->references('weekNumber')->on('weeks')->onUpdate('RESTRICT')->onDelete('RESTRICT');
 
         });
     }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Model\Rents;
 use App\Reservation;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,8 @@ class ReservationController extends Controller
      */
     public function index()
     {
-        return view('reservation.index');
+        $all = Rents::allRents();
+        return view('reservation.index', compact('all'));
     }
 
     /**

@@ -21,26 +21,27 @@
                 </tr>
                 </thead>
 
-                {{--@foreach($categories as $statement)--}}
-                    {{--<tr>--}}
-                        {{--<td class="text-center">{{ $statement->label }}</td>--}}
-                        {{--<td class="text-center">{{ $statement->adultPrice }} €</td>--}}
-                        {{--<td class="text-center">{{ $statement->childrenPrice }} €</td>--}}
-                        {{--<td class="text-center">--}}
-                            {{--<a href="{{ Request::url() . '/' . $statement->id }}/modifier">--}}
-                                {{--<i class="fa fa-pencil" style="color:orange; font-size: 1.4em;"></i>--}}
-                            {{--</a>--}}
-                        {{--</td>--}}
-                        {{--<td class="text-center">--}}
-                            {{--<form name="delete_form{{__($statement->id) }}"--}}
-                                  {{--action="{{ Request::url() . '/' . $statement->id }}" method="POST">--}}
-                                {{--@method('DELETE')--}}
-                                {{--@csrf--}}
-                                {{--<i id="btn-delete" class="fa fa-times" style="color:red; font-size: 1.4em;"></i>--}}
-                            {{--</form>--}}
-                        {{--</td>--}}
-                    {{--</tr>--}}
-                {{--@endforeach--}}
+                @foreach($all as $one)
+                    <tr>
+                        <td class="text-center">{{ $one->userName }}</td>
+                        <td class="text-center">{{ $one->label }}</td>
+                        <td class="text-center">{{ (new DateTime($one->start))->format('d-m-Y') }}</td>
+                        <td class="text-center">{{ (new DateTime($one->end))->format('d-m-Y') }}</td>
+                        <td class="text-center">
+                            <a href="{{ Request::url() . '/' . $one->id }}/modifier">
+                                <i class="fa fa-pencil" style="color:orange; font-size: 1.4em;"></i>
+                            </a>
+                        </td>
+                        <td class="text-center">
+                            <form name="delete_form{{__($one->id) }}"
+                                  action="{{ Request::url() . '/' . $one->id }}" method="POST">
+                                @method('DELETE')
+                                @csrf
+                                <i id="btn-delete" class="fa fa-times" style="color:red; font-size: 1.4em;"></i>
+                            </form>
+                        </td>
+                    </tr>
+                @endforeach
 
             </table>
         </div>

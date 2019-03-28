@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Model\Categorie;
 use App\Model\Reserver;
 use App\Model\Equipments;
+use App\Model\Rents;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ReserverController extends Controller
 {
@@ -19,7 +21,7 @@ class ReserverController extends Controller
         $equipment = Equipments::getCountEquipment();
         $categorie = Categorie::all('label');
 
-        return view('reserver.index', compact( 'equipment','categorie'));
+        return view('reserver.index', compact('equipment', 'categorie'));
     }
 
     /**
@@ -35,18 +37,65 @@ class ReserverController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        return dd($request);
+        //dd($request);
+        //$data = Rents::create(request(['userName' => 'nomClient', 0, '', 'dateDebut', 'dateFin']));
+        $data = new Rents;
+        $data->userName = $request->nomClient;
+        $data->localization = '';
+        $data->start = $request->dateDebut;
+        $data->end = $request->dateFin;
+        $data->save();
+        //echo($data->id);
+        $allSnow = Equipments::getAllEquipments();
+
+        $j = 0;
+        if ($request->nbrSnowboard > 0) {
+            for ($i = 0; $i <= sizeof($allSnow); $i++) {
+                if ($request->nbrSnowboard > $j) {
+                    if ($allSnow[$i]->label == 'Snowboard') {
+                        DB::insert('INSERT INTO rent (rentalId, equipmentId) VALUES (' . $data->id . ', ' . $allSnow[$i]->id . ');');
+                        Equipments::where('id', $data->id)->update(['use' => 1]);
+                        $j++;
+                    }
+                }
+            }
+        }
+        $j = 0;
+        if ($request->nbrSki > 0) {
+            for ($i = 0; $i <= sizeof($allSnow); $i++) {
+                if ($request->nbrSki > $j) {
+                    if ($allSnow[$i]->label == 'Ski') {
+                        DB::insert('INSERT INTO rent (rentalId, equipmentId) VALUES (' . $data->id . ', ' . $allSnow[$i]->id . ');');
+                        Equipments::where('id', $data->id)->update(['use' => 1]);
+                        $j++;
+                    }
+                }
+            }
+        }
+        $j = 0;
+        if ($request->nbrLuge > 0) {
+            for ($i = 0; $i <= sizeof($allSnow); $i++) {
+                if ($request->nbrLuge > $j) {
+                    if ($allSnow[$i]->label == 'Luge') {
+                        DB::insert('INSERT INTO rent (rentalId, equipmentId) VALUES (' . $data->id . ', ' . $allSnow[$i]->id . ');');
+                        Equipments::where('id', $data->id)->update(['use' => 1]);
+                        $j++;
+                    }
+                }
+            }
+        }
+        return view('welcome');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Model\Reserver  $reserver
+     * @param  \App\Model\Reserver $reserver
      * @return \Illuminate\Http\Response
      */
     public function show(Reserver $reserver)
@@ -57,7 +106,7 @@ class ReserverController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Model\Reserver  $reserver
+     * @param  \App\Model\Reserver $reserver
      * @return \Illuminate\Http\Response
      */
     public function edit(Reserver $reserver)
@@ -68,8 +117,8 @@ class ReserverController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Model\Reserver  $reserver
+     * @param  \Illuminate\Http\Request $request
+     * @param  \App\Model\Reserver $reserver
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Reserver $reserver)
@@ -80,7 +129,7 @@ class ReserverController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Model\Reserver  $reserver
+     * @param  \App\Model\Reserver $reserver
      * @return \Illuminate\Http\Response
      */
     public function destroy(Reserver $reserver)
@@ -88,7 +137,8 @@ class ReserverController extends Controller
         //
     }
 
-    public function confirmation(Request $request) {
+    public function confirmation(Request $request)
+    {
         return 'test';
     }
 }

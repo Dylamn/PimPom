@@ -18,19 +18,19 @@
                                 {{ Form::text('nomClient', '',['class' => 'col-md-3 form-control', 'style' => 'display: inline', 'required']) }}
                             </div>
                         </div>
+                        {{--<div class="row">--}}
+                            {{--<div class="col-md form-group">--}}
+                                {{--{{ Form::label('nbAdultes', 'Nombre d\'adulte(s) :', ['class' => 'col-md-6 col-form-label text-md-right']) }}--}}
+                                {{--{{ Form::number('nbAdultes', 1, ['class' => 'col-md-2 form-control', 'style' => 'display: inline', 'min' => '0']) }}--}}
+                            {{--</div>--}}
+                            {{--<div class="col-md form-group">--}}
+                                {{--{{ Form::label('nbEnfants', 'Nombre d\'enfant(s) :', ['class' => 'col-md-6 col-form-label text-md-right']) }}--}}
+                                {{--{{ Form::number('nbEnfants', 0, ['class' => 'col-md-2 form-control', 'style' => 'margin-bottom: 5%; display: inline', 'min' => '0']) }}--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
                         <div class="row">
-                            <div class="col-md form-group">
-                                {{ Form::label('nbAdultes', 'Nombre d\'adulte(s) :', ['class' => 'col-md-6 col-form-label text-md-right']) }}
-                                {{ Form::number('nbAdultes', 1, ['class' => 'col-md-2 form-control', 'style' => 'display: inline', 'min' => '0']) }}
-                            </div>
-                            <div class="col-md form-group">
-                                {{ Form::label('nbEnfants', 'Nombre d\'enfant(s) :', ['class' => 'col-md-6 col-form-label text-md-right']) }}
-                                {{ Form::number('nbEnfants', 0, ['class' => 'col-md-2 form-control', 'style' => 'margin-bottom: 5%; display: inline', 'min' => '0']) }}
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-auto form-group">
-                                <p>Sélectionner un ou plusieurs équipement(s) :</p>
+                            <div class="col-md">
+                                <p style="padding-left: 15px">Sélectionner un ou plusieurs équipement(s) :</p>
                             </div>
                         </div>
                         <?php $i = 1; ?>
@@ -45,11 +45,11 @@
 
                                             {{--{{ Form::label('taille'.$cat['label'].$i, 'taille : ', ['class' => 'col-md-1 col-form-label text-md-right']) }}--}}
                                             {{--{{ Form::number('taille'.$cat['label'], 0, ['class' => 'col-md-2 form-control', 'style' => 'display: inline', 'min' => '0']) }}--}}
-                                            <div id="taille{{ $cat['label'] }}"></div>
+                                            <div style="display: inline" id="taille{{ $cat['label'] }}"></div>
 
-                                            {{ Form::label('enfant'.$cat['label'], 'Enfant ? ', ['class' => 'col-md-1 col-form-label text-md-right form-check-label']) }}
-                                            {{ Form::checkbox('enfant'.$cat['label'], 'enfant'.$cat['label'], '', ['class' => 'col-md-2 form-check-input', 'style' => 'display: inline']) }}
-                                            <?php $i += 1;?>
+                                            {{--{{ Form::label('enfant'.$cat['label'], 'Enfant ? ', ['class' => 'col-md-1 col-form-label text-md-right form-check-label']) }}--}}
+                                            {{--{{ Form::checkbox('enfant'.$cat['label'], 'enfant'.$cat['label'], '', ['class' => 'col-md-2 form-check-input', 'style' => 'display: inline']) }}--}}
+                                            <?php $i++?>
 
                                             <p class="col-md-4 pull-right" style="display: inline">{{ $cat['label'] }}
                                                 disponible(s) : {{ $equip->countEquipment }}</p>

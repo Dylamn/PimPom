@@ -17,6 +17,7 @@ class CreateRentTable extends Migration
 			$table->integer('rentalId');
 			$table->integer('equipmentId')->index('fkEquipement');
 			$table->primary(['rentalId','equipmentId']);
+            $table->timestamps();
 		});
 	}
 
