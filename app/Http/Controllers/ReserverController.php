@@ -46,7 +46,7 @@ class ReserverController extends Controller
         //$data = Rents::create(request(['userName' => 'nomClient', 0, '', 'dateDebut', 'dateFin']));
         $data = new Rents;
         $data->userName = $request->nomClient;
-        $data->localization = '';
+        $data->localization = 'France - Rennes';
         $data->start = $request->dateDebut;
         $data->end = $request->dateFin;
         $data->save();

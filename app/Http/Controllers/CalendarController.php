@@ -3,20 +3,34 @@
 namespace App\Http\Controllers;
 
 use App\Services\CalendarService;
+use App\Services\CalendarEventsService;
 use Illuminate\Http\Request;
 
 class CalendarController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display the actual month if no parameters are sets.
      *
+     * @param int|null $month
+     * @param int|null $year
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(?int $month = null, ?int $year = null)
     {
-        $calendar = new CalendarService(date('m'), date('Y'));
+        if ($month === null) $month = intval(date('m'));
+        if ($year === null) $year = intval(date('Y'));
 
-        return view('calendar.index', compact('calendar'));
+        $calendar = new CalendarService($month, $year);
+        $events = new CalendarEventsService();
+
+        $start = $calendar->getStartingDay();
+        $start = $start->format('N') === '1' ? $start : $calendar->getStartingDay()->modify('last monday');
+        $weeks = $calendar->getWeeks();
+        $end = (clone $start)->modify('+' . (6 + 7 * ($weeks - 1)) . ' days');
+        $events = $events->getEventsBetweenByDay($start, $end);
+
+        return view('calendar.index', compact('calendar', 'start', 'weeks', 'end', 'events'));
+//        return view('calendar.index', compact('calendar', 'events'));
     }
 
     /**
@@ -41,17 +55,18 @@ class CalendarController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Display the specified resource with a date (m-Y).
      *
      * @param  int $month
      * @param int $year
+     * @param int $idEvent
      * @return \Illuminate\Http\Response
      */
-    public function show($month, $year)
+    public function showEvents($month, $year, $idEvent)
     {
-        $calendar = new CalendarService($month, $year);
+        $rent = CalendarEventsService::findById($idEvent);
 
-        return view('calendar.index', compact('calendar'));
+        return view('calendar.show', compact('rent'));
     }
 
     /**

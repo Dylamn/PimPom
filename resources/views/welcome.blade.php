@@ -71,7 +71,7 @@
             </div>
 
             <div class="links">
-                <a href="https://laravel.com/docs/5.7">Laravel Documentation</a>
+
             </div>
         </div>
     </div>
