@@ -17,15 +17,20 @@ class EquipmentController extends Controller
      */
     public function index()
     {
-        $ski = $this->bigData('Ski');
+//        $ski = $this->bigData('Ski');
+//
+//        $snow = $this->bigData('Snowboard');
+//
+//        $luge = $this->bigData('Luge');
+//
+//        $weedze = $this->bigData('Weedze');
 
-        $snow = $this->bigData('Snowboard');
-
-        $luge = $this->bigData('Luge');
-
-        $weedze = $this->bigData('Weedze');
+        $ski = DB::select('Select * FROM view_equipments WHERE label LIKE "ski"');
+        $snow = DB::select('Select * FROM view_equipments WHERE label LIKE "snow%"');
+        $luge = DB::select('Select * FROM view_equipments WHERE label LIKE "luge"');
 
         return view('equipement.index', compact('ski', 'snow', 'luge', 'weedze', 'equipements'));
+//        return dd(view('equipement.index', compact('ski', 'snow', 'luge', 'weedze', 'equipements')));
     }
 
     /**

@@ -1,6 +1,8 @@
 (function () {
   let btn_deleteForm = document.getElementsByClassName('btn-delete');
-  
+
+  console.log(btn_deleteForm);
+
   for (let i = 0; i < btn_deleteForm.length; i++) {
     btn_deleteForm[i].addEventListener('click', function (ev) {
       let ok = confirm('Voulez vous vraiment supprimer cet équipement ?');

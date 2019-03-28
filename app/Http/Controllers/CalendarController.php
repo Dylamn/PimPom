@@ -30,7 +30,6 @@ class CalendarController extends Controller
         $events = $events->getEventsBetweenByDay($start, $end);
 
         return view('calendar.index', compact('calendar', 'start', 'weeks', 'end', 'events'));
-//        return view('calendar.index', compact('calendar', 'events'));
     }
 
     /**
