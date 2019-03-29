@@ -19,7 +19,7 @@
                             </div>
                             <div class="col-md form-group">
                                 {{ Form::label('nbPersonnes', 'Nombre de personne(s) :', ['class' => 'col-md-auto col-form-label text-md-right']) }}
-                                {{ Form::number('nbPersonnes', 0 , ['class' => 'col-md-2 form-control', 'style' => 'display: inline', 'min' => '0']) }}
+                                {{ Form::number('nbPersonnes', 1 , ['class' => 'col-md-2 form-control', 'style' => 'display: inline', 'min' => '0']) }}
                             </div>
                         </div>
                         <div class="row">
@@ -31,8 +31,13 @@
                                 {{ Form::label('dateFin', 'Date de fin de la réservation :', ['class' => 'col-md-auto col-form-label text-md-right']) }}
                                 {{ Form::date('dateFin', '', ['class' => 'col-md form-control col-md-5', 'style' => 'margin-bottom: 5%; display: inline', 'required']) }}
                             </div>
-                        </div>
 
+                        </div>
+                        <div class="row">
+                            <div class="col-md">
+                                <div id="detailsReservation"></div>
+                            </div>
+                        </div>
                         <div class="row offset-md-10">
                             <button type="button" id="btn" class="btn btn-primary" data-toggle="modal"
                                     data-target="#confirmation">Suivant >
@@ -72,7 +77,8 @@
                                                     Date de fin : <span id="dateFinC"></span>
                                                 </div>
                                             </div>
-                                            <table class="table table-striped table-bordered table-hover" id="table_recap">
+                                            <table class="table table-striped table-bordered table-hover"
+                                                   id="table_recap">
                                                 <thead class="thead-light">
                                                 <tr>
                                                     <th class="text-center">Equipements</th>
