@@ -2,6 +2,8 @@
 
 namespace App\Services;
 
+use DateTime, Exception;
+
 class CalendarService
 {
     public $days = ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche'];
@@ -42,18 +44,18 @@ class CalendarService
     /**
      * Return the first day of a month.
      *
-     * @throws \Exception
-     * @return \DateTime
+     * @throws Exception
+     * @return DateTime
      */
-    public function getStartingDay(): \DateTime
+    public function getStartingDay(): DateTime
     {
-        return new \DateTime("{$this->year}-{$this->month}-01");
+        return new DateTime("{$this->year}-{$this->month}-01");
     }
 
     /**
      *  Return the number of weeks in a month
      *
-     * @throws \Exception
+     * @throws Exception
      * @return int
      */
     public function getWeeks(): int
@@ -71,11 +73,11 @@ class CalendarService
     /**
      * Check if days are in the current month
      *
-     * @param \DateTime $date
-     * @throws \Exception
+     * @param DateTime $date
+     * @throws Exception
      * @return bool
      */
-    public function withinMonth(\DateTime $date): bool {
+    public function withinMonth(DateTime $date): bool {
         return $this->getStartingDay()->format('Y-m') === $date->format('Y-m');
     }
 

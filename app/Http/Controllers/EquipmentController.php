@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Model\Categorie;
 use App\Model\Equipments;
 use App\Http\Requests\EquipmentRequest;
-use Illuminate\Http\Request;
+use Exception;
 use DB;
 
 class EquipmentController extends Controller
@@ -17,20 +17,15 @@ class EquipmentController extends Controller
      */
     public function index()
     {
-//        $ski = $this->bigData('Ski');
-//
-//        $snow = $this->bigData('Snowboard');
-//
-//        $luge = $this->bigData('Luge');
-//
-//        $weedze = $this->bigData('Weedze');
+        $ski = $this->bigData('Ski');
 
-        $ski = DB::select('Select * FROM view_equipments WHERE label LIKE "ski"');
-        $snow = DB::select('Select * FROM view_equipments WHERE label LIKE "snow%"');
-        $luge = DB::select('Select * FROM view_equipments WHERE label LIKE "luge"');
+        $snow = $this->bigData('Snowboard');
 
-        return view('equipement.index', compact('ski', 'snow', 'luge', 'weedze', 'equipements'));
-//        return dd(view('equipement.index', compact('ski', 'snow', 'luge', 'weedze', 'equipements')));
+        $luge = $this->bigData('Luge');
+
+        $weedze = $this->bigData('Weedze');
+
+        return view('equipement.index', compact('ski', 'snow', 'luge', 'weedze'));
     }
 
     /**
@@ -106,9 +101,9 @@ class EquipmentController extends Controller
      *
      * @param  \App\Model\Equipments $equipement
      * @return \Illuminate\Http\Response
-     * @throws \Exception
+     * @throws Exception
      */
-    public function destroy(Equipments $equipement)
+    public function destroy(Equipments $equipement) : \Illuminate\Http\Response
     {
         $equipement->delete();
 
@@ -119,7 +114,7 @@ class EquipmentController extends Controller
      * Function that returns a table for the requested equipment.
      *
      * @param String $label
-     * @return array
+     * @return object
      */
     public static function bigData($label)
     {

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Model\Categorie;
 use Illuminate\Http\Request;
+use Exception;
 
 class CategorieController extends Controller
 {
@@ -95,12 +96,12 @@ class CategorieController extends Controller
      *
      * @param  \App\Model\Categorie  $categorie
      * @return \Illuminate\Http\Response
-     * @throws \Exception
+     * @throws Exception
      */
     public function destroy(Categorie $categorie)
     {
         $categorie->delete();
 
-        return redirect('/categorie');
+        return redirect('/categories');
     }
 }

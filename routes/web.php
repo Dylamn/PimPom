@@ -61,6 +61,7 @@ Route::middleware('auth:web')->post('/categories', 'CategorieController@store')-
 Route::middleware('auth:web')->get('/categories/creer', 'CategorieController@create')->name('categorie.create');
 Route::middleware('auth:web')->get('/categories/{categorie}/modifier', 'CategorieController@edit')->name('categorie.edit');
 Route::middleware('auth:web')->patch('/categories/{categorie}/', 'CategorieController@update')->name('categorie.update');
+Route::middleware('auth:web')->delete('/categories/{categorie}', 'CategorieController@destroy')->name('categorie.destroy');
 
 /*
  |--------------------------------------------------------------------------

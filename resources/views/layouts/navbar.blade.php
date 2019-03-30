@@ -7,9 +7,9 @@
 
     <div class="collapse navbar-collapse" id="navbarColor03">
         <ul class="navbar-nav mr-auto">
-            @if (str_contains(Route::currentRouteName(), 'acceuil'))
+            @if (str_contains(Route::currentRouteName(), 'calendar'))
                 <li class="nav-item active">
-                    <a class="nav-link" href="{{ route('calendar.index') }}">Calendrier <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="{{ route('calendar.index') }}">Calendrier<span class="sr-only">(current)</span></a>
                 </li>
             @else
                 <li class="nav-item">
@@ -25,7 +25,8 @@
                     <a class="nav-link" href="{{ route('reserver.index') }}">Réservation</a>
                 </li>
             @endif
-            @if (str_contains(Route::currentRouteName(), 'reservation') || str_contains(Route::currentRouteName(), 'equipements') || str_contains(Route::currentRouteName(), 'categorie') || str_contains(Route::currentRouteName(), 'utilisateur'))
+            @if (str_contains(Route::currentRouteName(), 'reservation') || str_contains(Route::currentRouteName(), 'equipements')
+            || str_contains(Route::currentRouteName(), 'categorie') || str_contains(Route::currentRouteName(), 'utilisateur'))
                 <li class="nav-item active">
                     <a class="nav-link" href="{{ route('reservation.index') }}">Administration</a>
                 </li>
@@ -39,14 +40,16 @@
             @if (Route::has('login'))
                 @auth
                     <div class="btn-group">
-                        <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
                             {{ Auth::user()->surname }}
                         </button>
                         <div class="dropdown-menu dropdown-menu-right">
                             <a href="{{ route('home') }}" class="dropdown-item">Profil</a>
                             <a class="dropdown-item">...</a>
                             <button href="{{ route('logout') }}" class="dropdown-item" onclick="event.preventDefault();
-                            document.getElementById('logout-form').submit();">Déconnexion</button>
+                            document.getElementById('logout-form').submit();">Déconnexion
+                            </button>
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                 @csrf
                             </form>
