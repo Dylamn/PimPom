@@ -44,7 +44,7 @@
                 <a href="{{ route('equipements.create') }}">
                     <button type="button" class="btn btn-outline-dark">Ajouter un équipement</button>
                 </a>
-            @elseif(str_contains(Route::currentRouteName(), 'categorie'))
+            @elseif(str_contains(Route::currentRouteName(), 'category'))
                 <a href="{{ route('categorie.create') }}">
                     <button type="button" class="btn btn-outline-dark">Ajouter une catégorie</button>
                 </a>

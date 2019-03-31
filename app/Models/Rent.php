@@ -1,39 +1,21 @@
 <?php
 
-/**
- * Created by Reliese Model.
- * Date: Sat, 30 Mar 2019 01:37:04 +0000.
- */
-
 namespace App\Models;
 
-use Reliese\Database\Eloquent\Model as Eloquent;
-
-/**
- * Class Rent
- * 
- * @property int $id
- * @property string $userName
- * @property int $settled
- * @property string $localization
- * @property \Carbon\Carbon $start
- * @property \Carbon\Carbon $end
- * @property \Carbon\Carbon $created_at
- * @property \Carbon\Carbon $updated_at
- *
- * @package App\Models
- */
-class Rent extends Eloquent
+class Rent extends Base\Rent
 {
-	protected $casts = [
-		'settled' => 'int'
-	];
+    /**
+     * The primary key for the model.
+     *
+     * @var string
+     */
+    protected $primaryKey = 'id';
 
-	protected $dates = [
-		'start',
-		'end'
-	];
-
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
 	protected $fillable = [
 		'userName',
 		'settled',

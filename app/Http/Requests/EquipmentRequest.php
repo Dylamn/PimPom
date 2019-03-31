@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests;
 
+use http\Env\Request;
 use Illuminate\Foundation\Http\FormRequest;
+use App\Models\Equipment;
 
 class EquipmentRequest extends FormRequest
 {
@@ -23,6 +25,12 @@ class EquipmentRequest extends FormRequest
      */
     public function rules()
     {
+        if (Equipment::findOrFail($this->id)->internalId === $this->internalId) {
+            return [
+                'size' => 'required|Integer|between:0,999',
+            ];
+        }
+
         return [
             'internalId' => 'required|String|between:2,5|unique:equipments,internalId',
             'size' => 'required|Integer|between:0,999',

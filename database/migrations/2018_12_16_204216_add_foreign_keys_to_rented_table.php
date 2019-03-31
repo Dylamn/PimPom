@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class AddForeignKeysToRentTable extends Migration
+class AddForeignKeysToRentedTable extends Migration
 {
 	/**
 	 * Run the migrations.
@@ -12,7 +12,7 @@ class AddForeignKeysToRentTable extends Migration
 	 */
 	public function up()
 	{
-		Schema::table('rent', function(Blueprint $table)
+		Schema::table('rented', function(Blueprint $table)
 		{
 			$table->foreign('equipmentId', 'fkEquipment')->references('id')->on('equipments')->onUpdate('RESTRICT')->onDelete('RESTRICT');
 			$table->foreign('rentalId', 'fkRent')->references('id')->on('rents')->onUpdate('RESTRICT')->onDelete('RESTRICT');
@@ -26,7 +26,7 @@ class AddForeignKeysToRentTable extends Migration
 	 */
 	public function down()
 	{
-		Schema::table('rent', function(Blueprint $table)
+		Schema::table('rented', function(Blueprint $table)
 		{
 			$table->dropForeign('fkEquipment');
 			$table->dropForeign('fkRent');

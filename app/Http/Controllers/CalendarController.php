@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Services\CalendarService;
 use App\Services\CalendarEventsService;
 use Illuminate\Http\Request;
+use Exception;
 
 class CalendarController extends Controller
 {
@@ -14,6 +15,7 @@ class CalendarController extends Controller
      * @param int|null $month
      * @param int|null $year
      * @return \Illuminate\Http\Response
+     * @throws Exception
      */
     public function index(?int $month = null, ?int $year = null)
     {

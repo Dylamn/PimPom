@@ -37,37 +37,39 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::middleware('auth:web')->get('/equipements', 'EquipmentController@index')->name('equipements.index');
 Route::middleware('auth:web')->post('/equipements', 'EquipmentController@store')->name('equipements.store');
 Route::middleware('auth:web')->get('/equipements/creer', 'EquipmentController@create')->name('equipements.create');
-Route::middleware('auth:web')->get('/equipements/{equipement}', 'EquipmentController@show')->name('equipements.show');
-Route::middleware('auth:web')->get('/equipements/{equipement}/modifier', 'EquipmentController@edit')->name('equipements.edit');
-Route::middleware('auth:web')->patch('/equipements/{equipement}/', 'EquipmentController@update')->name('equipements.update');
-Route::middleware('auth:web')->delete('/equipements/{equipement}', 'EquipmentController@destroy')->name('equipements.destroy');
+Route::middleware('auth:web')->get('/equipements/{equipment}', 'EquipmentController@show')->name('equipements.show');
+Route::middleware('auth:web')->get('/equipements/{equipment}/modifier', 'EquipmentController@edit')->name('equipements.edit');
+Route::middleware('auth:web')->patch('/equipements/{equipment}/', 'EquipmentController@update')->name('equipements.update');
+Route::middleware('auth:web')->delete('/equipements/{equipment}', 'EquipmentController@destroy')->name('equipements.destroy');
 
 /*
  |--------------------------------------------------------------------------
  | Reservations Routes
  |--------------------------------------------------------------------------
  */
+
 Route::resource('reserver', 'ReserverController');
 Route::middleware('auth:web')->get('/reservation', 'ReservationController@index')->name('reservation.index');
 
 /*
  |--------------------------------------------------------------------------
- | Categorie Routes
+ | Category Routes
  |--------------------------------------------------------------------------
  */
 
-Route::middleware('auth:web')->get('/categories', 'CategorieController@index')->name('categorie.index');
-Route::middleware('auth:web')->post('/categories', 'CategorieController@store')->name('categorie.store');
-Route::middleware('auth:web')->get('/categories/creer', 'CategorieController@create')->name('categorie.create');
-Route::middleware('auth:web')->get('/categories/{categorie}/modifier', 'CategorieController@edit')->name('categorie.edit');
-Route::middleware('auth:web')->patch('/categories/{categorie}/', 'CategorieController@update')->name('categorie.update');
-Route::middleware('auth:web')->delete('/categories/{categorie}', 'CategorieController@destroy')->name('categorie.destroy');
+Route::middleware('auth:web')->get('/categories', 'CategoryController@index')->name('categorie.index');
+Route::middleware('auth:web')->post('/categories', 'CategoryController@store')->name('categorie.store');
+Route::middleware('auth:web')->get('/categories/creer', 'CategoryController@create')->name('categorie.create');
+Route::middleware('auth:web')->get('/categories/{category}/modifier', 'CategoryController@edit')->name('categorie.edit');
+Route::middleware('auth:web')->patch('/categories/{category}/', 'CategoryController@update')->name('categorie.update');
+Route::middleware('auth:web')->delete('/categories/{category}', 'CategoryController@destroy')->name('categorie.destroy');
 
 /*
  |--------------------------------------------------------------------------
  | Utilisateurs Routes
  |--------------------------------------------------------------------------
  */
+
 Route::middleware('auth:web')->get('/utilisateurs', 'UserController@index')->name('utilisateurs.index');
 Route::middleware('auth:web')->post('/utilisateurs', 'UserController@store')->name('utilisateurs.store');
 Route::middleware('auth:web')->get('/utilisateurs/creer', 'UserController@create')->name('utilisateurs.create');

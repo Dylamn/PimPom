@@ -2,7 +2,7 @@
 
 /**
  * Created by Reliese Model.
- * Date: Sat, 30 Mar 2019 01:39:35 +0000.
+ * Date: Sat, 30 Mar 2019 22:18:03 +0000.
  */
 
 namespace App\Models\Base;
@@ -27,6 +27,8 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  */
 class User extends Eloquent
 {
+	protected $table = 'rezaski.users';
+
 	protected $casts = [
 		'privilege' => 'int'
 	];

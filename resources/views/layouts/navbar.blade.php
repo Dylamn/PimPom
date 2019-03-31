@@ -26,7 +26,7 @@
                 </li>
             @endif
             @if (str_contains(Route::currentRouteName(), 'reservation') || str_contains(Route::currentRouteName(), 'equipements')
-            || str_contains(Route::currentRouteName(), 'categorie') || str_contains(Route::currentRouteName(), 'utilisateur'))
+            || str_contains(Route::currentRouteName(), 'category') || str_contains(Route::currentRouteName(), 'utilisateur'))
                 <li class="nav-item active">
                     <a class="nav-link" href="{{ route('reservation.index') }}">Administration</a>
                 </li>

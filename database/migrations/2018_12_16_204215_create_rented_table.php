@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateRentTable extends Migration
+class CreateRentedTable extends Migration
 {
 	/**
 	 * Run the migrations.
@@ -12,7 +12,7 @@ class CreateRentTable extends Migration
 	 */
 	public function up()
 	{
-		Schema::create('rent', function(Blueprint $table)
+		Schema::create('rented', function(Blueprint $table)
 		{
 			$table->integer('rentalId');
 			$table->integer('equipmentId')->index('fkEquipement');
@@ -28,6 +28,6 @@ class CreateRentTable extends Migration
 	 */
 	public function down()
 	{
-		Schema::drop('rent');
+		Schema::drop('rented');
 	}
 }

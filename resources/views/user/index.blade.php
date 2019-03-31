@@ -35,12 +35,19 @@
                         <form name="delete_form{{__($statement->id) }}" action="{{ Request::url() . '/' . $statement->id }}" method="POST">
                             @method('DELETE')
                             @csrf
-                            <i id="btn-delete" class="fa fa-times" style="color:red; font-size: 1.4em;"></i>
+                            <i class="fa fa-times btn-delete" style="color:red; font-size: 1.4em;"></i>
                         </form>
                     </td>
                 </tr>
             @endforeach
-
         </table>
     </div>
+@endsection
+
+@section('script')
+    <!-- JQuery -->
+    <script src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/submit_form.js') }}"></script>
 @endsection

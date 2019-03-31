@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Model\Categorie;
-use App\Model\Equipments;
+use App\Models\Category;
+use App\Models\Equipment;
 use App\Http\Requests\EquipmentRequest;
 use Exception;
-use DB;
 
 class EquipmentController extends Controller
 {
@@ -35,7 +34,7 @@ class EquipmentController extends Controller
      */
     public function create()
     {
-        $categories = Categorie::all();
+        $categories = Category::all();
 
         return view('equipement.create', compact('categories'));
     }
@@ -47,7 +46,11 @@ class EquipmentController extends Controller
      */
     public function store()
     {
-        Equipments::create(request(['internalId', 'size', 'categoryId']));
+        Equipment::create(request([
+            'internalId',
+            'size',
+            'categoryId'
+        ]));
 
         return redirect(route('equipements.index'));
     }
@@ -55,12 +58,12 @@ class EquipmentController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Model\Equipments $equipement
+     * @param  \App\Models\Equipment $equipment
      * @return \Illuminate\Http\Response
      */
-    public function show(Equipments $equipement)
+    public function show(Equipment $equipment)
     {
-        $equipement = Equipments::getOneEquipment($equipement->id)[0];
+        $equipement = Equipment::getOneEquipment($equipment->id)[0];
 
         return view('equipement.show', compact('equipement'));
     }
@@ -68,12 +71,14 @@ class EquipmentController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Model\Equipments $equipement
+     * @param  \App\Models\Equipment $equipment
      * @return \Illuminate\Http\Response
      */
-    public function edit(Equipments $equipement)
+    public function edit(Equipment $equipment)
     {
-        $equipement = Equipments::getOneEquipment($equipement->id)[0];
+       $equipement = Equipment::select('*')
+           ->rightJoin('categories AS c', 'equipments.categoryId', '=', 'c.id')
+           ->where('equipments.id', '=', $equipment->id)->get()[0];
 
         return view("equipement.edit", compact("equipement"));
     }
@@ -82,13 +87,12 @@ class EquipmentController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \App\Http\Requests\EquipmentRequest $request
-     * @param  \App\Model\Equipments $equipement
+     * @param  \App\Models\Equipment $equipment
      * @return \Illuminate\Http\Response
      */
-    public function update(EquipmentRequest $request, Equipments $equipement)
+    public function update(EquipmentRequest $request, Equipment $equipment)
     {
-        $equipement->update([
-            'categoryId' => $request->categoryId,
+        $equipment->update([
             'internalId' => $request->internalId,
             'size' => $request->size,
         ]);
@@ -99,13 +103,13 @@ class EquipmentController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Model\Equipments $equipement
+     * @param  \App\Models\Equipment $equipment
      * @return \Illuminate\Http\Response
      * @throws Exception
      */
-    public function destroy(Equipments $equipement) : \Illuminate\Http\Response
+    public function destroy(Equipment $equipment)
     {
-        $equipement->delete();
+        $equipment->delete();
 
         return redirect(route('equipements.index'));
     }
@@ -119,11 +123,11 @@ class EquipmentController extends Controller
     public static function bigData($label)
     {
         if ($label === 'all') {
-            $bigTable = Equipments::select('*')
+            $bigTable = Equipment::select('*')
                 ->join('categories AS c', 'equipments.categoryId', '=', 'c.id')
                 ->get();
         } else {
-            $bigTable = Equipments::select('*')
+            $bigTable = Equipment::select('*')
                 ->join('categories AS c', 'equipments.categoryId', '=', 'c.id')
                 ->where('c.label', $label)->get();
         }

@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Model\Categorie;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Exception;
 
-class CategorieController extends Controller
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +15,9 @@ class CategorieController extends Controller
      */
     public function index()
     {
-        $categories = Categorie::all();
+        $categories = Category::all();
 
-        return view("categorie.index", compact("categories"));
+        return view("category.index", compact("categories"));
     }
 
     /**
@@ -27,7 +27,7 @@ class CategorieController extends Controller
      */
     public function create()
     {
-        return view('categorie.create');
+        return view('category.create');
     }
 
     /**
@@ -38,70 +38,70 @@ class CategorieController extends Controller
      */
     public function store(Request $request)
     {
-        Categorie::create([
+        Category::create([
         'label' => $request->label,
         'adultPrice' => $request->adultPrice,
         'childrenPrice' => $request->childrenPrice,
         ]);
 
-        return redirect('/categories');
+        return redirect(route('categorie.index'));
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Model\Categorie  $categorie
+     * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function show(Categorie $categorie)
+    public function show(Category $category)
     {
-        // Todo : Créer la vue categorie.show
+        // Todo : Créer la vue category.show
 
-        return response($categorie)->json();
+        return response($category)->json();
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Model\Categorie  $categorie
+     * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function edit(Categorie $categorie)
+    public function edit(Category $category)
     {
-        $categorie = Categorie::findOrFail($categorie->id);
+        $category = Category::findOrFail($category->id);
 
-        return view("categorie.edit", compact("categorie"));
+        return view("category.edit", compact("category"));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Model\Categorie  $categorie
+     * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Categorie $categorie)
+    public function update(Request $request, Category $category)
     {
-        $categorie->update([
+        $category->update([
             'label' => $request->label,
             'adultPrice' => $request->adultPrice,
             'childrenPrice' => $request->childrenPrice,
         ]);
 
-        return redirect('/categories');
+        return redirect(route('categorie.index'));
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Model\Categorie  $categorie
+     * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      * @throws Exception
      */
-    public function destroy(Categorie $categorie)
+    public function destroy(Category $category)
     {
-        $categorie->delete();
+        $category->delete();
 
-        return redirect('/categories');
+        return redirect(route('categorie.index'));
     }
 }

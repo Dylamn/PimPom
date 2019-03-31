@@ -10,23 +10,22 @@ namespace App\Models\Base;
 use Reliese\Database\Eloquent\Model as Eloquent;
 
 /**
- * Class Category
+ * Class Rented
  * 
- * @property int $id
- * @property string $label
- * @property float $adultPrice
- * @property float $childrenPrice
+ * @property int $rentalId
+ * @property int $equipmentId
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  *
  * @package App\Models\Base
  */
-class Category extends Eloquent
+class Rented extends Eloquent
 {
-	protected $table = 'categories';
+	protected $table = 'rezaski.rented';
+	public $incrementing = false;
 
 	protected $casts = [
-		'adultPrice' => 'float',
-		'childrenPrice' => 'float'
+		'rentalId' => 'int',
+		'equipmentId' => 'int'
 	];
 }

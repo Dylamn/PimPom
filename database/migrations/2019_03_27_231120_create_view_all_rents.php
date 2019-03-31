@@ -16,7 +16,7 @@ class CreateViewAllRents extends Migration
         DB::select("
             CREATE OR REPLACE VIEW view_all_rents (id, userName, label, start, end) AS 
             SELECT rents.id, userName, internalId, start, end
-            FROM equipments, rents, rent 
+            FROM equipments, rents, rented 
             WHERE equipments.id = equipmentId
             AND rents.id = rentalId;"
         );
