@@ -25,16 +25,19 @@ class EquipmentRequest extends FormRequest
      */
     public function rules()
     {
-        if (Equipment::findOrFail($this->id)->internalId === $this->internalId) {
+//        return dd($this);
+        if (isset($this->id)) {
+            if (Equipment::findOrFail($this->id)->internalId === $this->internalId) {
+                return [
+                    'size' => 'required|Integer|between:0,999',
+                ];
+            }
+        } else {
             return [
+                'internalId' => 'required|String|between:2,5|unique:equipments,internalId',
                 'size' => 'required|Integer|between:0,999',
             ];
         }
-
-        return [
-            'internalId' => 'required|String|between:2,5|unique:equipments,internalId',
-            'size' => 'required|Integer|between:0,999',
-        ];
     }
 
     /**

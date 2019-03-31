@@ -17,7 +17,10 @@
                 <label for="categorie">Type de l'équipement</label>
                 <select id="categorie" name="categoryId" class="custom-select custom-select-md">
                     @foreach($categories as $category)
-                        <option value="{{ $category->id }}">{{ $category->label }}</option>
+                        <option value="{{ $category->id }}" {{ old('categoryId') == $category->id ? 'selected' : '' }}>
+                            {{ $category->label }}
+                        </option>
+                        @if($error->has())
                     @endforeach
                 </select>
             </div>

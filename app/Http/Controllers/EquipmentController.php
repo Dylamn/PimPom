@@ -42,15 +42,17 @@ class EquipmentController extends Controller
     /**
      * Store a newly created resource in storage.
      *
+     * @param EquipmentRequest $equipmentRequest
      * @return \Illuminate\Http\Response
      */
-    public function store()
+    public function store(EquipmentRequest $equipmentRequest)
     {
-        Equipment::create(request([
-            'internalId',
-            'size',
-            'categoryId'
-        ]));
+        return dd($equipmentRequest);
+        Equipment::create([
+            'internalId' => $equipmentRequest->internalId,
+            'size' => $equipmentRequest->size,
+            'categoryId' => $equipmentRequest->categoryId,
+        ]);
 
         return redirect(route('equipements.index'));
     }

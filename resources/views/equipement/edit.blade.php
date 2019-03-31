@@ -21,7 +21,7 @@
                                     <input type="hidden" name="id" value="{{ $equipement->id }}">
                                     <label for="internalId">Référence</label>
                                     <input type="text" id="internalId" name="internalId"
-                                           value="{{ $equipement->internalId }}"
+                                           value="{{ old('internalId') ? old('internalId') : $equipement->internalId }}"
                                            class="form-control rounded {{ $errors->has('internalId') ? 'is-invalid' : '' }}">
 
                                     @if ($errors->has('internalId'))
@@ -33,7 +33,7 @@
                                 <div class="col-md form-group">
                                     <label for="size">taille de l'équipement (en cm)</label>
                                     <input type="number" min="0" max="999" step="0.01" id="size" name="size"
-                                           value="{{ $equipement->size }}"
+                                           value="{{ old('size') ? old('size') : $equipement->size }}"
                                            class="form-control rounded {{ $errors->has('size') ? 'is-invalid' : '' }}">
 
                                     @if ($errors->has('size'))
@@ -48,7 +48,7 @@
                                 <div class="col-md form-group">
                                     <label for="adultPrice">Prix adulte de l'équipement</label>
                                     <input type="number" min="0" step="0.01" id="adultPrice" name="adultPrice"
-                                           value="{{ $equipement->adultPrice}}"
+                                           value="{{ old('adultPrice') ? old('adultPrice') : $equipement->adultPrice}}"
                                            class="form-control rounded {{ $errors->has('adultPrice') ? 'is-invalid' : '' }}">
 
                                     @if ($errors->has('adultPrice'))
@@ -60,7 +60,7 @@
                                 <div class="col-md form-group">
                                     <label for="childrenPrice">Prix enfant de l'équipement</label>
                                     <input type="number" min="0" step="0.01" id="childrenPrice" name="childrenPrice"
-                                           value="{{ $equipement->childrenPrice }}"
+                                           value="{{ old('childrenPrice') ? old('childrenPrice') : $equipement->childrenPrice }}"
                                            class="form-control rounded {{ $errors->has('childrenPrice') ? 'is-invalid' : '' }}">
 
                                     @if ($errors->has('childrenPrice'))
