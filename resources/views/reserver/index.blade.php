@@ -61,14 +61,14 @@
                                                     Nom du client : <span id="nomClientC"></span>
                                                 </div>
                                             </div>
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    Nombre d'adulte(s) : <span id="nbrAdultesC"></span>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    Nombre d'enfant(s) : <span id="nbrEnfantC"></span>
-                                                </div>
-                                            </div>
+                                            {{--<div class="row">--}}
+                                                {{--<div class="col-md-6">--}}
+                                                    {{--Nombre d'adulte(s) : <span id="nbrAdultesC"></span>--}}
+                                                {{--</div>--}}
+                                                {{--<div class="col-md-6">--}}
+                                                    {{--Nombre d'enfant(s) : <span id="nbrEnfantC"></span>--}}
+                                                {{--</div>--}}
+                                            {{--</div>--}}
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     Date de début : <span id="dateDebutC"></span>
@@ -98,9 +98,9 @@
                                             </table>
                                         </div>
                                         <div class="row">
-                                            <div class="col-md">
+                                            <div class="col-md text-right">
                                                 {{ json_decode('array') }}
-                                                <p><b>Total TTC : <span id="total">0.00</span> €</b></p>
+                                                <p  style="padding-right: 15px"><b>Total TTC : <span id="total">0.00</span> €</b></p>
                                             </div>
                                         </div>
                                     </div>
