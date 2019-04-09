@@ -28,6 +28,12 @@ Auth::routes(['register' => false]);
 // Route for the application dashboard
 Route::get('/home', 'HomeController@index')->name('home');
 
+// Route for the rents of the user connected
+Route::get('/mesReservations', 'UserRentsController@index')->name('myRents');
+
+// Route for the old rents of the user connected
+Route::get('/mesAnciennesReservations', 'UserOldRentsController@index')->name('oldRents');
+
 /*
  |--------------------------------------------------------------------------
  | Equipements Routes
@@ -50,6 +56,7 @@ Route::middleware('auth:web')->delete('/equipements/{equipment}', 'EquipmentCont
 
 Route::resource('reserver', 'ReserverController');
 Route::middleware('auth:web')->get('/reservation', 'ReservationController@index')->name('reservation.index');
+Route::middleware('auth:web')->get('/archive', 'RecordController@index')->name('record.index');
 
 /*
  |--------------------------------------------------------------------------

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Model\Rents;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +24,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $rents = Rents::getRentsByName("Jon");
+        return view('home', compact('rents'));
     }
 }

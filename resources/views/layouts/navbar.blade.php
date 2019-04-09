@@ -46,7 +46,8 @@
                         </button>
                         <div class="dropdown-menu dropdown-menu-right">
                             <a href="{{ route('home') }}" class="dropdown-item">Profil</a>
-                            <a class="dropdown-item">...</a>
+                            <a href="{{ route('myRents') }}" class="dropdown-item">Mes réservations</a>
+                            <a href="{{ route('oldRents') }}" class="dropdown-item">Mes anciennes réservations</a>
                             <button href="{{ route('logout') }}" class="dropdown-item" onclick="event.preventDefault();
                             document.getElementById('logout-form').submit();">Déconnexion
                             </button>

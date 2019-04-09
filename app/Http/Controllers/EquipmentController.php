@@ -23,7 +23,7 @@ class EquipmentController extends Controller
         $luge = $this->bigData('Luge');
 
         $weedze = $this->bigData('WeedzeSeeder');
-
+        $all = Equipments::getAllEquipments();
         return view('equipement.index', compact('ski', 'snow', 'luge', 'weedze'));
     }
 

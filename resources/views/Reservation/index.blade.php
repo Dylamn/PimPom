@@ -9,41 +9,49 @@
 @section('content')
     <div class="container" id="side">
         <div id="table" class="container table-responsive" style="padding-top: 3%">
-            <table class="table table-striped table-bordered table-hover">
-                <thead class="thead-light">
-                <tr>
-                    <th class="text-center">Client</th>
-                    <th class="text-center">Equipements</th>
-                    <th class="text-center">Début</th>
-                    <th class="text-center">Fin</th>
-                    <th class="text-center">Modifier</th>
-                    <th class="text-center">Supprimer</th>
-                </tr>
-                </thead>
-
-                @foreach($all as $one)
+            @if(empty($all))
+                <div class="row">
+                    <div class="col-md">
+                        <h2 style="text-align: center">Il n'y a aucune réservation</h2>
+                    </div>
+                </div>
+            @else
+                <table class="table table-striped table-bordered table-hover">
+                    <thead class="thead-light">
                     <tr>
-                        <td class="text-center">{{ $one->userName }}</td>
-                        <td class="text-center">{{ $one->label }}</td>
-                        <td class="text-center">{{ (new DateTime($one->start))->format('d-m-Y') }}</td>
-                        <td class="text-center">{{ (new DateTime($one->end))->format('d-m-Y') }}</td>
-                        <td class="text-center">
-                            <a href="{{ Request::url() . '/' . $one->id }}/modifier">
-                                <i class="fa fa-pencil" style="color:orange; font-size: 1.4em;"></i>
-                            </a>
-                        </td>
-                        <td class="text-center">
-                            <form name="delete_form{{__($one->id) }}"
-                                  action="{{ Request::url() . '/' . $one->id }}" method="POST">
-                                @method('DELETE')
-                                @csrf
-                                <i id="btn-delete" class="fa fa-times" style="color:red; font-size: 1.4em;"></i>
-                            </form>
-                        </td>
+                        <th class="text-center">Client</th>
+                        <th class="text-center">Equipements</th>
+                        <th class="text-center">Début</th>
+                        <th class="text-center">Fin</th>
+                        <th class="text-center">Modifier</th>
+                        <th class="text-center">Supprimer</th>
                     </tr>
-                @endforeach
+                    </thead>
 
-            </table>
+                    @foreach($all as $one)
+                        <tr>
+                            <td class="text-center">{{ $one->userName }}</td>
+                            <td class="text-center">{{ $one->label }}</td>
+                            <td class="text-center">{{ (new DateTime($one->start))->format('d-m-Y') }}</td>
+                            <td class="text-center">{{ (new DateTime($one->end))->format('d-m-Y') }}</td>
+                            <td class="text-center">
+                                <a href="{{ Request::url() . '/' . $one->id }}/modifier">
+                                    <i class="fa fa-pencil" style="color:orange; font-size: 1.4em;"></i>
+                                </a>
+                            </td>
+                            <td class="text-center">
+                                <form name="delete_form{{__($one->id) }}"
+                                      action="{{ Request::url() . '/' . $one->id }}" method="POST">
+                                    @method('DELETE')
+                                    @csrf
+                                    <i id="btn-delete" class="fa fa-times" style="color:red; font-size: 1.4em;"></i>
+                                </form>
+                            </td>
+                        </tr>
+                    @endforeach
+
+                </table>
+            @endif
         </div>
     </div>
 @endsection

@@ -11,6 +11,15 @@
                     <a href="{{ route('reservation.index') }}">Réservations</a>
                 </li>
             @endif
+            @if(str_contains(Route::currentRouteName(), 'record'))
+                <li class="active">
+                    <a href="{{ route('record.index') }}">Archive</a>
+                </li>
+            @else
+                <li>
+                    <a href="{{ route('record.index') }}">Archive</a>
+                </li>
+            @endif
             @if(str_contains(Route::currentRouteName(), 'equipements'))
                 <li class="active">
                     <a href="{{ route('equipements.index') }}">Équipements</a>

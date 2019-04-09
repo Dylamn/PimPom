@@ -43,5 +43,13 @@ class CategoriesTableSeeder extends Seeder
             'created_at' => '2018-12-16 12:00:00',
             'updated_at' => '2018-12-16 12:00:00',
         ]);
+
+        DB::table('categories')->insert([
+            'label' => 'Chaussure',
+            'adultPrice' => '0',
+            'childrenPrice' => '0',
+            'created_at' => '2018-12-16 12:00:00',
+            'updated_at' => '2018-12-16 12:00:00',
+        ]);
     }
 }
