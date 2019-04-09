@@ -21,7 +21,7 @@ class ReserverController extends Controller
         $equipment = Equipment::getCountEquipment();
         $categorie = Category::all('label');
 
-        return view('Rented.index', compact('equipment', 'categorie'));
+        return view('reserver.index', compact('equipment', 'categorie'));
     }
 
     /**
