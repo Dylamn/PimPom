@@ -25,7 +25,6 @@ class EquipmentRequest extends FormRequest
      */
     public function rules()
     {
-//        return dd($this);
         if (isset($this->id)) {
             if (Equipment::findOrFail($this->id)->internalId === $this->internalId) {
                 return [

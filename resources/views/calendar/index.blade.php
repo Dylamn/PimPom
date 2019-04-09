@@ -5,9 +5,6 @@
 @endsection
 
 @section('content')
-    {{--<pre>--}}
-        {{--{{ print_r($events) }}--}}
-    {{--</pre>--}}
     <div class="calendar__container">
         <div class="d-flex flex-row align-items-center justify-content-between m-4">
             <h1>{{ $calendar->toString() }}</h1>
@@ -21,11 +18,11 @@
             <div>
                 <a href="{{ route('calendar.show.month', ['month' => $calendar->previousMonth()->month, 'year' => $calendar->previousMonth()->year])}}"
                    class="btn btn-primary">
-                    &lt
+                    &lt;
                 </a>
                 <a href="{{ route('calendar.show.month', ['month' => $calendar->nextMonth()->month, 'year' => $calendar->nextMonth()->year])}}"
                    class="btn btn-primary">
-                    &gt
+                    &gt;
                 </a>
             </div>
         </div>
