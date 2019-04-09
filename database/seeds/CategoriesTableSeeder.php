@@ -35,5 +35,13 @@ class CategoriesTableSeeder extends Seeder
             'created_at' => '2018-12-16 12:00:00',
             'updated_at' => '2018-12-16 12:00:00',
         ]);
+
+        DB::table('categories')->insert([
+            'label' => 'WeedzeSeeder',
+            'adultPrice' => '60',
+            'childrenPrice' => '30',
+            'created_at' => '2018-12-16 12:00:00',
+            'updated_at' => '2018-12-16 12:00:00',
+        ]);
     }
 }

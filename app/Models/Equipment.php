@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use Illuminate\Support\Facades\DB;
+
 class Equipment extends Base\Equipment
 {
     /**
@@ -24,4 +26,9 @@ class Equipment extends Base\Equipment
 		'categoryId',
 		'use'
 	];
+
+    public static function getCountEquipment()
+    {
+        return DB::select("SELECT * FROM view_count_equipments;");
+    }
 }

@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Model\Categorie;
-use App\Model\Reserver;
-use App\Model\Equipments;
-use App\Model\Rents;
+use App\Models\Category;
+use App\Models\Rented;
+use App\Models\Equipment;
+use App\Models\Rent;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -18,10 +18,10 @@ class ReserverController extends Controller
      */
     public function index()
     {
-        $equipment = Equipments::getCountEquipment();
-        $categorie = Categorie::all('label');
+        $equipment = Equipment::getCountEquipment();
+        $categorie = Category::all('label');
 
-        return view('reserver.index', compact('equipment', 'categorie'));
+        return view('Rented.index', compact('equipment', 'categorie'));
     }
 
     /**
@@ -44,14 +44,14 @@ class ReserverController extends Controller
     {
         //dd($request);
         //$data = Rents::create(request(['userName' => 'nomClient', 0, '', 'dateDebut', 'dateFin']));
-        $data = new Rents;
+        $data = new Rent;
         $data->userName = $request->nomClient;
         $data->localization = 'France - Rennes';
         $data->start = $request->dateDebut;
         $data->end = $request->dateFin;
         $data->save();
         //echo($data->id);
-        $allSnow = Equipments::getAllEquipments();
+        $allSnow = Equipment::all();
 
         $j = 0;
         if ($request->nbrSnowboard > 0) {
@@ -59,7 +59,7 @@ class ReserverController extends Controller
                 if ($request->nbrSnowboard > $j) {
                     if ($allSnow[$i]->label == 'Snowboard') {
                         DB::insert('INSERT INTO rent (rentalId, equipmentId) VALUES (' . $data->id . ', ' . $allSnow[$i]->id . ');');
-                        Equipments::where('id', $data->id)->update(['use' => 1]);
+                        Equipment::where('id', $data->id)->update(['use' => 1]);
                         $j++;
                     }
                 }
@@ -71,7 +71,7 @@ class ReserverController extends Controller
                 if ($request->nbrSki > $j) {
                     if ($allSnow[$i]->label == 'Ski') {
                         DB::insert('INSERT INTO rent (rentalId, equipmentId) VALUES (' . $data->id . ', ' . $allSnow[$i]->id . ');');
-                        Equipments::where('id', $data->id)->update(['use' => 1]);
+                        Equipment::where('id', $data->id)->update(['use' => 1]);
                         $j++;
                     }
                 }
@@ -83,7 +83,7 @@ class ReserverController extends Controller
                 if ($request->nbrLuge > $j) {
                     if ($allSnow[$i]->label == 'Luge') {
                         DB::insert('INSERT INTO rent (rentalId, equipmentId) VALUES (' . $data->id . ', ' . $allSnow[$i]->id . ');');
-                        Equipments::where('id', $data->id)->update(['use' => 1]);
+                        Equipment::where('id', $data->id)->update(['use' => 1]);
                         $j++;
                     }
                 }
@@ -95,10 +95,10 @@ class ReserverController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Model\Reserver $reserver
+     * @param  \App\Models\Rented $rented
      * @return \Illuminate\Http\Response
      */
-    public function show(Reserver $reserver)
+    public function show(Rented $rented)
     {
         //
     }
@@ -106,10 +106,10 @@ class ReserverController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Model\Reserver $reserver
+     * @param  \App\Models\Rented $rented
      * @return \Illuminate\Http\Response
      */
-    public function edit(Reserver $reserver)
+    public function edit(Rented $rented)
     {
         //
     }
@@ -118,10 +118,10 @@ class ReserverController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request $request
-     * @param  \App\Model\Reserver $reserver
+     * @param  \App\Models\Rented $rented
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Reserver $reserver)
+    public function update(Request $request, Rented $rented)
     {
         //
     }
@@ -129,10 +129,10 @@ class ReserverController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Model\Reserver $reserver
+     * @param  \App\Models\Rented $rented
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Reserver $reserver)
+    public function destroy(Rented $rented)
     {
         //
     }

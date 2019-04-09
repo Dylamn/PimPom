@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Model\Rents;
-use App\Reservation;
+use App\Models\Rent;
+use App\Models\Rented;
 use Illuminate\Http\Request;
 
 class ReservationController extends Controller
@@ -15,8 +15,8 @@ class ReservationController extends Controller
      */
     public function index()
     {
-        $all = Rents::allRents();
-        return view('reservation.index', compact('all'));
+        $all = Rent::all();
+        return view('Rented.index', compact('all'));
     }
 
     /**
@@ -43,10 +43,10 @@ class ReservationController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Reservation  $reservation
+     * @param  \App\Models\Rented  $rented
      * @return \Illuminate\Http\Response
      */
-    public function show(Reservation $reservation)
+    public function show(Rented $rented)
     {
         //
     }
@@ -54,10 +54,10 @@ class ReservationController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Reservation  $reservation
+     * @param  \App\Models\Rented  $rented
      * @return \Illuminate\Http\Response
      */
-    public function edit(Reservation $reservation)
+    public function edit(Rented $rented)
     {
         //
     }
@@ -66,10 +66,10 @@ class ReservationController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Reservation  $reservation
+     * @param  \App\Models\Rented  $rented
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Reservation $reservation)
+    public function update(Request $request, Rented $rented)
     {
         //
     }
@@ -77,13 +77,13 @@ class ReservationController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Reservation $reservation
+     * @param  \App\Models\Rented $rented
      * @return \Illuminate\Http\Response
      * @throws \Exception
      */
-    public function destroy(Reservation $reservation)
+    public function destroy(Rented $rented)
     {
-        $reservation->delete();
+        $rented->delete();
 
         return redirect(route(''));
     }

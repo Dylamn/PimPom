@@ -22,7 +22,7 @@ class EquipmentController extends Controller
 
         $luge = $this->bigData('Luge');
 
-        $weedze = $this->bigData('Weedze');
+        $weedze = $this->bigData('WeedzeSeeder');
 
         return view('equipement.index', compact('ski', 'snow', 'luge', 'weedze'));
     }
@@ -47,7 +47,7 @@ class EquipmentController extends Controller
      */
     public function store(EquipmentRequest $equipmentRequest)
     {
-        return dd($equipmentRequest);
+        return dd($equipmentRequest); // TODO : Check what going on
         Equipment::create([
             'internalId' => $equipmentRequest->internalId,
             'size' => $equipmentRequest->size,
