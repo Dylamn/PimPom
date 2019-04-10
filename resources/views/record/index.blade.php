@@ -41,5 +41,5 @@
 @endsection
 
 @section('script')
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('hot/js/app.js') }}" defer></script>
 @endsection

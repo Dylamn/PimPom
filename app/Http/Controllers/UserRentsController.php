@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Model\Rents;
+use App\Models\Rent;
 use Illuminate\Http\Request;
 
 class userRentsController extends Controller
@@ -14,7 +14,7 @@ class userRentsController extends Controller
      */
     public function index()
     {
-        $rents = Rents::getRentsByName("Jon");
+        $rents = Rent::getRentsByName("Jon");
         return view('userRents', compact('rents'));
     }
 }
