@@ -24,7 +24,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $rents = Rents::getRentsByName("Jon");
-        return view('home', compact('rents'));
+        return view('home');
     }
 }
