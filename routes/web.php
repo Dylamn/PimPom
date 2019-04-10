@@ -11,6 +11,11 @@
 |
 */
 
+Route::get('/json1', function () {
+    $gg = "Hello: world, now: today";
+    return json_encode($gg);
+});
+
 // Default homepage
 Route::get('/', function () {
     return view('welcome');

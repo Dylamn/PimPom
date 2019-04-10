@@ -1,8 +1,6 @@
 @extends('layouts.master')
 
-@section('navbar')
-    @extends('layouts.navbar')
-@endsection
+@extends('layouts.navbar')
 
 @section('content')
     <div id="app">
@@ -28,6 +26,7 @@
                 </div>
             </div>
         </div>
+        <light-pick></light-pick>
     </div>
 @endsection
 

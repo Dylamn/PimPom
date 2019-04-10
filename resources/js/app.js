@@ -18,10 +18,12 @@ window.Vue = Vue;
  */
 
 import ExampleComponent from './components/ExampleComponent';
+import LightPick from './components/LightPick';
 
 const app = new Vue({
     el: '#app',
     components: {
-        ExampleComponent
+        ExampleComponent,
+        LightPick
     }
 });

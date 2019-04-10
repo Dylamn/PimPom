@@ -31,10 +31,10 @@
             @for($i = 0; $i < $calendar->getWeeks(); $i++)
                 <tr>
                     @foreach($calendar->days as $k => $day)
-                        <?php
-                        $date = (clone $start)->modify("+" . ($k + $i * 7) . " days");
-                        $eventsForDay = $events[$date->format('Y-m-d')] ?? [];
-                        ?>
+                        @php
+                            $date = (clone $start)->modify("+" . ($k + $i * 7) . " days");
+                            $eventsForDay = $events[$date->format('Y-m-d')] ?? [];
+                        @endphp
                         <td class="{{ $calendar->withinMonth($date) ? '' : 'calendar__notCurrentMonth'}}">
                             @if($i === 0)
                                 <div class="calendar__weekday">{{ $day }}</div>

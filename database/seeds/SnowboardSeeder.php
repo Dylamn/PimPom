@@ -14,7 +14,7 @@ class SnowboardSeeder extends Seeder
     {
         DB::table('equipments')->insert([
             'categoryId' => 1,
-            'internalId' => 'SK_150A',
+            'internalId' => 'SN_150A',
             'size' => '150',
             'created_at' => '2018-12-16 12:00:00',
             'updated_at' => '2018-12-16 12:00:00',
@@ -22,7 +22,7 @@ class SnowboardSeeder extends Seeder
 
         DB::table('equipments')->insert([
             'categoryId' => 1,
-            'internalId' => 'SK_155A',
+            'internalId' => 'SN_155A',
             'size' => '155',
             'created_at' => '2018-12-16 12:00:00',
             'updated_at' => '2018-12-16 12:00:00',
@@ -30,7 +30,7 @@ class SnowboardSeeder extends Seeder
 
         DB::table('equipments')->insert([
             'categoryId' => 1,
-            'internalId' => 'SK_155B',
+            'internalId' => 'SN_155B',
             'size' => '155',
             'created_at' => '2018-12-16 12:00:00',
             'updated_at' => '2018-12-16 12:00:00',
@@ -38,7 +38,7 @@ class SnowboardSeeder extends Seeder
 
         DB::table('equipments')->insert([
             'categoryId' => 1,
-            'internalId' => 'SK_155C',
+            'internalId' => 'SN_155C',
             'size' => '155',
             'created_at' => '2018-12-16 12:00:00',
             'updated_at' => '2018-12-16 12:00:00',
@@ -46,7 +46,7 @@ class SnowboardSeeder extends Seeder
 
         DB::table('equipments')->insert([
             'categoryId' => 1,
-            'internalId' => 'SK_160A',
+            'internalId' => 'SN_160A',
             'size' => '160',
             'created_at' => '2018-12-16 12:00:00',
             'updated_at' => '2018-12-16 12:00:00',
@@ -54,7 +54,7 @@ class SnowboardSeeder extends Seeder
 
         DB::table('equipments')->insert([
             'categoryId' => 1,
-            'internalId' => 'SK_160B',
+            'internalId' => 'SN_160B',
             'size' => '160',
             'created_at' => '2018-12-16 12:00:00',
             'updated_at' => '2018-12-16 12:00:00',
@@ -62,7 +62,7 @@ class SnowboardSeeder extends Seeder
 
         DB::table('equipments')->insert([
             'categoryId' => 1,
-            'internalId' => 'SK_160C',
+            'internalId' => 'SN_160C',
             'size' => '160',
             'created_at' => '2018-12-16 12:00:00',
             'updated_at' => '2018-12-16 12:00:00',
@@ -70,7 +70,7 @@ class SnowboardSeeder extends Seeder
 
         DB::table('equipments')->insert([
             'categoryId' => 1,
-            'internalId' => 'SK_162A',
+            'internalId' => 'SN_162A',
             'size' => '162',
             'created_at' => '2018-12-16 12:00:00',
             'updated_at' => '2018-12-16 12:00:00',
@@ -78,7 +78,7 @@ class SnowboardSeeder extends Seeder
 
         DB::table('equipments')->insert([
             'categoryId' => 1,
-            'internalId' => 'SK_162B',
+            'internalId' => 'SN_162B',
             'size' => '162',
             'created_at' => '2018-12-16 12:00:00',
             'updated_at' => '2018-12-16 12:00:00',
