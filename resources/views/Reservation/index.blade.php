@@ -9,7 +9,7 @@
 @section('content')
     <div class="container" id="side">
         <div id="table" class="container table-responsive" style="padding-top: 3%">
-            @if(empty($all))
+            @if(count($all) == 0)
                 <div class="row">
                     <div class="col-md">
                         <h2 style="text-align: center">Il n'y a aucune réservation</h2>

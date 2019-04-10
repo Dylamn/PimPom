@@ -37,7 +37,7 @@ class CategoriesTableSeeder extends Seeder
         ]);
 
         DB::table('categories')->insert([
-            'label' => 'WeedzeSeeder',
+            'label' => 'Weedze',
             'adultPrice' => '60',
             'childrenPrice' => '30',
             'created_at' => '2018-12-16 12:00:00',

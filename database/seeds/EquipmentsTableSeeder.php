@@ -43,7 +43,7 @@ class EquipmentsTableSeeder extends Seeder
         ]);
 
         DB::table('equipments')->insert([
-            'categoryId' => 4,
+            'categoryId' => 5,
             'internalId' => 'CH1',
             'size' => '40',
             'created_at' => '2018-12-16 12:00:00',

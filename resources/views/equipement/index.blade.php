@@ -10,122 +10,48 @@
     <div class="container" id="side">
         <div class="container table-responsive" style="padding-top: 3%">
             <table class="table table-striped table-bordered table-hover">
-                @if(!isset($ski[0]) && !isset($snow[0]) && !isset($luge[0]))
-                <tr>
-                    {{ "Aucun équipements n'est enregistré." }}
-                </tr>
-                @endif
-
-                @if(isset($ski[0]))
-                    <thead class="thead-light">
+                @if(!isset($all))
                     <tr>
-                        <th class="text-center">{{ ! empty($ski[0]) ? $ski[0]->label : 'Ski' }}</th>
-                        <th class="text-center">Référence</th>
-                        <th class="text-center">Taille</th>
-                        <th class="text-center">Prix adulte</th>
-                        <th class="text-center">Prix enfant</th>
-                        <th class="text-center">Modifier</th>
-                        <th class="text-center">Supprimer</th>
+                        {{ "Aucun équipements n'est enregistré." }}
                     </tr>
-                    </thead>
-
-                    @foreach($ski as $statement)
-                        <tr>
-                            <td class="text-center"></td>
-                            <td class="text-center">{{ $statement->internalId }}</td>
-                            <td class="text-center">{{ $statement->size }} cm</td>
-                            <td class="text-center">{{ $statement->adultPrice }} €</td>
-                            <td class="text-center">{{ $statement->childrenPrice }} €</td>
-                            <td class="text-center">
-                                <a href="{{ Request::url() . '/' . $statement->id }}/modifier">
-                                    <i class="fa fa-pencil" style="color:orange; font-size: 1.4em;"></i>
-                                </a>
-                            </td>
-                            <td class="text-center">
-                                <form name="delete_form" action="{{ Request::url() . '/' . $statement->id }}"
-                                      method="POST">
-                                    @method('DELETE')
-                                    @csrf
-                                    <i class="fa fa-times btn-delete" style="color:red; font-size: 1.4em;"></i>
-                                </form>
-                            </td>
-                        </tr>
-                    @endforeach
-                @endif
-                @if(isset($snow[0]))
-                    <thead class="thead-light">
-                    <tr>
-                        <th class="text-center">{{ ! empty($snow) ? $snow[0]->label : 'Snowboard'  }}</th>
-                        <th class="text-center">Référence</th>
-                        <th class="text-center">Taille</th>
-                        <th class="text-center">Prix adulte</th>
-                        <th class="text-center">Prix enfant</th>
-                        <th class="text-center">Modifier</th>
-                        <th class="text-center">Supprimer</th>
-                    </tr>
-                    </thead>
-
-                    @foreach($snow as $statement)
-                        <tr>
-                            <td class="text-center"></td>
-                            <td class="text-center">{{ $statement->internalId }}</td>
-                            <td class="text-center">{{ $statement->size }} cm</td>
-                            <td class="text-center">{{ $statement->adultPrice }} €</td>
-                            <td class="text-center">{{ $statement->childrenPrice }} €</td>
-                            <td class="text-center">
-                                <a href="{{ Request::url() . '/' . $statement->id }}/modifier">
-                                    <i class="fa fa-pencil" style="color:orange; font-size: 1.4em;"></i>
-                                </a>
-                            </td>
-                            <td class="text-center">
-                                <form name="delete_form" action="{{ Request::url() . '/' . $statement->id }}"
-                                      method="POST">
-                                    @method('DELETE')
-                                    @csrf
-                                    <i class="fa fa-times btn-delete" style="color:red; font-size: 1.4em;"></i>
-                                </form>
-                            </td>
-                        </tr>
-                    @endforeach
                 @endif
 
-                @if(isset($luge[0]))
-                    <thead class="thead-light">
-                    <tr>
-                        <th class="text-center">{{ ! empty($luge) ? $luge[0]->label : 'Luge'  }}</th>
-                        <th class="text-center">Référence</th>
-                        <th class="text-center">Taille</th>
-                        <th class="text-center">Prix adulte</th>
-                        <th class="text-center">Prix enfant</th>
-                        <th class="text-center">Modifier</th>
-                        <th class="text-center">Supprimer</th>
-                    </tr>
-                    </thead>
-                    {!! empty($luge) ? '<tr><td colspan="7" class="text-center alert alert-info"><b>Aucune luge enregistrée.</b></td></tr>' : '' !!}
-
-                    @foreach($luge as $statement)
+                @foreach($all as $one)
+                        <thead class="thead-light">
                         <tr>
-                            <td class="text-center"></td>
-                            <td class="text-center">{{ $statement->internalId }}</td>
-                            <td class="text-center">{{ $statement->size }} cm</td>
-                            <td class="text-center">{{ $statement->adultPrice }} €</td>
-                            <td class="text-center">{{ $statement->childrenPrice }} €</td>
-                            <td class="text-center">
-                                <a href="{{ Request::url() . '/' . $statement->id }}/modifier">
-                                    <i class="fa fa-pencil" style="color:orange; font-size: 1.4em;"></i>
-                                </a>
-                            </td>
-                            <td class="text-center">
-                                <form name="deleteForm{{ $statement->id }}" action="/equipements/{{ $statement->id }}"
-                                      method="POST">
-                                    @method('DELETE')
-                                    @csrf
-                                    <i class="fa fa-times btn-delete" style="color:red; font-size: 1.4em;"></i>
-                                </form>
-                            </td>
+                            <th class="text-center">{{ ! empty(current($one)) ? current($one)->label : '' }}</th>
+                            <th class="text-center">Référence</th>
+                            <th class="text-center">Taille</th>
+                            <th class="text-center">Prix adulte</th>
+                            <th class="text-center">Prix enfant</th>
+                            <th class="text-center">Modifier</th>
+                            <th class="text-center">Supprimer</th>
                         </tr>
-                    @endforeach
-                @endif
+                        </thead>
+
+                        @foreach($one as $statement)
+                            <tr>
+                                <td class="text-center"></td>
+                                <td class="text-center">{{ $statement->internalId }}</td>
+                                <td class="text-center">{{ $statement->size }} cm</td>
+                                <td class="text-center">{{ $statement->adultPrice }} €</td>
+                                <td class="text-center">{{ $statement->childrenPrice }} €</td>
+                                <td class="text-center">
+                                    <a href="{{ Request::url() . '/' . $statement->id }}/modifier">
+                                        <i class="fa fa-pencil" style="color:orange; font-size: 1.4em;"></i>
+                                    </a>
+                                </td>
+                                <td class="text-center">
+                                    <form name="delete_form" action="{{ Request::url() . '/' . $statement->id }}"
+                                          method="POST">
+                                        @method('DELETE')
+                                        @csrf
+                                        <i class="fa fa-times btn-delete" style="color:red; font-size: 1.4em;"></i>
+                                    </form>
+                                </td>
+                            </tr>
+                        @endforeach
+                @endforeach
             </table>
         </div>
     </div>
