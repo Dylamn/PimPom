@@ -3,7 +3,7 @@
         <div class="form-group col-md-4 offset-4">
             <label for="datepicker"></label>
             <input type="text" id="datepicker" class="form-control text-center"/>
-            <p>{{ answer }}</p>
+            <p class="text-center">{{ answer }}</p>
         </div>
     </div>
 </template>
@@ -21,10 +21,9 @@
         beforeCreate() {
             let vm = this;
 
-            axios.get('/json1')
+            axios.get('/api/json')
                 .then(function (response) {
-                    vm.answer = _.capitalize(response.data);
-                    console.log(response.data);
+                    vm.answer = _.capitalize(response.data.answer);
                 })
         },
 

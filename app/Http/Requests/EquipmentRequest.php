@@ -33,7 +33,7 @@ class EquipmentRequest extends FormRequest
             }
         } else {
             return [
-                'internalId' => 'required|String|between:2,5|unique:equipments,internalId',
+                'internalId' => 'required|String|between:3,8|unique:equipments,internalId',
                 'size' => 'required|Integer|between:0,999',
             ];
         }

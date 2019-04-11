@@ -44,14 +44,16 @@ class Equipment extends Base\Equipment
         $data = DB::select("SELECT * FROM view_equipments");
         foreach ($cat as $oneCat)
         {
-            $i = 0;
-            for ($i; $i < count($data); $i++)
+            $arr = array();
+
+            for ($i = 0; $i < count($data); $i++)
             {
                 if ($oneCat->label === $data[$i]->label)
                 {
-                    $all[$oneCat->label][$i] = ($data[$i]);
+                    array_push($arr, $data[$i]);
                 }
             }
+            $all[$oneCat->label] = $arr;
         }
 
         return $all;

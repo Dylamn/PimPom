@@ -16,3 +16,9 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/json', function (Request $request) {
+    return [
+        'answer' => rand(0, 1) === 1 ? 'Yes' : 'No'
+    ];
+});

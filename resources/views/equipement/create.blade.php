@@ -11,6 +11,11 @@
     <div class="container">
         <h1>Ajouter un équipement</h1>
 
+        <pre>
+            @php
+                print_r($errors);
+            @endphp
+        </pre>
         <form method="POST" action="{{ route('equipements.store') }}" class="form-group">
             @csrf
             <div class="row">
@@ -20,7 +25,7 @@
                         <option value="{{ $category->id }}" {{ old('categoryId') == $category->id ? 'selected' : '' }}>
                             {{ $category->label }}
                         </option>
-                        @if($error->has())
+{{--                        @if($error->has())--}}
                     @endforeach
                 </select>
             </div>

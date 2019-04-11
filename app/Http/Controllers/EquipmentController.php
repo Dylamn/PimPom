@@ -40,7 +40,6 @@ class EquipmentController extends Controller
      */
     public function store(EquipmentRequest $equipmentRequest)
     {
-        return dd($equipmentRequest); // TODO : Check what going on
         Equipment::create([
             'internalId' => $equipmentRequest->internalId,
             'size' => $equipmentRequest->size,
