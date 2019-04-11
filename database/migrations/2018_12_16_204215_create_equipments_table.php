@@ -18,7 +18,7 @@ class CreateEquipmentsTable extends Migration
 			$table->string('internalId', 7)->unique();
 			$table->string('size', 5);
 			$table->integer('categoryId')->index('fkCategorie');
-			$table->integer('use')->default(0);
+			$table->integer('statusId')->index('fkStatus');
 			$table->timestamps();
 		});
 	}

@@ -15,6 +15,7 @@ class AddForeignKeysToEquipmentsTable extends Migration
 		Schema::table('equipments', function(Blueprint $table)
 		{
 			$table->foreign('categoryId', 'fkCategorie')->references('id')->on('categories')->onUpdate('RESTRICT')->onDelete('RESTRICT');
+			$table->foreign('statusId', 'fkStatus')->references('id')->on('status')->onUpdate('RESTRICT')->onDelete('RESTRICT');
 		});
 	}
 
@@ -28,6 +29,7 @@ class AddForeignKeysToEquipmentsTable extends Migration
 		Schema::table('equipments', function(Blueprint $table)
 		{
 			$table->dropForeign('fkCategorie');
+			$table->dropForeign('fkStatus');
 		});
 	}
 }

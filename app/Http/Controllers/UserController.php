@@ -25,7 +25,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('user.create');
     }
 
     /**
@@ -36,7 +36,19 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $st = '$2y$10$fhdUSSmqIHiO7pHO6GEzt.mfxamNse6eI/NW1PGN8xgtGvdg4TpCW' . '<br>';
+        echo ($st);
+        echo bcrypt('testtest');
+
+//        User::create([
+//            'surname' => $request->surname,
+//            'firstName' => $request->firstname,
+//            'username' => $request->username,
+//            'password' => $request->password,
+//            'privilege' => $request->privilege,
+//        ]);
+//
+//        return redirect(route('categorie.index'));
     }
 
     /**
@@ -58,7 +70,10 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::findOrFail($id);
+        //$user = User::select('*')->where('surname', '=', $user->surname)->get();
+
+        return view("user.edit", compact("user"));
     }
 
     /**
@@ -68,9 +83,16 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $user)
     {
-        //
+        $user->update([
+            'surname' => $request->surname,
+            'firstName' => $request->firstname,
+            'password' => $request->password,
+            'privilege' => $request->privilege,
+        ]);
+
+        return redirect(route('utilisateurs.index'));
     }
 
     /**
@@ -79,8 +101,10 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $user)
     {
-        //
+        $user->delete();
+
+        return redirect(route('utilisateurs.index'));
     }
 }

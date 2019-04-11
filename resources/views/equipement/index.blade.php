@@ -10,16 +10,16 @@
     <div class="container" id="side">
         <div class="container table-responsive" style="padding-top: 3%">
             <table class="table table-striped table-bordered table-hover">
-                @if(!isset($all))
+                @if(!isset($equipment))
                     <tr>
                         {{ "Aucun équipements n'est enregistré." }}
                     </tr>
                 @endif
 
-                @foreach($all as $one)
+                @foreach($equipment as $oneEquipment)
                         <thead class="thead-light">
                         <tr>
-                            <th class="text-center">{{ ! empty(current($one)) ? current($one)->label : '' }}</th>
+                            <th class="text-center">{{ ! empty(current($oneEquipment)) ? current($oneEquipment)->label : '' }}</th>
                             <th class="text-center">Référence</th>
                             <th class="text-center">Taille</th>
                             <th class="text-center">Prix adulte</th>
@@ -29,7 +29,7 @@
                         </tr>
                         </thead>
 
-                        @foreach($one as $statement)
+                        @foreach($oneEquipment as $statement)
                             <tr>
                                 <td class="text-center"></td>
                                 <td class="text-center">{{ $statement->internalId }}</td>

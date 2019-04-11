@@ -16,15 +16,8 @@ class EquipmentController extends Controller
      */
     public function index()
     {
-        $ski = $this->bigData('Ski');
-
-        $snow = $this->bigData('Snowboard');
-
-        $luge = $this->bigData('Luge');
-
-        $weedze = $this->bigData('WeedzeSeeder');
-        $all = Equipment::getEquipment();
-        return view('equipement.index', compact('ski', 'snow', 'luge', 'weedze', 'all'));
+        $equipment = Equipment::getEquipment();
+        return view('equipement.index', compact('equipment'));
     }
 
     /**

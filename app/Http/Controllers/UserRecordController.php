@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Rent;
 use Illuminate\Http\Request;
 
-class UserOldRentsController extends Controller
+class UserRecordController extends Controller
 {
     /**
      * Show the user previous rents.
@@ -15,6 +15,6 @@ class UserOldRentsController extends Controller
     public function index()
     {
         $rents = Rent::getRentsByName("Jon");
-        return view('userOldRents', compact('rents'));
+        return view('userRecord', compact('rents'));
     }
 }

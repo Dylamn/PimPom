@@ -34,10 +34,9 @@ Auth::routes(['register' => false]);
 Route::get('/home', 'HomeController@index')->name('home');
 
 // Route for the rents of the user connected
-Route::get('/mesReservations', 'UserRentsController@index')->name('myRents');
-
-// Route for the old rents of the user connected
-Route::get('/mesAnciennesReservations', 'UserOldRentsController@index')->name('oldRents');
+Route::middleware('auth:web')->get('/mesReservations', 'UserRentsController@index')->name('myRents');
+// Route for the record of the user connected
+Route::middleware('auth:web')->get('/mesAnciennesReservations', 'UserRecordController@index')->name('record');
 
 /*
  |--------------------------------------------------------------------------
