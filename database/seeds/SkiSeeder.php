@@ -250,7 +250,7 @@ class SkiSeeder extends Seeder
             'categoryId' => 2,
             'internalId' => 'SK_154F',
             'size' => '154',
-            'statusId' => 2,
+            'statusId' => 3,
             'created_at' => '2018-12-16 12:00:00',
             'updated_at' => '2018-12-16 12:00:00',
         ]);
@@ -304,7 +304,7 @@ class SkiSeeder extends Seeder
             'categoryId' => 2,
             'internalId' => 'SK_158E',
             'size' => '158',
-            'statusId' => 2,
+            'statusId' => 3,
             'created_at' => '2018-12-16 12:00:00',
             'updated_at' => '2018-12-16 12:00:00',
         ]);
@@ -358,7 +358,7 @@ class SkiSeeder extends Seeder
             'categoryId' => 2,
             'internalId' => 'SK_162F',
             'size' => '162',
-            'statusId' => 2,
+            'statusId' => 3,
             'created_at' => '2018-12-16 12:00:00',
             'updated_at' => '2018-12-16 12:00:00',
         ]);
@@ -367,7 +367,7 @@ class SkiSeeder extends Seeder
             'categoryId' => 2,
             'internalId' => 'SK_162G',
             'size' => '162',
-            'statusId' => 2,
+            'statusId' => 3,
             'created_at' => '2018-12-16 12:00:00',
             'updated_at' => '2018-12-16 12:00:00',
         ]);
@@ -421,7 +421,7 @@ class SkiSeeder extends Seeder
             'categoryId' => 2,
             'internalId' => 'SK_165B',
             'size' => '165',
-            'statusId' => 2,
+            'statusId' => 3,
             'created_at' => '2018-12-16 12:00:00',
             'updated_at' => '2018-12-16 12:00:00',
         ]);

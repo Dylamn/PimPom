@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -38,7 +39,7 @@ class UserController extends Controller
     {
         $st = '$2y$10$fhdUSSmqIHiO7pHO6GEzt.mfxamNse6eI/NW1PGN8xgtGvdg4TpCW' . '<br>';
         echo ($st);
-        echo bcrypt('testtest');
+        echo Hash::make('testtest') . '<br>';
 
 //        User::create([
 //            'surname' => $request->surname,
@@ -46,6 +47,7 @@ class UserController extends Controller
 //            'username' => $request->username,
 //            'password' => $request->password,
 //            'privilege' => $request->privilege,
+        //Hash::make($request->newPassword)
 //        ]);
 //
 //        return redirect(route('categorie.index'));
@@ -85,6 +87,7 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
+        // TODO : voir le problème lié par rapport au paramètre user
         $user->update([
             'surname' => $request->surname,
             'firstName' => $request->firstname,
@@ -103,8 +106,9 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        $user->delete();
+        return dd($user);
+        //$user->delete();
 
-        return redirect(route('utilisateurs.index'));
+        //return redirect(route('utilisateurs.index'));
     }
 }

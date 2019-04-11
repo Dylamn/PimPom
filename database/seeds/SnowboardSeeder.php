@@ -70,7 +70,7 @@ class SnowboardSeeder extends Seeder
             'categoryId' => 1,
             'internalId' => 'SN_160C',
             'size' => '160',
-            'statusId' => 2,
+            'statusId' => 3,
             'created_at' => '2018-12-16 12:00:00',
             'updated_at' => '2018-12-16 12:00:00',
         ]);
@@ -88,7 +88,7 @@ class SnowboardSeeder extends Seeder
             'categoryId' => 1,
             'internalId' => 'SN_162B',
             'size' => '162',
-            'statusId' => 2,
+            'statusId' => 3,
             'created_at' => '2018-12-16 12:00:00',
             'updated_at' => '2018-12-16 12:00:00',
         ]);
