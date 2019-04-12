@@ -2,12 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\DB;
 
-class User extends Authenticatable
+class User extends Base\User
 {
-    use Notifiable;
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -30,4 +28,9 @@ class User extends Authenticatable
 		'username',
 		'password',
 	];
+
+	public function delete()
+    {
+        DB::table('users')->where('id', '=', $this->id)->delete();
+    }
 }

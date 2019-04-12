@@ -6,8 +6,8 @@
  */
 
 namespace App\Models\Base;
-
-use Reliese\Database\Eloquent\Model as Eloquent;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
 /**
  * Class User
@@ -25,8 +25,10 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  *
  * @package App\Models\Base
  */
-class User extends Eloquent
+class User extends Authenticatable
 {
+    use Notifiable;
+
 	protected $table = 'rezaski.users';
 
 	protected $casts = [

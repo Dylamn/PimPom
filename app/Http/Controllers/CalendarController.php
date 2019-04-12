@@ -6,6 +6,7 @@ use App\Services\CalendarService;
 use App\Services\CalendarEventsService;
 use Illuminate\Http\Request;
 use Exception;
+use Illuminate\Support\Facades\Hash;
 
 class CalendarController extends Controller
 {

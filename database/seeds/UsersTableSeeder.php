@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use \Illuminate\Support\Facades\Hash;
 
 class UsersTableSeeder extends Seeder
 {
@@ -17,7 +18,7 @@ class UsersTableSeeder extends Seeder
             'firstName' => 'Jon',
             'email' => 'jon@snow.got',
             'username' => 'Jon',
-            'password' => bcrypt('testtest'),
+            'password' => Hash::make('testtest'),
             'privilege' => '1',
             'created_at' => '2018-12-16 12:00:00',
             'updated_at' => '2018-12-16 12:00:00',
@@ -27,7 +28,7 @@ class UsersTableSeeder extends Seeder
             'firstName' => 'Daenerys',
             'email' => 'mother@dragon.westeros',
             'username' => 'QueenOfDragon',
-            'password' => bcrypt('admin'),
+            'password' => Hash::make('admin'),
             'privilege' => '1',
             'created_at' => '2018-12-16 12:00:00',
             'updated_at' => '2018-12-16 12:00:00',
