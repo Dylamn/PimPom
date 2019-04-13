@@ -2,10 +2,11 @@
 
 /**
  * Created by Reliese Model.
- * Date: Sat, 30 Mar 2019 22:18:03 +0000.
+ * Date: Fri, 12 Apr 2019 21:29:41 +0000.
  */
 
 namespace App\Models\Base;
+
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 

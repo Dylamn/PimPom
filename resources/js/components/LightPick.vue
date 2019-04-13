@@ -1,10 +1,18 @@
 <template>
     <div class="row">
-        <div class="form-group col-md-4 offset-4">
-            <label for="datepicker"></label>
-            <input type="text" id="datepicker" class="form-control text-center"/>
-            <p class="text-center">{{ answer }}</p>
+        <div class="col-md form-group">
+            <label for="dateDebut" class="col-form-label col-md-auto text-md-right">
+                Date de début de la réservation :
+            </label>
+            <input type="text" id="dateDebut" name="dateDebut" class="col-md form-control col-md-5 d-inline" required/>
         </div>
+        <div class="col-md form-group">
+            <label for="dateFin" class="col-md-auto col-form-label text-md-right">
+                Date de fin de la réservation :
+            </label>
+            <input type="text" id="dateFin" name="dateFin" class="col-md form-control col-md-5 d-inline" required/>
+        </div>
+        <p class="text-center">{{ answer }}</p>
     </div>
 </template>
 
@@ -29,7 +37,8 @@
 
         mounted() {
             let picker = new Lightpick({
-                field: document.getElementById('datepicker'),
+                field: document.getElementById('dateDebut'),
+                secondField: document.getElementById('dateFin'),
                 singleDate: false,
                 minDate: moment(),
                 maxDate: moment().add(6, 'year'),
@@ -39,12 +48,6 @@
                         max: moment().add(5, 'year').format('YYYY')
                     },
                     months: true,
-                },
-                onSelect: function (start, end) {
-                    let str = '';
-                    str += start ? start.format('Do MMMM YYYY') + ' to ' : '';
-                    str += end ? end.format('Do MMMM YYYY') : '...';
-                    document.getElementById('datepicker').innerHTML = str;
                 },
                 locale: {
                     buttons: {

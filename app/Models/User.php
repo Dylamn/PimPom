@@ -2,8 +2,6 @@
 
 namespace App\Models;
 
-use Illuminate\Support\Facades\DB;
-
 class User extends Base\User
 {
     /**
@@ -28,9 +26,4 @@ class User extends Base\User
 		'username',
 		'password',
 	];
-
-	public function delete()
-    {
-        DB::table('users')->where('id', '=', $this->id)->delete();
-    }
 }

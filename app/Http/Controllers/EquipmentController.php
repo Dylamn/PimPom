@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\Equipment;
 use App\Http\Requests\EquipmentRequest;
 use Exception;
+use Illuminate\Support\Facades\DB;
 
 class EquipmentController extends Controller
 {
@@ -70,8 +71,8 @@ class EquipmentController extends Controller
      */
     public function edit(Equipment $equipment)
     {
-       $equipement = Equipment::select('*')
-           ->rightJoin('categories AS c', 'equipments.categoryId', '=', 'c.id')
+       $equipement = Equipment::select('equipments.id', 'internalId', 'size', 'adultPrice', 'childrenPrice')
+           ->leftJoin('categories AS c', 'equipments.categoryId', '=', 'c.id')
            ->where('equipments.id', '=', $equipment->id)->get()[0];
 
         return view("equipement.edit", compact("equipement"));

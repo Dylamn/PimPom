@@ -25,7 +25,7 @@ class EquipmentRequest extends FormRequest
      */
     public function rules()
     {
-        if (isset($this->id)) {
+        if (isset($this->id) && isset($this->internalId)) {
             if (Equipment::findOrFail($this->id)->internalId === $this->internalId) {
                 return [
                     'size' => 'required|Integer|between:0,999',

@@ -79,7 +79,7 @@ Route::middleware('auth:web')->delete('/categories/{category}', 'CategoryControl
 Route::middleware('auth:web')->get('/utilisateurs', 'UserController@index')->name('utilisateurs.index');
 Route::middleware('auth:web')->post('/utilisateurs', 'UserController@store')->name('utilisateurs.store');
 Route::middleware('auth:web')->get('/utilisateurs/creer', 'UserController@create')->name('utilisateurs.create');
-Route::middleware('auth:web')->get('/utilisateurs/{utilisateur}', 'UserController@show')->name('utilisateurs.show');
-Route::middleware('auth:web')->get('/utilisateurs/{utilisateur}/modifier', 'UserController@edit')->name('utilisateurs.edit');
-Route::middleware('auth:web')->patch('/utilisateurs/{utilisateur}/', 'UserController@update')->name('utilisateurs.update');
-Route::middleware('auth:web')->delete('/utilisateurs/{utilisateur}', 'UserController@destroy')->name('utilisateurs.destroy');
+Route::middleware('auth:web')->get('/utilisateurs/{user}', 'UserController@show')->name('utilisateurs.show');
+Route::middleware('auth:web')->get('/utilisateurs/{user}/modifier', 'UserController@edit')->name('utilisateurs.edit');
+Route::middleware('auth:web')->patch('/utilisateurs/{user}/', 'UserController@update')->name('utilisateurs.update');
+Route::middleware('auth:web')->delete('/utilisateurs/{user}', 'UserController@destroy')->name('utilisateurs.destroy');

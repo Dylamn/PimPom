@@ -26,6 +26,7 @@
                 </div>
             </div>
         </div>
+        <div id="dd"></div>
         <light-pick></light-pick>
     </div>
 @endsection

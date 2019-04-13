@@ -2,7 +2,7 @@
 
 /**
  * Created by Reliese Model.
- * Date: Fri, 12 Apr 2019 21:29:40 +0000.
+ * Date: Fri, 12 Apr 2019 21:29:41 +0000.
  */
 
 namespace App\Models\Base;
@@ -10,23 +10,17 @@ namespace App\Models\Base;
 use Reliese\Database\Eloquent\Model as Eloquent;
 
 /**
- * Class Category
+ * Class Status
  * 
  * @property int $id
  * @property string $label
- * @property float $adultPrice
- * @property float $childrenPrice
+ * @property string $hexaColor
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  *
  * @package App\Models\Base
  */
-class Category extends Eloquent
+class Status extends Eloquent
 {
-	protected $table = 'rezaski.categories';
-
-	protected $casts = [
-		'adultPrice' => 'float',
-		'childrenPrice' => 'float'
-	];
+	protected $table = 'rezaski.status';
 }

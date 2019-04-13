@@ -2,7 +2,7 @@
 
 /**
  * Created by Reliese Model.
- * Date: Sat, 30 Mar 2019 22:18:03 +0000.
+ * Date: Fri, 12 Apr 2019 21:29:40 +0000.
  */
 
 namespace App\Models\Base;
@@ -11,7 +11,7 @@ use Reliese\Database\Eloquent\Model as Eloquent;
 
 /**
  * Class Record
- *
+ * 
  * @property int $id
  * @property string $userName
  * @property int $settled
@@ -25,14 +25,14 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  */
 class Record extends Eloquent
 {
-    protected $table = 'rezaski.record';
+	protected $table = 'rezaski.record';
 
-    protected $casts = [
-        'settled' => 'int'
-    ];
+	protected $casts = [
+		'settled' => 'int'
+	];
 
-    protected $dates = [
-        'start',
-        'end'
-    ];
+	protected $dates = [
+		'start',
+		'end'
+	];
 }

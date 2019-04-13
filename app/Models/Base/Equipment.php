@@ -2,7 +2,7 @@
 
 /**
  * Created by Reliese Model.
- * Date: Sat, 30 Mar 2019 22:18:03 +0000.
+ * Date: Fri, 12 Apr 2019 21:29:40 +0000.
  */
 
 namespace App\Models\Base;
@@ -16,7 +16,7 @@ use Reliese\Database\Eloquent\Model as Eloquent;
  * @property string $internalId
  * @property string $size
  * @property int $categoryId
- * @property int $use
+ * @property int $statusId
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  *
@@ -28,6 +28,6 @@ class Equipment extends Eloquent
 
 	protected $casts = [
 		'categoryId' => 'int',
-		'use' => 'int'
+		'statusId' => 'int'
 	];
 }
