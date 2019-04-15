@@ -34,11 +34,13 @@
                     vm.answer = _.capitalize(response.data.answer);
                 })
         },
-
         mounted() {
-            let picker = new Lightpick({
-                field: document.getElementById('dateDebut'),
-                secondField: document.getElementById('dateFin'),
+            let dateDebut = document.getElementById('dateDebut'),
+                dateFin = document.getElementById('dateFin');
+
+            window.picker = new Lightpick({
+                field: dateDebut,
+                secondField: dateFin,
                 singleDate: false,
                 minDate: moment(),
                 maxDate: moment().add(6, 'year'),

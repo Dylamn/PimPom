@@ -1,21 +1,11 @@
 @extends('layouts.master')
-
-@section('navbar')
-    @extends('layouts.navbar')
-@endsection
-
+@extends('layouts.navbar')
 @extends('layouts.sidebar')
-
 
 @section('content')
     <div class="container">
         <h1>Ajouter un équipement</h1>
 
-        <pre>
-            @php
-                print_r($errors);
-            @endphp
-        </pre>
         <form method="POST" action="{{ route('equipements.store') }}" class="form-group">
             @csrf
             <div class="row">
@@ -25,7 +15,7 @@
                         <option value="{{ $category->id }}" {{ old('categoryId') == $category->id ? 'selected' : '' }}>
                             {{ $category->label }}
                         </option>
-{{--                        @if($error->has())--}}
+{{--  TODO: afficher les erreurs                      @if($error->has())--}}
                     @endforeach
                 </select>
             </div>

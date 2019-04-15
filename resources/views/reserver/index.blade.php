@@ -1,8 +1,5 @@
 @extends('layouts.master')
-
-@section('navbar')
-    @extends('layouts.navbar')
-@endsection
+@extends('layouts.navbar')
 
 @section('content')
     <div id="app">
@@ -20,7 +17,7 @@
                                 </div>
                                 <div class="col-md form-group">
                                     {{ Form::label('nbPersonnes', 'Nombre de personne(s) :', ['class' => 'col-md-auto col-form-label text-md-right']) }}
-                                    {{ Form::number('nbPersonnes', 1 , ['class' => 'col-md-2 form-control', 'style' => 'display: inline', 'min' => '0']) }}
+                                    {{ Form::select('nbPersonnes', [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] , 0, ['class' => 'col-md-2 form-control', 'style' => 'display: inline', 'min' => '0']) }}
                                 </div>
                             </div>
 

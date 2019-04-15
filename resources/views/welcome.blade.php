@@ -58,10 +58,7 @@
     }
 </style>
 @extends('layouts.master')
-
-@section('navbar')
-    @extends('layouts.navbar')
-@endsection
+@extends('layouts.navbar')
 
 @section('content')
     <div class="flex-center position-ref full-height">

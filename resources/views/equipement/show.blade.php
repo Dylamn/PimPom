@@ -1,8 +1,6 @@
 @extends('layouts.master')
-
-@section('navbar')
-    @extends('layouts.navbar')
-@endsection
+@extends('layouts.navbar')
+@extends('layouts.sidebar')
 
 @section('content')
     <div class="container">

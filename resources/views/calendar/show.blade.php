@@ -1,8 +1,5 @@
 @extends('layouts.master')
-
-@section('navbar')
-    @extends('layouts.navbar')
-@endsection
+@extends('layouts.navbar')
 
 @section('content')
     <div style="padding: 16px;">
