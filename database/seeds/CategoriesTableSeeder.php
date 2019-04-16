@@ -45,6 +45,22 @@ class CategoriesTableSeeder extends Seeder
         ]);
 
         DB::table('categories')->insert([
+            'label' => 'Raquette',
+            'adultPrice' => '30',
+            'childrenPrice' => '15',
+            'created_at' => '2018-12-16 12:00:00',
+            'updated_at' => '2018-12-16 12:00:00',
+        ]);
+
+        DB::table('categories')->insert([
+            'label' => 'Casque',
+            'adultPrice' => '15',
+            'childrenPrice' => '10',
+            'created_at' => '2018-12-16 12:00:00',
+            'updated_at' => '2018-12-16 12:00:00',
+        ]);
+
+        DB::table('categories')->insert([
             'label' => 'Chaussure',
             'adultPrice' => '0',
             'childrenPrice' => '0',

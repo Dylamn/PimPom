@@ -13,10 +13,13 @@ class EquipmentsTableSeeder extends Seeder
     public function run()
     {
         $this->call([
-            WeedzeSeeder::class,
+            SkiSeeder::class,
             SnowboardSeeder::class,
             LugeSeeder::class,
-            SkiSeeder::class,
+            WeedzeSeeder::class,
+            RaquetteSeeder::class,
+            CasqueSeeder::class,
+            ChaussureSeeder::class,
         ]);
     }
 }
