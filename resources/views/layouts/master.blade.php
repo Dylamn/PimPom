@@ -20,11 +20,11 @@
         <link href="{{ asset('css/fa/css/font-awesome.min.css') }}" rel="stylesheet">
     </head>
     <body>
-    <div id="app">
-        @yield('navbar')
-        @yield('sidebar')
-        @yield('content')
+        <div id="app">
+            @yield('navbar')
+            @yield('sidebar')
+            @yield('content')
+        </div>
         @yield('script')
-    </div>
     </body>
 </html>
