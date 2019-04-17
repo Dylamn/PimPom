@@ -1,5 +1,5 @@
 @section('navbar')
-    <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
+    <nav id="master-navbar" class="navbar navbar-expand-lg navbar-light bg-light mb-4">
         <a class="navbar-brand" href="{{ route('acceuil') }}">RézaSki</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03"
                 aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">

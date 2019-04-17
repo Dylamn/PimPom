@@ -13,40 +13,44 @@
                 @endif
 
                 @foreach($equipment as $oneEquipment)
-                        <thead class="thead-light">
-                        <tr>
-                            <th class="text-center">{{ ! empty(current($oneEquipment)) ? current($oneEquipment)->label : '' }}</th>
-                            <th class="text-center">Référence</th>
-                            <th class="text-center">Taille</th>
-                            <th class="text-center">Prix adulte</th>
-                            <th class="text-center">Prix enfant</th>
-                            <th class="text-center">Modifier</th>
-                            <th class="text-center">Supprimer</th>
-                        </tr>
-                        </thead>
+                    <thead class="thead-light">
+                    <tr>
+                        <th class="text-center">{{ ! empty(current($oneEquipment)) ? current($oneEquipment)->label : '' }}</th>
+                        <th class="text-center">Référence</th>
+                        <th class="text-center">Taille</th>
+                        <th class="text-center">Prix adulte</th>
+                        <th class="text-center">Prix enfant</th>
+                        <th class="text-center">Modifier</th>
+                        <th class="text-center">Supprimer</th>
+                    </tr>
+                    </thead>
 
-                        @foreach($oneEquipment as $statement)
-                            <tr>
-                                <td class="text-center"></td>
-                                <td class="text-center">{{ $statement->internalId }}</td>
-                                <td class="text-center">{{ $statement->size }} cm</td>
-                                <td class="text-center">{{ $statement->adultPrice }} €</td>
-                                <td class="text-center">{{ $statement->childrenPrice }} €</td>
-                                <td class="text-center">
-                                    <a href="{{ Request::url() . '/' . $statement->id }}/modifier">
-                                        <i class="fa fa-pencil" style="color:orange; font-size: 1.4em;"></i>
-                                    </a>
-                                </td>
-                                <td class="text-center">
-                                    <form name="delete_form" action="{{ Request::url() . '/' . $statement->id }}"
-                                          method="POST">
-                                        @method('DELETE')
-                                        @csrf
-                                        <i class="fa fa-times btn-delete" style="color:red; font-size: 1.4em;"></i>
-                                    </form>
-                                </td>
-                            </tr>
-                        @endforeach
+                    @foreach($oneEquipment as $statement)
+                        <tr>
+                            <td class="text-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="100" height="30">
+                                    <line x1="0" y1="15" x2="100" y2="15" stroke-width="3px" stroke="{{ __("#195C93") }}"></line>
+                                </svg>
+                            </td>
+                            <td class="text-center">{{ $statement->internalId }}</td>
+                            <td class="text-center">{{ $statement->size }} cm</td>
+                            <td class="text-center">{{ $statement->adultPrice }} €</td>
+                            <td class="text-center">{{ $statement->childrenPrice }} €</td>
+                            <td class="text-center">
+                                <a href="{{ Route('equipements.edit', ['equipment' => $statement->id]) }}">
+                                    <i class="fa fa-pencil" style="color:orange; font-size: 1.4em;"> </i>
+                                </a>
+                            </td>
+                            <td class="text-center">
+                                <form name="delete_form" method="POST"
+                                      action="{{ Route('equipements.destroy', ['equipment' => $statement->id]) }}">
+                                    @method('DELETE')
+                                    @csrf
+                                    <i class="fa fa-times btn-delete" style="color:red; font-size: 1.4em;"> </i>
+                                </form>
+                            </td>
+                        </tr>
+                    @endforeach
                 @endforeach
             </table>
         </div>

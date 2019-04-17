@@ -15,7 +15,7 @@
                         <option value="{{ $category->id }}" {{ old('categoryId') == $category->id ? 'selected' : '' }}>
                             {{ $category->label }}
                         </option>
-{{--  TODO: afficher les erreurs                      @if($error->has())--}}
+{{--  TODO: afficher les erreurs                      @if($error->has()) --}}
                     @endforeach
                 </select>
             </div>

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class StatusTableSeeder extends Seeder
 {
@@ -12,16 +13,18 @@ class StatusTableSeeder extends Seeder
     public function run()
     {
         DB::table('status')->insert([
-            'libelle' => 'Disponible',
-            'hexaColor' => '#0000FF',
+            'label' => 'Disponible',
+            'hexaColor' => '#195C93', // Blue
         ]);
+
         DB::table('status')->insert([
-            'libelle' => 'Réservé',
-            'hexaColor' => '#FFA500',
+            'label' => 'Réservé',
+            'hexaColor' => '#FFA500', // Orange
         ]);
+
         DB::table('status')->insert([
-            'libelle' => 'Réparation',
-            'hexaColor' => '#FF0000',
+            'label' => 'Réparation',
+            'hexaColor' => '#E60000 ', // Red
         ]);
     }
 }

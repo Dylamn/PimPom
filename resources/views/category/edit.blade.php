@@ -9,12 +9,12 @@
                 <div class="card">
                     <div class="card-header">Modifier une catégorie</div>
                     <div class="card-body">
-                        <form method="POST" action="/categories/{{ $category->id }}" class="form-group">
+                        <form method="POST" action="{{ Route('categorie.update', ['category' => $category->id]) }}" class="form-group">
                             @method('PATCH')
                             @csrf
                             <div class="row">
                                 <div class="col-md form-group">
-                                    <label for="label">Categorie</label>
+                                    <label for="label">Catégorie</label>
                                     <input type="text" id="label" name="label" value="{{ $category->label }}"
                                            class="form-control rounded {{ $errors->has('label') ? 'is-invalid' : '' }}">
 

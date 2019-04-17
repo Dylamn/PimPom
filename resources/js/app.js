@@ -17,13 +17,11 @@ window.Vue = Vue;
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-import ExampleComponent from './components/ExampleComponent';
 import LightPick from './components/LightPick';
 
 const app = new Vue({
     el: '#app',
     components: {
-        ExampleComponent,
         LightPick
     }
 });

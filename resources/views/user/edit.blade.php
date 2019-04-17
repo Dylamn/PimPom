@@ -9,7 +9,7 @@
                 <div class="card">
                     <div class="card-header">Modifier une catégorie</div>
                     <div class="card-body">
-                        <form method="POST" action="/utilisateurs/{{ $user->id }}" class="form-group">
+                        <form method="POST" action=" {{ Route('utilisateurs.update', ['user' => $user->id]) }}" class="form-group">
                             @method('PATCH')
                             @csrf
                             <div class="row">
@@ -79,7 +79,7 @@
                                     @endif
                                 </div>
                                 <div class="col-md form-group">
-                                    <label for="newPassword">Réécrire du mot de passe</label>
+                                    <label for="newPassword">Confirmation du mot de passe</label>
                                     <input type="password" id="newPassword" name="newPassword" placeholder="Réécrire le nouveau mot de passe"
                                            class="form-control rounded {{ $errors->has('password') ? 'is-invalid' : '' }}">
 
