@@ -1,14 +1,17 @@
 (function () {
 
     let nbPersonnes = document.getElementById("nbPersonnes");
-
     let div = document.getElementById("detailsReservation");
 
     console.log(nbPersonnes);
 
     nbPersonnes.addEventListener('change', function (ev) {
         console.log('noway');
-       console.log(ev.target);
+       console.log(nbPersonnes.value);
+
+        for (let i = 1; i <= nbPersonnes.value; i++) {
+            console.log("test"+i);
+        }
     });
     // nbPersonnes.addEventListener('change', function () {
     //
