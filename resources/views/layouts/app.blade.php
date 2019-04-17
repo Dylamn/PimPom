@@ -18,7 +18,6 @@
 
     <!-- Styles -->
     <link href="{{ asset('hot/css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
 
 </head>
 <body>

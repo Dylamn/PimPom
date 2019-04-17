@@ -8,7 +8,188 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
-.navbar-laravel {
-  background-color: #fff;
+#master-navbar {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+/*
+ |--------------------------------------------------------------------------
+ | Checkbox style
+ |--------------------------------------------------------------------------
+ */
+
+.label-cbx {
+    user-select: none;
+    cursor: pointer;
+    margin-bottom: 0;
+
+    & > label {
+        pointer-events: none;
+        vertical-align: middle;
+    }
+    &:hover .checkbox svg path {
+        stroke-dashoffset: 0;
+    }
+
+    .checkbox {
+        position: relative;
+        top: 2px;
+        float: left;
+        margin-right: 8px;
+        width: 20px;
+        height: 20px;
+        border: 2px solid #C8CCD4;
+        border-radius: 3px;
+
+        svg {
+            position: absolute;
+            top: -2px;
+            left: -2px;
+
+            path {
+                fill: none;
+                stroke: #3490dc;
+                stroke-width: 2;
+                stroke-linecap: round;
+                stroke-linejoin: round;
+                stroke-dasharray: 71px;
+                stroke-dashoffset: 71px;
+                transition: all 0.6s ease;
+            }
+            polyline {
+                fill: none;
+                stroke: #FFF;
+                stroke-width: 2;
+                stroke-linecap: round;
+                stroke-linejoin: round;
+                stroke-dasharray: 18px;
+                stroke-dashoffset: 18px;
+                transition: all 0.3s ease;
+            }
+        }
+    } // End of .checkbox
+
+    input:checked + .checkbox {
+        border-color: #3490dc;
+
+        svg {
+            path {
+                fill: #3490dc;
+            }
+            polyline {
+                stroke-dashoffset: 0;
+            }
+        }
+    }
+} // End of .label-cbx
+
+.invisible {
+    position: absolute;
+    z-index: -1;
+    width: 0;
+    height: 0;
+    opacity: 0;
+}
+
+/*
+ |--------------------------------------------------------------------------
+ | Sidebar style
+ |--------------------------------------------------------------------------
+ */
+.calendar__container {
+    margin: 8px;
+}
+
+.calendar__table {
+    margin: 0 auto;
+    width: 100%;
+    height: calc(100vh - 256px);
+
+    td {
+        border: 1px solid #ccc;
+        padding: 10px;
+        vertical-align: top;
+        width: 14.29%;
+    }
+}
+
+.calendar__table--6weeks td {
+    height: 16.66%;
+}
+
+.calendar__weekday {
+    font-weight: bold;
+    color: #000;
+    font-size: 1.2em;
+}
+
+.calendar__notCurrentMonth .calendar__day {
+    opacity: 0.4;
+}
+
+/*
+ |--------------------------------------------------------------------------
+ | Sidebar style
+ |--------------------------------------------------------------------------
+ */
+#sidebar {
+    width: 200px;
+    position: fixed;
+    top: 55px;
+    left: 0;
+    height: 100vh;
+    z-index: 999;
+    background: #d6d6d6;
+    color: #fff;
+    transition: all 0.3s;
+}
+
+#sidebar ul.components {
+    padding: 20px 0;
+    border-bottom: 1px solid #595959;
+}
+
+#sidebar ul p {
+    color: #fff;
+    padding: 10px;
+}
+
+#sidebar ul li a {
+    padding: 10px;
+    font-size: 1.1em;
+    display: block;
+    text-decoration: none;
+    color: #fff;
+}
+
+#sidebar ul li a:hover {
+    color: #8c8c8c;
+    background: #fff;
+}
+
+#sidebar ul li.active > a, a[aria-expanded="true"] {
+    color: #fff;
+    background: #595959;
+    font-size: 1.3em;
+}
+
+/*
+ |--------------------------------------------------------------------------
+ | Media Queries
+ |--------------------------------------------------------------------------
+ */
+@media (max-width: 768px) {
+    #sidebar {
+        margin-left: -250px;
+    }
+
+    #sidebar.active {
+        margin-left: 0;
+    }
+}
+
+@media screen and (min-width:769px) and (max-width: 1920px) {
+    #side {
+        padding-left: 200px;
+    }
 }
