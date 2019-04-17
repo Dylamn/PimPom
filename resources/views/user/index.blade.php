@@ -46,5 +46,4 @@
     <script src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>
     <!-- Scripts -->
     <script src="{{ asset('hot/js/app.js') }}" defer></script>
-    <script src="{{ asset('js/submit_form.js') }}"></script>
 @endsection

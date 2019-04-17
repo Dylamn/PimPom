@@ -3,8 +3,8 @@
 namespace App\Services;
 
 use Illuminate\Support\Facades\DB;
-use App\Model\Rents;
-use DateTime, Exception;
+use App\Models\Rent;
+use DateTime;
 
 class CalendarEventsService
 {
@@ -30,6 +30,7 @@ class CalendarEventsService
      *
      * @param DateTime $start
      * @param DateTime $end
+     * @throws \Exception
      * @return array
      */
     function getEventsBetweenByDay(DateTime $start, DateTime $end): array
@@ -38,16 +39,13 @@ class CalendarEventsService
         $days = [];
 
         foreach ($events as $event) {
-            try {
-                $date = new DateTime($event->start);
-                $date = $date->format('Y-m-d');
-            } catch (Exception $ex) {
-                // TODO : Manage Exception
-            }
+            $date = new DateTime($event->start);
+            $date = $date->format('Y-m-d');
+
             if (!isset($days[$date])) {
                 $days[$date] = [$event];
             } else {
-                $days[$date][] = $events;
+                $days[$date] = $events;
             }
         }
 
@@ -62,6 +60,6 @@ class CalendarEventsService
      */
     static public function findById(int $id) {
 
-        return Rents::findOrFail($id);
+        return Rent::findOrFail($id);
     }
 }

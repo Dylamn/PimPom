@@ -59,15 +59,15 @@ class CalendarController extends Controller
     /**
      * Display the specified resource with a date (m-Y).
      *
-     * @param  int $month
-     * @param int $year
-     * @param int $idEvent
+     * @param  $day
+     * @param $month
+     * @param $year
      * @return \Illuminate\Http\Response
      */
-    public function showEvents($month, $year, $idEvent)
+    public function showEvents($day, $month, $year)
     {
-        $rent = CalendarEventsService::findById($idEvent);
-
+//        $rent = CalendarEventsService::findById($events);
+        return dd($day, $month, $year);
         return view('calendar.show', compact('rent'));
     }
 

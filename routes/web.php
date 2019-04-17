@@ -20,7 +20,7 @@ Route::get('/', function () {
 // Route for the rent calendar
 Route::get('/calendrier', 'CalendarController@index')->name('calendar.index');
 Route::get('/calendrier/{month}/{year}', 'CalendarController@index')->name('calendar.show.month');
-Route::get('/calendrier/{month}/{year}/event/{idEvent}', 'CalendarController@showEvents')->name('calendar.show.day.event');
+Route::get('/calendrier/{day}/{month}/{year}/reservations', 'CalendarController@showEvents')->name('calendar.show.day.event');
 
 // Routes for authentification (register page is disabled)
 Auth::routes(['register' => false]);
@@ -30,6 +30,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 // Route for the rents of the user connected
 Route::middleware('auth:web')->get('/mesReservations', 'UserRentsController@index')->name('myRents');
+
 // Route for the record of the user connected
 Route::middleware('auth:web')->get('/mesAnciennesReservations', 'UserRecordController@index')->name('record');
 

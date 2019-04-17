@@ -42,12 +42,11 @@
                                 </a>
                             </td>
                             <td class="text-center">
-                                <form name="delete_form" method="POST"
-                                      action="{{ Route('equipements.destroy', ['equipment' => $statement->id]) }}">
-                                    @method('DELETE')
-                                    @csrf
-                                    <i class="fa fa-times btn-delete" style="color:red; font-size: 1.4em;"> </i>
-                                </form>
+                                <delete-form
+                                    action="{{ Route('equipements.destroy', ['equipment' => $statement->id]) }}"
+                                    method="{{ __('DELETE') }}"
+                                    csrf="{{ csrf_token() }}">
+                                </delete-form>
                             </td>
                         </tr>
                     @endforeach
@@ -60,7 +59,6 @@
 @section('script')
     <!-- Scripts -->
     <script src="{{ asset('hot/js/app.js') }}" defer></script>
-    <script src="{{ asset('js/submit_form.js') }}"></script>
     <!-- jQuery -->
     <script src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>
     <!-- jQuery Custom Scroller CDN -->

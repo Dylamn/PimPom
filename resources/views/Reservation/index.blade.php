@@ -36,12 +36,11 @@
                                 </a>
                             </td>
                             <td class="text-center">
-                                <form name="delete_form{{__($one->id) }}"
-                                      action="{{ Request::url() . '/' . $one->id }}" method="POST">
-                                    @method('DELETE')
-                                    @csrf
-                                    <i id="btn-delete" class="fa fa-times" style="color:red; font-size: 1.4em;"></i>
-                                </form>
+                                <delete-form
+                                    action="{{ Route('reserver.destroy', ['reserver' => $one->id]) }}"
+                                    method="{{ __('DELETE') }}"
+                                    csrf="{{ csrf_token() }}">
+                                </delete-form>
                             </td>
                         </tr>
                     @endforeach
@@ -55,7 +54,6 @@
 @section('script')
     <!-- Scripts -->
     <script src="{{ asset('hot/js/app.js') }}" defer></script>
-    <script src="{{ asset('js/submit_form.js') }}"></script>
     <!-- jQuery -->
     <script src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>
     <!-- jQuery Custom Scroller CDN -->

@@ -18,10 +18,12 @@ window.Vue = Vue;
  */
 
 import LightPick from './components/LightPick';
+import DeleteForm from './components/DeleteForm';
 
 const app = new Vue({
     el: '#app',
     components: {
-        LightPick
+        LightPick,
+        DeleteForm
     }
 });

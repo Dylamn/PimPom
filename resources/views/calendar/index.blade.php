@@ -6,11 +6,11 @@
         <div class="d-flex flex-row align-items-center justify-content-between m-4">
             <h1>{{ $calendar->toString() }}</h1>
 
-            <div class="col-md-4 m-0 form-group">
-                {{ Form::open(['url' => 'reserver']) }}
-                {{ Form::label('date', 'Filtre : ', ['class' => 'col-md-1 form-label text-md-right', 'style' => 'display: inline']) }}
-                {{ Form::text('Date', '', ['id' => 'datepicker', 'class' => 'col-md-3 form-control', 'style' => 'display: inline']) }}
-            </div>
+{{--            <div class="col-md-4 m-0 form-group">--}}
+{{--                {{ Form::open(['url' => 'reserver']) }}--}}
+{{--                {{ Form::label('date', 'Filtre : ', ['class' => 'col-md-1 form-label text-md-right', 'style' => 'display: inline']) }}--}}
+{{--                {{ Form::text('Date', '', ['id' => 'datepicker', 'class' => 'col-md-3 form-control', 'style' => 'display: inline']) }}--}}
+{{--            </div>--}}
 
             <div>
                 <a href="{{ route('calendar.show.month', ['month' => $calendar->previousMonth()->month, 'year' => $calendar->previousMonth()->year])}}"
@@ -39,13 +39,13 @@
                             <div class="calendar__day">
                                 {{ $date->format('d')}}
                             </div>
-                            @foreach($eventsForDay as $event)
+                            @if(sizeof($eventsForDay) > 0)
                                 <div class="calendar__event">
-                                    <a href="{{ route('calendar.show.day.event', ['month' => $calendar->month, 'year' => $calendar->year, $event->id]) }}">
-                                        {{ (new DateTime($event->created_at))->format('H:i') . ' - Réservation de ' . $event->userName . '.'}}
+                                    <a href="{{ route('calendar.show.day.event', ['day' => $date->format('d'), 'month' => $calendar->month, 'year' => $calendar->year]) }}">
+                                        {{ sizeof($eventsForDay) . ' réservation' . (sizeof($eventsForDay) > 1 ? 's' : '') }}
                                     </a>
                                 </div>
-                            @endforeach
+                            @endif
                         </td>
                     @endforeach
                 </tr>
