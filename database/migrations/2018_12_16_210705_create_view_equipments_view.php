@@ -13,10 +13,10 @@ class CreateViewEquipmentsView extends Migration
     public function up()
     {
         DB::select("
-            CREATE OR REPLACE VIEW view_equipments (id, label, internalId, size, adultPrice, childrenPrice) AS 
-            SELECT equipments.id, label, internalId, size, adultPrice, childrenPrice 
-            FROM categories, equipments 
-            WHERE equipments.categoryId = categories.id;"
+            CREATE OR REPLACE VIEW view_equipments (id, label, internalId, size, hexaColor, statusLabel, adultPrice, childrenPrice) AS 
+            SELECT e.id, c.label, e.internalId, e.size, s.hexaColor, s.label, c.adultPrice, c.childrenPrice
+            FROM categories c, equipments e, status s 
+            WHERE e.categoryId = c.id AND e.statusId = s.id;"
         );
     }
 

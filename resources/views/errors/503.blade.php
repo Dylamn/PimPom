@@ -27,10 +27,10 @@
                 Excusez-nous, nous sommes actuellement en maintenance. Merci de revenir un peu plus tard.
             </p>
 
-            <a href="http://127.0.0.1:8000/home">
+            <a href="{{ Route('accueil') }}">
                 <button
                     class="bg-transparent text-grey-darkest font-bold uppercase tracking-wide py-3 px-6 border-2 border-grey-light hover:border-grey rounded-lg">
-                    Retour à l'acceuil
+                    Je retente !
                 </button>
             </a>
         </div>

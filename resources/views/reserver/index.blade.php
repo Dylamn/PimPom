@@ -110,15 +110,8 @@
 @endsection
 
 @section('script')
-    <!-- jQuery -->
-    <script src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>
     <!-- Scripts -->
-    <script src="{{ asset('hot/js/app.js') }}" defer></script>
     <script src="{{ asset('js/get_nb_equipments.js') }}"></script>
     <script src="{{ asset('js/selectValues.js') }}"></script>
     <script src="{{ asset('js/cloneLine.js') }}"></script>
-    <!-- Popper.JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"
-            integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
-            crossorigin="anonymous"></script>
 @endsection

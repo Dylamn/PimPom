@@ -4,11 +4,11 @@
 
 @section('content')
     <div class="container" id="side">
-        <div id="table" class="container table-responsive" style="padding-top: 3%">
+        <div id="table" class="container table-responsive pt-5">
             @if(count($all) == 0)
                 <div class="row">
                     <div class="col-md">
-                        <h2 style="text-align: center">Il n'y a aucune réservation</h2>
+                        <h2 class="text-center">Il n'y a aucune réservation pour le moment...</h2>
                     </div>
                 </div>
             @else
@@ -31,13 +31,13 @@
                             <td class="text-center">{{ (new DateTime($one->start))->format('d-m-Y') }}</td>
                             <td class="text-center">{{ (new DateTime($one->end))->format('d-m-Y') }}</td>
                             <td class="text-center">
-                                <a href="{{ Request::url() . '/' . $one->id }}/modifier">
+                                <a href="{{ Route('reservations.edit', ['rent' => $one->id]) }}">
                                     <i class="fa fa-pencil" style="color:orange; font-size: 1.4em;"></i>
                                 </a>
                             </td>
                             <td class="text-center">
                                 <delete-form
-                                    action="{{ Route('reserver.destroy', ['reserver' => $one->id]) }}"
+                                    action="{{ Route('reservations.destroy', ['rent' => $one->id]) }}"
                                     method="{{ __('DELETE') }}"
                                     csrf="{{ csrf_token() }}">
                                 </delete-form>
@@ -52,12 +52,8 @@
 @endsection
 
 @section('script')
-    <!-- Scripts -->
-    <script src="{{ asset('hot/js/app.js') }}" defer></script>
-    <!-- jQuery -->
-    <script src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>
     <!-- jQuery Custom Scroller CDN -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js">
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js">
         $(document).ready(function () {
 
             $("#sidebar").mCustomScrollbar({
@@ -88,9 +84,5 @@
 
         });
     </script>
-    <!-- Popper.JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"
-            integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
-            crossorigin="anonymous"></script>
 @endsection
 

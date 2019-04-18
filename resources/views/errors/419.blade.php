@@ -27,7 +27,7 @@
                     Désolez, votre session à expirée. Veuillez rafraîchir et réessayer.
                 </p>
 
-                <a href="http://127.0.0.1:8000">
+                <a href="{{ Route('accueil') }}">
                     <button class="bg-transparent text-grey-darkest font-bold uppercase tracking-wide py-3 px-6 border-2 border-grey-light hover:border-grey rounded-lg">
                         Retour à l'acceuil
                     </button>

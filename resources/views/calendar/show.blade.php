@@ -14,11 +14,3 @@
         <span style="display: block;">Date de la réservation : {{ $rent->created_at }}</span>
     </div>
 @endsection
-
-@section('script')
-    <script src="{{ asset('hot/js/app.js') }}" defer></script>
-    <!-- Popper.JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"
-            integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
-            crossorigin="anonymous"></script>
-@endsection

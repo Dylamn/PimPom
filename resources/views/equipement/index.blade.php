@@ -4,11 +4,11 @@
 
 @section('content')
     <div class="container" id="side">
-        <div class="container table-responsive" style="padding-top: 3%">
+        <div class="container table-responsive pt-5">
             <table class="table table-striped table-bordered table-hover">
                 @if(!isset($equipment))
                     <tr>
-                        {{ "Aucun équipements n'est enregistré." }}
+                        {{ "Aucun équipement n'est actuellement enregistré." }}
                     </tr>
                 @endif
 
@@ -27,10 +27,13 @@
 
                     @foreach($oneEquipment as $statement)
                         <tr>
-                            <td class="text-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="100" height="30">
-                                    <line x1="0" y1="15" x2="100" y2="15" stroke-width="3px" stroke="{{ __("#195C93") }}"></line>
-                                </svg>
+                            <td class="text-center flex flex-row align-content-center">
+                                <span data-toggle="tooltip" data-placement="top" title="{{ $statement->statusLabel }}">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="100" height="7">
+                                        <line x1="0" y1="3" x2="100" y2="3" stroke-width="3px"
+                                              stroke="{{ __($statement->hexaColor) }}"></line>
+                                    </svg>
+                                </span>
                             </td>
                             <td class="text-center">{{ $statement->internalId }}</td>
                             <td class="text-center">{{ $statement->size }} cm</td>
@@ -57,13 +60,9 @@
 @endsection
 
 @section('script')
-    <!-- Scripts -->
-    <script src="{{ asset('hot/js/app.js') }}" defer></script>
-    <!-- jQuery -->
-    <script src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>
     <!-- jQuery Custom Scroller CDN -->
-    <script
-        src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js">
+    <script defer
+            src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js">
         $(document).ready(function () {
 
             $("#sidebar").mCustomScrollbar({
@@ -94,8 +93,6 @@
 
         });
     </script>
-    <!-- Popper.JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"
-            integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
-            crossorigin="anonymous"></script>
+
+    <script src="{{ asset('js/tooltip.js') }}" defer></script>
 @endsection

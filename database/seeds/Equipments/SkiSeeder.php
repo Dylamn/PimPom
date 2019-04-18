@@ -16,7 +16,7 @@ class SkiSeeder extends Seeder
             'categoryId' => 2,
             'internalId' => 'SK_85A',
             'size' => '85',
-            'statusId' => 1,
+            'statusId' => 2,
             'created_at' => '2018-12-16 12:00:00',
             'updated_at' => '2018-12-16 12:00:00',
         ]);
@@ -43,7 +43,7 @@ class SkiSeeder extends Seeder
             'categoryId' => 2,
             'internalId' => 'SK_98A',
             'size' => '98',
-            'statusId' => 1,
+            'statusId' => 2,
             'created_at' => '2018-12-16 12:00:00',
             'updated_at' => '2018-12-16 12:00:00',
         ]);

@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="container" id="side">
-        <div id="table" class="container table-responsive" style="padding-top: 3%">
+        <div id="table" class="container table-responsive pt-5">
             <table class="table table-striped table-bordered table-hover">
                 <thead class="thead-light">
                 <tr>
@@ -23,7 +23,7 @@
                         <td class="text-center">{{ $statement->childrenPrice }} €</td>
                         <td class="text-center">
                             <a href="{{ Route('categorie.edit', ['category' => $statement->id]) }}">
-                                <i class="fa fa-pencil" style="color:orange; font-size: 1.4em;"></i>
+                                <i class="fa fa-pencil" style="color: orange; font-size: 1.4em;"></i>
                             </a>
                         </td>
                         <td class="text-center">
@@ -40,14 +40,9 @@
         </div>
     </div>
 @endsection
-
 @section('script')
-    <!-- Scripts -->
-    <script src="{{ asset('hot/js/app.js') }}" defer></script>
-    <!-- jQuery -->
-    <script src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>
-    <!-- jQuery Custom Scroller CDN -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js">
+    <script defer
+            src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js">
         $(document).ready(function () {
 
             $("#sidebar").mCustomScrollbar({
@@ -78,15 +73,4 @@
 
         });
     </script>
-    <!-- Popper.JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"
-            integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
-            crossorigin="anonymous"></script>
 @endsection
-
-<script>
-    import DeleteForm from "../../js/components/DeleteForm";
-    export default {
-        components: { DeleteForm }
-    }
-</script>

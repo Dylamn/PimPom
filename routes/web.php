@@ -55,7 +55,9 @@ Route::middleware('auth:web')->delete('/equipements/{equipment}', 'EquipmentCont
  */
 
 Route::resource('reserver', 'ReserverController');
-Route::middleware('auth:web')->get('/reservation', 'ReservationController@index')->name('reservation.index');
+Route::middleware('auth:web')->get('/reservations', 'ReservationController@index')->name('reservations.index');
+Route::middleware('auth:web')->get('/reservations/{rent}', 'ReservationController@edit')->name('reservations.edit');
+Route::middleware('auth:web')->delete('/reservations/{rent}', 'ReservationController@destroy')->name('reservations.destroy');
 Route::middleware('auth:web')->get('/archive', 'RecordController@index')->name('record.index');
 
 /*

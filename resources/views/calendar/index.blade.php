@@ -31,6 +31,9 @@
                         @php
                             $date = (clone $start)->modify("+" . ($k + $i * 7) . " days");
                             $eventsForDay = $events[$date->format('Y-m-d')] ?? [];
+                            echo '<pre>';
+                            print_r($eventsForDay);
+                            echo '</pre>';
                         @endphp
                         <td class="{{ $calendar->withinMonth($date) ? '' : 'calendar__notCurrentMonth'}}">
                             @if($i === 0)
@@ -52,14 +55,4 @@
             @endfor
         </table>
     </div>
-@endsection
-
-@section('script')
-    <script src="{{ asset('hot/js/app.js') }}" defer></script>
-    <!-- jQuery -->
-    <script src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>
-    <!-- Popper.JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"
-            integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
-            crossorigin="anonymous"></script>
 @endsection

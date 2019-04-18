@@ -42,7 +42,3 @@
         </div>
     </div>
 @endsection
-
-@section('script')
-    <script src="{{ asset('hot/js/app.js') }}" defer></script>
-@endsection

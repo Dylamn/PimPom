@@ -4,11 +4,11 @@
 
 @section('content')
     <div class="container" id="side">
-        <div id="table" class="container justify-content-center" style="padding-top: 3%">
+        <div id="table" class="container justify-content-center pt-5">
             @if(count($all) == 0)
                 <div class="row">
                     <div class="col-md">
-                        <h2 style="text-align: center">Il n'y a aucune ancienne réservation</h2>
+                        <h2 class="text-center">Il n'y a aucune réservation archivée pour le moment...</h2>
                     </div>
                 </div>
             @else
@@ -34,8 +34,4 @@
             @endif
         </div>
     </div>
-@endsection
-
-@section('script')
-    <script src="{{ asset('hot/js/app.js') }}" defer></script>
 @endsection

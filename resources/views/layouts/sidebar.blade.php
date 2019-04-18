@@ -3,22 +3,22 @@
         <!-- Sidebar -->
         <nav id="sidebar">
             <ul class="list-unstyled components">
-                @if(str_contains(Route::currentRouteName(), 'reservation'))
+                @if(str_contains(Route::currentRouteName(), 'reservations'))
                     <li class="active">
-                        <a href="{{ route('reservation.index') }}">Réservations</a>
+                        <a href="{{ route('reservations.index') }}">Réservations</a>
                     </li>
                 @else
                     <li>
-                        <a href="{{ route('reservation.index') }}">Réservations</a>
+                        <a href="{{ route('reservations.index') }}">Réservations</a>
                     </li>
                 @endif
                 @if(str_contains(Route::currentRouteName(), 'record'))
                     <li class="active">
-                        <a href="{{ route('record.index') }}">Archive</a>
+                        <a href="{{ route('record.index') }}">Archives</a>
                     </li>
                 @else
                     <li>
-                        <a href="{{ route('record.index') }}">Archive</a>
+                        <a href="{{ route('record.index') }}">Archives</a>
                     </li>
                 @endif
                 @if(str_contains(Route::currentRouteName(), 'equipements'))

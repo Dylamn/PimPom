@@ -42,8 +42,37 @@
 @endsection
 
 @section('script')
-    <!-- JQuery -->
-    <script src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>
-    <!-- Scripts -->
-    <script src="{{ asset('hot/js/app.js') }}" defer></script>
+    <!-- jQuery Custom Scroller CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js">
+        $(document).ready(function () {
+
+            $("#sidebar").mCustomScrollbar({
+                theme: "minimal"
+            });
+
+            $('#sidebarCollapse').on('click', function () {
+                $('#sidebar').toggleClass('active');
+            });
+
+        });
+
+        $(document).ready(function () {
+
+            $("#sidebar").mCustomScrollbar({
+                theme: "minimal"
+            });
+
+            $('#sidebarCollapse').on('click', function () {
+                // open or close navbar
+                $('#sidebar').toggleClass('active');
+                // close dropdowns
+                $('.collapse.in').toggleClass('in');
+                // and also adjust aria-expanded attributes we use for the open/closed arrows
+                // in our CSS
+                $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+            });
+
+        });
+
+    </script>
 @endsection

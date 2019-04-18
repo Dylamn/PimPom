@@ -62,10 +62,6 @@
 @endsection
 
 @section('script')
-    <!-- Scripts -->
-    <script src="{{ asset('hot/js/app.js') }}" defer></script>
-    <!-- jQuery -->
-    <script src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>
     <!-- jQuery Custom Scroller CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js">
         $(document).ready(function () {
@@ -99,8 +95,4 @@
         });
 
     </script>
-    <!-- Popper.JS CDN -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"
-            integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
-            crossorigin="anonymous"></script>
 @endsection

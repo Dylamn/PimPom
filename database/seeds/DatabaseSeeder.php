@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
              CategoriesTableSeeder::class,
              EquipmentsTableSeeder::class,
              StatusTableSeeder::class,
+             RentsTableSeeder::class,
          ]);
     }
 }
