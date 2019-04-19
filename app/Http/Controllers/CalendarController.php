@@ -6,33 +6,44 @@ use App\Services\CalendarService;
 use App\Services\CalendarEventsService;
 use Illuminate\Http\Request;
 use Exception;
-use Illuminate\Support\Facades\Hash;
 
 class CalendarController extends Controller
 {
     /**
-     * Display the actual month if no parameters are sets.
+     * Send the days of a selected month-year.
+     * Send the actual month if the parameter is not set.
      *
-     * @param int|null $month
-     * @param int|null $year
+     * @param string|null $date
      * @return \Illuminate\Http\Response
      * @throws Exception
      */
-    public function index(?int $month = null, ?int $year = null)
+    public function index($date = null)
     {
-        if ($month === null) $month = intval(date('m'));
-        if ($year === null) $year = intval(date('Y'));
+        if ($date === null) $date = date('m-Y');
+
+        $date = explode('-', $date);
+
+        $month = intval($date[0]);
+        $year = intval($date[1]);
 
         $calendar = new CalendarService($month, $year);
-        $events = new CalendarEventsService();
+        $rents = new CalendarEventsService();
+
+        /*
+         * $start represents the first day displayed on the calendar (may be a day of the previous month).
+         * $end represents the last day displayed on the calendar (may be a day of the current month).
+         */
 
         $start = $calendar->getStartingDay();
         $start = $start->format('N') === '1' ? $start : $calendar->getStartingDay()->modify('last monday');
-        $weeks = $calendar->getWeeks();
-        $end = (clone $start)->modify('+' . (6 + 7 * ($weeks - 1)) . ' days');
-        $events = $events->getEventsBetweenByDay($start, $end);
 
-        return view('calendar.index', compact('calendar', 'start', 'weeks', 'end', 'events'));
+        // Represent the number of weeks in a month (4, 5 or 6)
+        $weeks = $calendar->getWeeks();
+
+        $end = (clone $start)->modify('+' . (6 + 7 * ($weeks - 1)) . ' days');
+        $rents = $rents->getEventsBetweenByDay($start, $end);
+
+        return view('calendar.index', compact('calendar', 'start', 'weeks', 'end', 'rents'));
     }
 
     /**
@@ -57,18 +68,25 @@ class CalendarController extends Controller
     }
 
     /**
-     * Display the specified resource with a date (m-Y).
+     * Display the specified resource with a date (d-m-Y).
      *
-     * @param  $day
-     * @param $month
-     * @param $year
+     * @param string $date
      * @return \Illuminate\Http\Response
      */
-    public function showEvents($day, $month, $year)
+    public function showRents($date)
     {
-//        $rent = CalendarEventsService::findById($events);
-        return dd($day, $month, $year);
-        return view('calendar.show', compact('rent'));
+        try {
+            $date = new \DateTime($date);
+        } catch (Exception $ex) {
+            return redirect(Route('calendar.index'));
+        }
+
+        $rents = new CalendarEventsService();
+
+        $rents = $rents->getTheStartingEventsOnDay($date);
+
+
+        return view('calendar.show', compact('rents'));
     }
 
     /**

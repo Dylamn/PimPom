@@ -42,6 +42,16 @@ class CalendarService
     }
 
     /**
+     * Return the month in string numbers. Used to display numbers with a 0 before (ex : January => 01)
+     *
+     * @return string
+     */
+    public function monthToStringNumber(): string
+    {
+        return $this->month > 9 ? strval($this->month) : strval('0' . $this->month);
+    }
+
+    /**
      * Return the first day of a month.
      *
      * @throws Exception

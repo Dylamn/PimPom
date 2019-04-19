@@ -111,7 +111,7 @@
 
 @section('script')
     <!-- Scripts -->
-    <script src="{{ asset('js/get_nb_equipments.js') }}"></script>
+    <script src="{{ asset('js/get_nb_equipments.js') }}" defer></script>
     <script src="{{ asset('js/selectValues.js') }}"></script>
     <script src="{{ asset('js/cloneLine.js') }}"></script>
 @endsection
