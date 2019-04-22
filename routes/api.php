@@ -22,3 +22,10 @@ Route::get('/json', function (Request $request) {
         'answer' => rand(0, 1) === 1 ? 'Yes' : 'No'
     ];
 });
+
+Route::get('/equipments', function () {
+   // TODO: Create a Controller that return a list of all categories.
+    return [
+       'comment' => 'No equipments yet.'
+   ];
+});

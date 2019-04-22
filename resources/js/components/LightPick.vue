@@ -12,7 +12,6 @@
             </label>
             <input type="text" id="dateFin" name="dateFin" class="form-control col-xl-5 d-inline" required/>
         </div>
-<!--        <p class="text-center">{{ answer }}</p>-->
     </div>
 </template>
 
@@ -27,7 +26,7 @@
             };
         },
         beforeCreate() {
-            let vm = this;
+            const vm = this;
 
             axios.get('/api/json')
                 .then(function (response) {

@@ -42,7 +42,7 @@ class ReserverController extends Controller
      */
     public function store(Request $request)
     {
-        //dd($request);
+        return dd($request);
         //$data = Rents::create(request(['userName' => 'nomClient', 0, '', 'dateDebut', 'dateFin']));
         $data = new Rent;
         $data->userName = $request->nomClient;
