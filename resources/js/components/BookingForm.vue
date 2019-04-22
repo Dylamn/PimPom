@@ -57,6 +57,11 @@
                     this.rememberLines(this.actual - next);
                 }
 
+                if (this.hasDecrease && next > this.actual) {
+                    console.log('gg' , this.hasDecrease);
+                    this.getRemembered(this.actual - next);
+                }
+
                 this.actual = next;
             },
 
@@ -65,12 +70,18 @@
 
                 for (let i = 0; i < number; i++)
                 {
-                    this.remember.push(lastChild);
+                    this.remember[i] = lastChild;
 
                     lastChild = lastChild.previousSibling;
                 }
 
-                console.log('Lines to push in remember : ', number);
+                return this.remember.length > 0;
+            },
+            getRemembered(number) {
+                let size = this.root.childNodes.length;
+                for (let i = number, last = this.root.lastChild; i < 0; i++) {
+                    console.log(i, this.remember[size + i], size);
+                }
             },
         },
 

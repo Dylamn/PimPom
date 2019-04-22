@@ -1,5 +1,5 @@
 <template>
-    <div class="row mt-2 mb-2 border-top">
+    <div v-bind:id="'line-' + lineId" class="row mt-2 mb-2 border-top">
         <div class="col-md-6 mt-1">
             <label v-bind:for="'fname' + lineId" class="col-form-label">Prénom</label>
             <input v-bind:id="'fname' + lineId" v-bind:name="'lines[]'" type="text" class="form-control" />
@@ -32,7 +32,7 @@
                     _this.equipments.push(response.data.comment);
                 });
 
-            console.log('Line ' + this.lineId + ' mounted');
+            // console.log('Line ' + this.lineId + ' mounted');
         }
     }
 </script>
