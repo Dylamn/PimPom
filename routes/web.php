@@ -21,6 +21,7 @@ Route::get('/', function () {
 Route::get('/calendrier', 'CalendarController@index')->name('calendar.index');
 Route::get('/calendrier/{date}', 'CalendarController@index')->name('calendar.show.month');
 Route::get('/calendrier/{date}/reservations', 'CalendarController@showRents')->name('calendar.show.day');
+Route::get('/calendrier/{date}/reservations/{rentalId}', 'CalendarController@showRental')->name('calendar.show.rent');
 
 // Routes for authentification (register page is disabled)
 Auth::routes(['register' => false]);

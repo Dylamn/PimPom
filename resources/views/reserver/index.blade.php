@@ -8,19 +8,11 @@
                 <div class="card">
                     <div class="card-header">{{ __('Effectuer une réservation') }}</div>
                     <div class="card-body">
-                        {{ Form::open(['url' => 'reserver']) }}
-                        <div class="row">
-                            <div class="col-md form-group">
-                                {{ Form::label('nomClient', 'Nom du client :', ['class' => 'col-md-auto col-form-label text-md-right']) }}
-                                {{ Form::text('nomClient', '',['class' => 'col-md-3 form-control', 'style' => 'display: inline', 'required']) }}
-                            </div>
-                            <div class="col-md form-group">
-                                {{ Form::label('nbPersonnes', 'Nombre de personne(s) :', ['class' => 'col-md-auto col-form-label text-md-right']) }}
-                                {{ Form::select('nbPersonnes', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10] , 0, ['class' => 'col-md-2 form-control', 'style' => 'display: inline', 'min' => '0']) }}
-                            </div>
-                        </div>
 
-                        <light-pick></light-pick> {{-- dateDebut & dateFin --}}
+                        {{ Form::open(['url' => 'reserver']) }}
+
+                        <booking-form></booking-form>
+
                         <div class="row">
                             <div class="col-md">
                                 <div id="detailsReservation"></div>
@@ -49,14 +41,6 @@
                                                     Nom du client : <span id="nomClientC"></span>
                                                 </div>
                                             </div>
-                                            {{--<div class="row">--}}
-                                            {{--<div class="col-md-6">--}}
-                                            {{--Nombre d'adulte(s) : <span id="nbrAdultesC"></span>--}}
-                                            {{--</div>--}}
-                                            {{--<div class="col-md-6">--}}
-                                            {{--Nombre d'enfant(s) : <span id="nbrEnfantC"></span>--}}
-                                            {{--</div>--}}
-                                            {{--</div>--}}
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     Date de début : <span id="dateDebutC"></span>
@@ -112,6 +96,5 @@
 @section('script')
     <!-- Scripts -->
     <script src="{{ asset('js/get_nb_equipments.js') }}" defer></script>
-    <script src="{{ asset('js/selectValues.js') }}"></script>
-    <script src="{{ asset('js/cloneLine.js') }}"></script>
+    <script src="{{ asset('js/selectValues.js') }}" defer></script>
 @endsection

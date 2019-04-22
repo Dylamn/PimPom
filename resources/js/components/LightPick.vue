@@ -1,18 +1,18 @@
 <template>
     <div class="row">
         <div class="col-md form-group">
-            <label for="dateDebut" class="col-form-label col-md-auto text-md-right">
+            <label for="dateDebut" class="col-form-label text-md-right mr-5">
                 Date de début de la réservation :
             </label>
-            <input type="text" id="dateDebut" name="dateDebut" class="col-md form-control col-md-5 d-inline" required/>
+            <input type="text" id="dateDebut" name="dateDebut" class="form-control col-xl-5 d-inline" required/>
         </div>
         <div class="col-md form-group">
-            <label for="dateFin" class="col-md-auto col-form-label text-md-right">
+            <label for="dateFin" class="col-form-label text-md-right mr-5">
                 Date de fin de la réservation :
             </label>
-            <input type="text" id="dateFin" name="dateFin" class="col-md form-control col-md-5 d-inline" required/>
+            <input type="text" id="dateFin" name="dateFin" class="form-control col-xl-5 d-inline" required/>
         </div>
-        <p class="text-center">{{ answer }}</p>
+<!--        <p class="text-center">{{ answer }}</p>-->
     </div>
 </template>
 

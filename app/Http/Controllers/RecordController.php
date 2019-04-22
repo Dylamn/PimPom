@@ -2,8 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Model\Rents;
-use App\Models\Rent;
+use App\Models\Record;
 use Illuminate\Http\Request;
 
 class RecordController extends Controller
@@ -15,7 +14,7 @@ class RecordController extends Controller
      */
     public function index()
     {
-        $all = Rent::all();
+        $all = Record::all();
         return view('record.index', compact('all'));
     }
 }

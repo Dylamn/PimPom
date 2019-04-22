@@ -19,11 +19,13 @@ window.Vue = Vue;
 
 import LightPick from './components/LightPick';
 import DeleteForm from './components/DeleteForm';
+import BookingForm from './components/BookingForm';
 
 const app = new Vue({
     el: '#app',
     components: {
         LightPick,
-        DeleteForm
+        DeleteForm,
+        BookingForm,
     }
 });

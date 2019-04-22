@@ -24,35 +24,37 @@
                         <th class="text-center">Supprimer</th>
                     </tr>
                     </thead>
-
-                    @foreach($oneEquipment as $statement)
-                        <tr>
-                            <td class="text-center flex flex-row align-content-center">
-                                <span data-toggle="tooltip" data-placement="top" title="{{ $statement->statusLabel }}">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="100" height="7">
-                                        <line x1="0" y1="3" x2="100" y2="3" stroke-width="3px"
-                                              stroke="{{ __($statement->hexaColor) }}"></line>
-                                    </svg>
-                                </span>
-                            </td>
-                            <td class="text-center">{{ $statement->internalId }}</td>
-                            <td class="text-center">{{ $statement->size }} cm</td>
-                            <td class="text-center">{{ $statement->adultPrice }} €</td>
-                            <td class="text-center">{{ $statement->childrenPrice }} €</td>
-                            <td class="text-center">
-                                <a href="{{ Route('equipements.edit', ['equipment' => $statement->id]) }}">
-                                    <i class="fa fa-pencil" style="color:orange; font-size: 1.4em;"> </i>
-                                </a>
-                            </td>
-                            <td class="text-center">
-                                <delete-form
-                                    action="{{ Route('equipements.destroy', ['equipment' => $statement->id]) }}"
-                                    method="{{ __('DELETE') }}"
-                                    csrf="{{ csrf_token() }}">
-                                </delete-form>
-                            </td>
-                        </tr>
-                    @endforeach
+                    <tbody>
+                        @foreach($oneEquipment as $statement)
+                            <tr>
+                                <td class="text-center flex flex-row align-content-center">
+                                        <span data-toggle="tooltip" data-placement="top"
+                                              title="{{ $statement->statusLabel }}">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="100" height="7">
+                                                <line x1="0" y1="3" x2="100" y2="3" stroke-width="3px"
+                                                      stroke="{{ __($statement->hexaColor) }}"></line>
+                                            </svg>
+                                        </span>
+                                </td>
+                                <td class="text-center">{{ $statement->internalId }}</td>
+                                <td class="text-center">{{ $statement->size }} cm</td>
+                                <td class="text-center">{{ $statement->adultPrice }} €</td>
+                                <td class="text-center">{{ $statement->childrenPrice }} €</td>
+                                <td class="text-center">
+                                    <a href="{{ Route('equipements.edit', ['equipment' => $statement->id]) }}">
+                                        <i class="fa fa-pencil" style="color:orange; font-size: 1.4em;"> </i>
+                                    </a>
+                                </td>
+                                <td class="text-center">
+                                    <delete-form
+                                        action="{{ Route('equipements.destroy', ['equipment' => $statement->id]) }}"
+                                        method="{{ __('DELETE') }}"
+                                        csrf="{{ csrf_token() }}">
+                                    </delete-form>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
                 @endforeach
             </table>
         </div>

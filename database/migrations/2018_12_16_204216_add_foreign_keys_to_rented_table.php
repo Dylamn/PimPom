@@ -14,8 +14,8 @@ class AddForeignKeysToRentedTable extends Migration
 	{
 		Schema::table('rented', function(Blueprint $table)
 		{
+            $table->foreign('rentalId', 'fkRent')->references('id')->on('rents')->onUpdate('RESTRICT')->onDelete('RESTRICT');
 			$table->foreign('equipmentId', 'fkEquipment')->references('id')->on('equipments')->onUpdate('RESTRICT')->onDelete('RESTRICT');
-			$table->foreign('rentalId', 'fkRent')->references('id')->on('rents')->onUpdate('RESTRICT')->onDelete('RESTRICT');
 		});
 	}
 

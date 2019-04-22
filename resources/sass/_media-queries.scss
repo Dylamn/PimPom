@@ -1,0 +1,35 @@
+/*
+ |--------------------------------------------------------------------------
+ | Media Queries
+ |--------------------------------------------------------------------------
+ */
+
+@media (max-width: 768px) {
+    #sidebar {
+        margin-left: -250px;
+    }
+
+    #sidebar.active {
+        margin-left: 0;
+    }
+}
+
+@media screen and (min-width:769px) and (max-width: 1920px) {
+    #side {
+        padding-left: 200px;
+    }
+}
+
+// From 1200px (xl)
+@media screen and (max-width: map_get($grid-breakpoints, xl)) {
+    .ml-10 {
+        margin-left: 5.6rem !important;
+    }
+}
+
+// From 992px (lg)
+@media screen and (max-width: map_get($grid-breakpoints, lg)) {
+    .ml-10 {
+        margin-left: 0 !important;
+    }
+}

@@ -51,5 +51,25 @@ class RentsTableSeeder extends Seeder
             'created_at' => '2019-04-17 23:48:00',
             'updated_at' => '2019-04-17 23:48:00'
         ]);
+
+        DB::table('rents')->insert([
+            'userName' => 'Bob',
+            'settled' => 1,
+            'localization' => 'Rennes',
+            'start' => '2019-04-25 00:00:00',
+            'end' => '2019-04-29 00:00:00',
+            'created_at' => '2019-04-17 23:48:00',
+            'updated_at' => '2019-04-17 23:48:00'
+        ]);
+
+        DB::table('rents')->insert([
+            'userName' => 'John',
+            'settled' => 1,
+            'localization' => 'Rennes',
+            'start' => '2019-05-01 00:00:00',
+            'end' => '2019-05-15 00:00:00',
+            'created_at' => '2019-04-17 23:48:00',
+            'updated_at' => '2019-04-17 23:48:00'
+        ]);
     }
 }

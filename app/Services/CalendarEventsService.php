@@ -15,10 +15,14 @@ class CalendarEventsService
      * @param DateTime $end
      * @return array
      */
-    function getEventsBetween(DateTime $start, DateTime $end): array
+    public function getEventsBetween(DateTime $start, DateTime $end): array
     {
         // TODO : Check Eloquent for different SELECT method.
-        $records = DB::select("SELECT * FROM rents WHERE start BETWEEN '{$start->format('Y-m-d 00:00:00')}' AND '{$end->format('Y-m-d 23:59:59')}'");
+        $records = DB::select("
+            SELECT * FROM rents 
+            WHERE start BETWEEN '{$start->format('Y-m-d 00:00:00')}' 
+                            AND '{$end->format('Y-m-d 23:59:59')}'"
+        );
 //        $records = Rents::where('start')->between('Y-m-d 00:00:00', 'Y-m-d 23:59:59');
 
         return $records;
@@ -30,13 +34,44 @@ class CalendarEventsService
      * @param DateTime $date
      * @return array
      */
-    function getTheStartingEventsOnDay($date): array
+    public function getStartingEventsOnDay($date): array
     {
         $records = DB::select("
             SELECT * FROM rents 
-            WHERE '{$date->format('Y-m-d 00:00:00')}' BETWEEN start AND ADDDATE(start, 1)"
+            WHERE '{$date->format('Y-m-d')}%' = start"
         );
 
+        return $records;
+    }
+
+    /**
+     * Récupère les évènement commencant lors du jour spécifié
+     *
+     * @param DateTime $date
+     * @return array
+     */
+    public function getEndingEventsOnDay($date): array
+    {
+        $records = DB::select("
+            SELECT * FROM rents 
+            WHERE '{$date->format('Y-m-d')}%' = end"
+        );
+
+        return $records;
+    }
+
+    /**
+     *
+     *
+     * @param DateTime $date
+     * @return array
+     */
+    public function getCurrentsEvents($date): array
+    {
+        $records = DB::select("
+            SELECT * FROM rents 
+            WHERE start < '{$date->format('Y-m-d 00:00:00')}' AND end > '{$date->format('Y-m-d')}%'"
+        );
 
         return $records;
     }
@@ -49,7 +84,7 @@ class CalendarEventsService
      * @return array
      * @throws \Exception
      */
-    function getEventsBetweenByDay(DateTime $start, DateTime $end): array
+    public function getEventsBetweenByDay(DateTime $start, DateTime $end): array
     {
         $events = $this->getEventsBetween($start, $end);
         $days = [];

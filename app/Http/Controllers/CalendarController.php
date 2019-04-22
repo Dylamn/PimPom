@@ -68,10 +68,11 @@ class CalendarController extends Controller
     }
 
     /**
-     * Display the specified resource with a date (d-m-Y).
+     * Display the concerned rents for a day with a specified date (d-m-Y).
      *
      * @param string $date
      * @return \Illuminate\Http\Response
+     * @throws Exception
      */
     public function showRents($date)
     {
@@ -83,10 +84,27 @@ class CalendarController extends Controller
 
         $rents = new CalendarEventsService();
 
-        $rents = $rents->getTheStartingEventsOnDay($date);
+        $startingRents = $rents->getStartingEventsOnDay($date);
 
+        $currentRents = $rents->getCurrentsEvents($date);
 
-        return view('calendar.show', compact('rents'));
+        $endingRents = $rents->getEndingEventsOnDay($date);
+
+        return view('calendar.day.show', compact('startingRents', 'currentRents', 'endingRents', 'date'));
+    }
+
+    /**
+     * Display the concerned rental for a day with a specified date (d-m-Y).
+     *
+     * @param string $date
+     * @param int $rentalId
+     * @return \Illuminate\Http\Response
+     */
+    public function showRental($date, $rentalId)
+    {
+        $rent = CalendarEventsService::findById($rentalId);
+
+        return view('calendar.rent.show', compact('rent', 'date'));
     }
 
     /**

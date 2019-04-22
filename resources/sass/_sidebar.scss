@@ -1,0 +1,45 @@
+/*
+ |--------------------------------------------------------------------------
+ | Sidebar style
+ |--------------------------------------------------------------------------
+ */
+#sidebar {
+    width: 200px;
+    position: fixed;
+    top: 55px;
+    left: 0;
+    height: 100vh;
+    z-index: 999;
+    background: #d6d6d6;
+    color: #fff;
+    transition: all 0.3s;
+}
+
+#sidebar ul.components {
+    padding: 20px 0;
+    border-bottom: 1px solid #595959;
+}
+
+#sidebar ul p {
+    color: #fff;
+    padding: 10px;
+}
+
+#sidebar ul li a {
+    padding: 10px;
+    font-size: 1.1em;
+    display: block;
+    text-decoration: none;
+    color: #fff;
+}
+
+#sidebar ul li a:hover {
+    color: #8c8c8c;
+    background: #fff;
+}
+
+#sidebar ul li.active > a, a[aria-expanded="true"] {
+    color: #fff;
+    background: #595959;
+    font-size: 1.3em;
+}
