@@ -23,7 +23,7 @@
         <LightPick></LightPick>
 
         <div id="rents">
-            <form-line v-bind:line-id="nb" v-for="nb in actual" :key="nb"></form-line>
+            <form-line v-bind:l-id="nb" v-for="nb in actual" :key="nb" v-bind:categories="categories"></form-line>
         </div>
     </div>
 </template>
@@ -40,10 +40,11 @@
             return {
                 maxNumber: 10,
                 actual: 0,
-                root: null,
-                hasDecrease: false,
-                remember: [],
+                categories: [],
             }
+        },
+        props: {
+          url: String,
         },
 
         methods: {
@@ -52,41 +53,17 @@
 
                 let next = parseInt(ev.target.value, 10);
 
-                if (next < this.actual) { // Then we'll push the elements who's going to dissapear in the remember array
-                    this.hasDecrease = true;
-                    this.rememberLines(this.actual - next);
-                }
-
-                if (this.hasDecrease && next > this.actual) {
-                    console.log('gg' , this.hasDecrease);
-                    this.getRemembered(this.actual - next);
-                }
-
                 this.actual = next;
-            },
-
-            rememberLines(number) {
-                let lastChild = this.root.lastChild;
-
-                for (let i = 0; i < number; i++)
-                {
-                    this.remember[i] = lastChild;
-
-                    lastChild = lastChild.previousSibling;
-                }
-
-                return this.remember.length > 0;
-            },
-            getRemembered(number) {
-                let size = this.root.childNodes.length;
-                for (let i = number, last = this.root.lastChild; i < 0; i++) {
-                    console.log(i, this.remember[size + i], size);
-                }
             },
         },
 
         mounted() {
-            this.root = document.getElementById('rents');
+            const _this = this;
+
+            axios.get(this.url)
+                .then(function (response) {
+                    _this.categories = response.data;
+                });
         }
     }
 </script>

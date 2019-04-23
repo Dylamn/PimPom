@@ -28,7 +28,7 @@
         beforeCreate() {
             const vm = this;
 
-            axios.get('/api/json')
+            axios.get('/api/invalid-days')
                 .then(function (response) {
                     vm.answer = _.capitalize(response.data.answer);
                 })

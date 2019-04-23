@@ -17,15 +17,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/json', function (Request $request) {
+Route::get('/invalid-days', function (Request $request) {
+    // TODO: This endpoint will return the list of days where no equipments is available
     return [
         'answer' => rand(0, 1) === 1 ? 'Yes' : 'No'
     ];
 });
 
-Route::get('/equipments', function () {
-   // TODO: Create a Controller that return a list of all categories.
-    return [
-       'comment' => 'No equipments yet.'
-   ];
-});
+Route::get('/categories', 'CategoriesController@index')->name('api.categories');
