@@ -28,12 +28,11 @@
                         </a>
                     </td>
                     <td class="text-center">
-                        <form name="delete_form{{__($statement->id) }}"
-                              action="{{ Route('utilisateurs.destroy', ['user' => $statement->id]) }}" method="POST">
-                            @method('DELETE')
-                            @csrf
-                            <i class="fa fa-times btn-delete" style="color:red; font-size: 1.4em;"></i>
-                        </form>
+                        <delete-form
+                                action="{{ Route('utilisateurs.destroy', ['user' => $statement->id]) }}"
+                                method="{{ __('DELETE') }}"
+                                csrf="{{ csrf_token() }}">
+                        </delete-form>
                     </td>
                 </tr>
             @endforeach

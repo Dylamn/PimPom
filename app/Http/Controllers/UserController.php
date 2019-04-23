@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -32,25 +33,21 @@ class UserController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\UserRequest  $userRequest
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UserRequest $userRequest)
     {
-        $st = '$2y$10$fhdUSSmqIHiO7pHO6GEzt.mfxamNse6eI/NW1PGN8xgtGvdg4TpCW' . '<br>';
-        echo ($st);
-        echo Hash::make('testtest') . '<br>';
+        User::create([
+            'surname' => $userRequest->surname,
+            'firstName' => $userRequest->firstname,
+            'email' => $userRequest->email,
+            'username' => $userRequest->username,
+            'password' => Hash::make($userRequest->password),
+            'privilege' => $userRequest->privilege,
+        ]);
 
-//        User::create([
-//            'surname' => $request->surname,
-//            'firstName' => $request->firstname,
-//            'username' => $request->username,
-//            'password' => $request->password,
-//            'privilege' => $request->privilege,
-        //Hash::make($request->newPassword)
-//        ]);
-//
-//        return redirect(route('categorie.index'));
+        return redirect(route('utilisateurs.index'));
     }
 
     /**
@@ -78,18 +75,17 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param \App\Http\Requests\UserRequest $userRequest
      * @param User $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(UserRequest $userRequest, User $user)
     {
-        // TODO : voir le problème lié par rapport au paramètre user
         $user->update([
-            'surname' => $request->surname,
-            'firstName' => $request->firstname,
-            'password' => $request->password,
-            'privilege' => $request->privilege,
+            'surname' => $userRequest->surname,
+            'firstName' => $userRequest->firstname,
+            'password' => Hash::make($userRequest->password),
+            'privilege' => $userRequest->privilege,
         ]);
 
         return redirect(route('utilisateurs.index'));
