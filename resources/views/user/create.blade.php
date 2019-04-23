@@ -15,37 +15,52 @@
                             <div class="row">
                                 <div class="col-md form-group">
                                     <label for="surname">Nom</label>
-                                    <input type="text" id="surname" name="surname" class="form-control rounded">
+                                    <input type="text" id="surname" name="surname" class="form-control rounded {{ $errors->has('surname') ? ' is-invalid' : '' }}" value="{{ old('surname') }}">
+                                    @if ($errors->has('surname'))
+                                        <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('surname') }}</strong>
+                                    </span>
+                                    @endif
                                 </div>
                                 <div class="col-md form-group">
                                     <label for="firstname">Prénom</label>
-                                    <input type="text" id="firstname" name="firstname" class="form-control rounded">
+                                    <input type="text" id="firstname" name="firstname" class="form-control rounded" value="{{ old('firstname') }}">
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md form-group">
                                     <label for="email">Email</label>
-                                    <input type="email" id="email" name="email" class="form-control rounded">
+                                    <input type="email" id="email" name="email" class="form-control rounded {{ $errors->has('email') ? ' is-invalid' : '' }}" value="{{ old('email') }}">
+                                    @if ($errors->has('email'))
+                                        <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                                    @endif
                                 </div>
                                 <div class="col-md form-group">
                                     <label for="privilege">Privilège</label>
-                                    <input type="number" min="0" max="1" id="privilege" name="privilege" value="0" class="form-control rounded">
+                                    <input type="number" min="0" max="1" id="privilege" name="privilege" class="form-control rounded" value="{{ old('privilege') ? old('privilege') : 0 }}">
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-6 form-group">
                                     <label for="username">Nom d'utilisateur</label>
-                                    <input type="text" id="username" name="username" class="form-control rounded">
+                                    <input type="text" id="username" name="username" class="form-control rounded" value="{{ old('username') }}">
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md form-group">
                                     <label for="password">Nouveau mot de passe</label>
-                                    <input type="password" id="password" name="password" placeholder="Entrer un nouveau mot de passe" class="form-control rounded">
+                                    <input type="password" id="password" name="password" placeholder="Entrer un nouveau mot de passe" class="form-control rounded {{ $errors->has('password') ? ' is-invalid' : '' }}">
+                                    @if ($errors->has('password'))
+                                        <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('password') }}</strong>
+                                    </span>
+                                    @endif
                                 </div>
                                 <div class="col-md form-group">
-                                    <label for="newPassword">Réécrire du mot de passe</label>
-                                    <input type="password" id="newPassword" name="newPassword" placeholder="Réécrire le nouveau mot de passe" class="form-control rounded">
+                                    <label for="rePassword">Confirmation du mot de passe</label>
+                                    <input type="password" id="rePassword" name="rePassword" placeholder="Confirmation du nouveau mot de passe" class="form-control rounded {{ $errors->has('password') ? ' is-invalid' : '' }}">
                                 </div>
                             </div>
                             <div class="row">
@@ -94,5 +109,11 @@
 
         });
 
+        // let password = document.getElementById('password');
+        // let rePassword = document.getElementById('rePassword');
+        //
+        // if (password !== rePassword) {
+        //
+        // }
     </script>
 @endsection

@@ -25,5 +25,6 @@ class User extends Base\User
 		'email',
 		'username',
 		'password',
+        'privilege',
 	];
 }
