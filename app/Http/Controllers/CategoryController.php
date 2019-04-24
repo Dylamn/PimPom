@@ -104,4 +104,14 @@ class CategoryController extends Controller
 
         return redirect(route('categorie.index'));
     }
+
+    /**
+     * Returns a json where all categories are specified.
+     *
+     * @return string
+     */
+    public function getCategories()
+    {
+        return Category::all()->toJson(JSON_PRETTY_PRINT);
+    }
 }

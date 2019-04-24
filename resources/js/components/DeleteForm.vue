@@ -27,7 +27,8 @@
             triggerDelete() {
                 let form = this.$vnode.elm,
                     tab = depluralize(form.action.split('/')[3]),
-                    adj = tab === 'catégorie' || 'réservation' ? 'cette' : 'cet';
+                    adj = tab === ('catégorie' || 'réservation') ? 'cette' : 'cet';
+                console.log(tab, adj);
 
                 let $continue = confirm(`Voulez vous vraiment supprimer ${adj} ${tab} ?`);
 

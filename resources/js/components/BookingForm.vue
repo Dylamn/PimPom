@@ -5,8 +5,7 @@
                 <label for="nomClient" class="col-form-label text-md-right mr-5">
                     Nom du client :
                 </label>
-                <input type="text" name="nomClient" id="nomClient" class="col-lg-4 form-control d-inline ml-10"
-                       required />
+                <input type="text" name="nomClient" id="nomClient" class="col-lg-4 form-control d-inline ml-10" required />
             </div>
             <div class="col-xl-6 form-group">
                 <label for="nbPersonnes" class="pr-4 col-form-label text-md-right mr-5">
@@ -23,7 +22,9 @@
         <LightPick></LightPick>
 
         <div id="rents">
-            <form-line v-bind:l-id="nb" v-for="nb in actual" :key="nb" v-bind:categories="categories"></form-line>
+            <form-line v-for="nb in actual" :key="nb" v-bind:l-id="nb" v-bind:categories="categories"
+                       v-bind:equipments="equipments">
+            </form-line>
         </div>
     </div>
 </template>
@@ -34,17 +35,19 @@
 
     export default {
         name: "RentForm",
-        components: { FormLine, LightPick },
+        components: {FormLine, LightPick},
 
         data() {
             return {
                 maxNumber: 10,
                 actual: 0,
                 categories: [],
+                equipments: {},
             }
         },
         props: {
-          url: String,
+            category_url: String,
+            equipment_url: String,
         },
 
         methods: {
@@ -60,9 +63,14 @@
         mounted() {
             const _this = this;
 
-            axios.get(this.url)
+            axios.get(this.category_url)
                 .then(function (response) {
                     _this.categories = response.data;
+                });
+
+            axios.get(this.equipment_url)
+                .then(function (response) {
+                    _this.equipments = response.data;
                 });
         }
     }

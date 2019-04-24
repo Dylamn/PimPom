@@ -11,7 +11,11 @@
 
                         {{ Form::open(['url' => 'reserver']) }}
 
-                        <booking-form url="{{ route('api.categories') }}"></booking-form>
+                        <booking-form
+                            category_url="{{ route('api.categories') }}"
+                            equipment_url="{{ route('api.equipments') }}">
+
+                        </booking-form>
 
                         <div class="row">
                             <div class="col-md">

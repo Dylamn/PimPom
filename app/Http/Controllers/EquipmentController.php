@@ -129,4 +129,14 @@ class EquipmentController extends Controller
 
         return $bigTable;
     }
+
+    /**
+     * Returns a json where all available equipments are specified.
+     *
+     * @return string
+     */
+    public function getEquipments()
+    {
+        return Equipment::all()->where('statusId', '=', '1')->toJson(JSON_PRETTY_PRINT);
+    }
 }

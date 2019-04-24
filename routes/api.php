@@ -24,4 +24,6 @@ Route::get('/invalid-days', function (Request $request) {
     ];
 });
 
-Route::get('/categories', 'CategoriesController@index')->name('api.categories');
+Route::get('/categories', 'CategoryController@getCategories')->name('api.categories');
+
+Route::get('/equipments', 'EquipmentController@getEquipments')->name('api.equipments');
