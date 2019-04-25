@@ -10,7 +10,8 @@
             <label for="dateFin" class="col-form-label text-md-right mr-5">
                 Date de fin de la réservation :
             </label>
-            <input type="text" id="dateFin" name="dateFin" class="form-control col-xl-5 d-inline" required/>
+            <input type="text" id="dateFin" name="dateFin" class="form-control col-xl-5 d-inline"
+                   required />
         </div>
     </div>
 </template>
@@ -22,7 +23,7 @@
         name: "LightPick",
         data: function () {
             return {
-                answer: '',
+                picker: null,
             };
         },
         beforeCreate() {
@@ -37,7 +38,7 @@
             let dateDebut = document.getElementById('dateDebut'),
                 dateFin = document.getElementById('dateFin');
 
-            window.picker = new Lightpick({
+            this.picker = new Lightpick({
                 field: dateDebut,
                 secondField: dateFin,
                 singleDate: false,

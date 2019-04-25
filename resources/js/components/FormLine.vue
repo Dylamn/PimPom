@@ -23,7 +23,7 @@
 
             <label v-bind:for="'equipment' + lId" class="col-form-label mt-1">Taille (en cm) :</label>
             <select v-bind:id="'equipment' + lId" v-bind:name="'lines[]'" class="col-lg-4 form-control">
-                <option v-for="equipment in correspondingEquipments" v-bind:aria-valuemax="equipment.id">{{ equipment.size }}</option>
+                <option v-for="equipment in correspondingEquipments" v-bind:value="equipment.id">{{ equipment.size }}</option>
             </select>
         </div>
     </div>
@@ -54,10 +54,8 @@
                 this.correspondingEquipments = [];
                 this.categoryIsSelected = true;
 
-                for (let id in this.equipments)
-                {
-                    if (equip[id].categoryId === catId)
-                    {
+                for (let id in this.equipments) {
+                    if (equip[id].categoryId === catId) {
                         this.correspondingEquipments.push(equip[id]);
                     }
                 }
