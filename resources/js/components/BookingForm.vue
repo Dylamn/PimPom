@@ -14,7 +14,7 @@
                 <select id="nbPersonnes" name="nbPersonnes" @change="createLine($event)"
                         class="ml-1 col-lg-4 form-control d-inline">
                     <option disabled value="0" selected>--</option>
-                    <option v-for="nb in maxNumber" v-bind:value="nb">{{ nb }}</option>
+                    <option v-for="nb in maxNumber" :key="nb" v-bind:value="nb">{{ nb }}</option>
                 </select>
             </div>
         </div>
@@ -42,7 +42,7 @@
                 maxNumber: 10,
                 actual: 0,
                 categories: [],
-                equipments: {},
+                equipments: [],
             }
         },
         props: {

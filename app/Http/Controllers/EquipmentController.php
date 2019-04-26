@@ -53,7 +53,7 @@ class EquipmentController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Equipment $equipment
+     * @param \App\Models\Equipment $equipment
      * @return \Illuminate\Http\Response
      */
     public function show(Equipment $equipment)
@@ -66,14 +66,14 @@ class EquipmentController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Equipment $equipment
+     * @param \App\Models\Equipment $equipment
      * @return \Illuminate\Http\Response
      */
     public function edit(Equipment $equipment)
     {
-       $equipement = Equipment::select('equipments.id', 'internalId', 'size', 'adultPrice', 'childrenPrice')
-           ->leftJoin('categories AS c', 'equipments.categoryId', '=', 'c.id')
-           ->where('equipments.id', '=', $equipment->id)->get()[0];
+        $equipement = Equipment::select('equipments.id', 'internalId', 'size', 'adultPrice', 'childrenPrice')
+            ->leftJoin('categories AS c', 'equipments.categoryId', '=', 'c.id')
+            ->where('equipments.id', '=', $equipment->id)->get()[0];
 
         return view("equipement.edit", compact("equipement"));
     }
@@ -81,8 +81,8 @@ class EquipmentController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\EquipmentRequest $request
-     * @param  \App\Models\Equipment $equipment
+     * @param \App\Http\Requests\EquipmentRequest $request
+     * @param \App\Models\Equipment $equipment
      * @return \Illuminate\Http\Response
      */
     public function update(EquipmentRequest $request, Equipment $equipment)
@@ -98,7 +98,7 @@ class EquipmentController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Equipment $equipment
+     * @param \App\Models\Equipment $equipment
      * @return \Illuminate\Http\Response
      * @throws Exception
      */
@@ -133,10 +133,10 @@ class EquipmentController extends Controller
     /**
      * Returns a json where all available equipments are specified.
      *
-     * @return string
+     * @return \Illuminate\Support\Collection
      */
     public function getEquipments()
     {
-        return Equipment::all()->where('statusId', '=', '1')->toJson(JSON_PRETTY_PRINT);
+        return DB::table('equipments')->select('*')->where('statusId', '=', '1')->get();
     }
 }

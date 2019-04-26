@@ -27,11 +27,11 @@
             };
         },
         beforeCreate() {
-            const vm = this;
+            const _this = this;
 
             axios.get('/api/invalid-days')
                 .then(function (response) {
-                    vm.answer = _.capitalize(response.data.answer);
+                    _this.answer = _.capitalize(response.data.answer);
                 })
         },
         mounted() {
