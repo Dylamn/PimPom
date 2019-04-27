@@ -2,7 +2,7 @@
 @extends('layouts.navbar')
 
 @section('content')
-    <div class="container" style="padding-top: 3%">
+    <div class="container">
         <div class="row justify-content-center">
             <div class="col-md">
                 <div class="card">
@@ -14,7 +14,6 @@
                         <booking-form
                             category_url="{{ route('api.categories') }}"
                             equipment_url="{{ route('api.equipments') }}">
-
                         </booking-form>
 
                         <div class="row">

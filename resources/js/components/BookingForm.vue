@@ -5,7 +5,8 @@
                 <label for="nomClient" class="col-form-label text-md-right mr-5">
                     Nom du client :
                 </label>
-                <input type="text" name="nomClient" id="nomClient" class="col-lg-4 form-control d-inline ml-10" required />
+                <input type="text" name="nomClient" id="nomClient" class="col-lg-4 form-control d-inline ml-10"
+                       required />
             </div>
             <div class="col-xl-6 form-group">
                 <label for="nbPersonnes" class="pr-4 col-form-label text-md-right mr-5">
@@ -19,6 +20,7 @@
             </div>
         </div>
 
+        <!-- Inputs for date -->
         <LightPick></LightPick>
 
         <div id="rents">
@@ -35,7 +37,7 @@
 
     export default {
         name: "RentForm",
-        components: {FormLine, LightPick},
+        components: { FormLine, LightPick },
 
         data() {
             return {

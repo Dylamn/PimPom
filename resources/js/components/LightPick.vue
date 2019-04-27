@@ -35,6 +35,7 @@
                 })
         },
         mounted() {
+
             let dateDebut = document.getElementById('dateDebut'),
                 dateFin = document.getElementById('dateFin');
 
