@@ -56,9 +56,7 @@
             createLine(ev) {
                 if (isNaN(ev.target.value)) return console.warn("It's not a number. Isn't it ?");
 
-                let next = parseInt(ev.target.value, 10);
-
-                this.actual = next;
+                this.actual = parseInt(ev.target.value, 10);
             },
         },
 

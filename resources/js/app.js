@@ -7,29 +7,13 @@
 require('./bootstrap');
 
 import Vue from 'vue';
-import Vuex from 'vuex';
-import 'es6-promise/auto';
-
-Vue.use(Vuex);
 
 /**
  * Secondly we will create a Vuex store which will contains the state
  * for our Vue application.
- *
- * @type {Store<{count: number}>}
  */
 
-const store = new Vuex.Store({
-    state: {
-        count: 0,
-    },
-    mutations: {
-        increment(state, value) {
-            state.count += value;
-        }
-    }
-});
-
+import store from './store';
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

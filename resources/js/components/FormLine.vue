@@ -34,12 +34,15 @@
                     {{ equipment.size }}
                 </option>
             </select>
+            <button @click="commitToStore" class="btn btn-outline-success" type="button">Interact</button>
+            <div>Count from store : {{ count }}</div>
         </div>
-        <div>Count from store : {{ count }}</div>
     </div>
 </template>
 
 <script>
+    import { mapActions } from 'vuex';
+
     export default {
         name: "FormLine",
         props: {
@@ -58,10 +61,16 @@
         },
         computed: {
           count () {
-              return this.$store.state.count;
+              return this.$store.getters.getCount;
           }
         },
         methods: {
+            ...mapActions([
+                'incrementAsync'
+            ]),
+            commitToStore() {
+                this.$store.dispatch('incrementASync', 5);
+            },
             /**
              * Update the select for size accordingly to the selectedCategory
              */
