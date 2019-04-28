@@ -23,17 +23,18 @@ class UserRequest extends FormRequest
      */
     public function rules()
     {
-        //return dd(substr($_SERVER['REQUEST_URI'], 14));
-        if ($this->password === null && $this->newPassword === null)
+        $id = $this->id;
+        if ($this->password === null && $this->password_confirmation === null)
         {
             return [
-                'email' => 'unique:users,email,'.substr($_SERVER["REQUEST_URI"], 14),
+                'surname' => 'unique:users,surname,'.$id,
+                'email' => 'unique:users,email,'.$id,
             ];
         }
         return [
-            'email' => 'unique:users,email_address',
-            'surname' => 'unique:users,surname',
-            'password' => 'required|String|between:5,50|same:rePassword',
+            'email' => 'unique:users,email,'.$id,
+            'surname' => 'unique:users,surname,'.$id,
+            'password' => 'required|String|between:5,50|confirmed',
         ];
     }
 
@@ -50,7 +51,7 @@ class UserRequest extends FormRequest
 
             'password.required' => 'Le mot de passe est incorrect.',
             'password.between' => 'Le mot de passe doit être compris entre 5 et 50 caractères.',
-            'password.same' => 'Le mot de passe est différent de la confirmation.',
+            'password.confirmed' => 'Le mot de passe est différent de celui de la confirmation.',
         ];
     }
 }

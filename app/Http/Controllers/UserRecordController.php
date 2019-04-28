@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Record;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserRecordController extends Controller
 {
@@ -14,7 +15,7 @@ class UserRecordController extends Controller
      */
     public function index()
     {
-        $rents = Record::getRentsByName("Jon");
-        return view('userRecord', compact('rents'));
+        $records = Record::getRecordByName(Auth::user()->username);
+        return view('userRecord', compact('records'));
     }
 }

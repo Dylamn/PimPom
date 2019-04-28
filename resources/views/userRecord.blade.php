@@ -9,7 +9,7 @@
                     <div class="card-header">Mes réservations</div>
 
                     <div class="card-body container table-responsive">
-                        @if(empty($rents))
+                        @if(!empty($records))
                             <div class="row">
                                 <div class="col-md">
                                     Vous n'avez aucune ancienne réservation.
@@ -28,20 +28,20 @@
                                 </tr>
                                 </thead>
 
-                                @foreach($rents as $oneRent)
+                                @foreach($records as $oneRecord)
                                     <tr>
-                                        <td class="text-center">{{ $oneRent->userName }}</td>
-                                        <td class="text-center">{{ $oneRent->label }}</td>
-                                        <td class="text-center">{{ (new DateTime($oneRent->start))->format('d-m-Y') }}</td>
-                                        <td class="text-center">{{ (new DateTime($oneRent->end))->format('d-m-Y') }}</td>
+                                        <td class="text-center">{{ $oneRecord->userName }}</td>
+                                        <td class="text-center">{{ $oneRecord->label }}</td>
+                                        <td class="text-center">{{ (new DateTime($oneRecord->start))->format('d-m-Y') }}</td>
+                                        <td class="text-center">{{ (new DateTime($oneRecord->end))->format('d-m-Y') }}</td>
                                         <td class="text-center">
-                                            <a href="{{ Request::url() . '/' . $oneRent->id }}/modifier">
+                                            <a href="{{ Request::url() . '/' . $oneRecord->id }}/modifier">
                                                 <i class="fa fa-pencil" style="color:orange; font-size: 1.4em;"></i>
                                             </a>
                                         </td>
                                         <td class="text-center">
-                                            <form name="delete_form{{__($oneRent->id) }}"
-                                                  action="{{ Request::url() . '/' . $oneRent->id }}" method="POST">
+                                            <form name="delete_form{{__($oneRecord->id) }}"
+                                                  action="{{ Request::url() . '/' . $oneRecord->id }}" method="POST">
                                                 @method('DELETE')
                                                 @csrf
                                                 <i id="btn-delete" class="fa fa-times"

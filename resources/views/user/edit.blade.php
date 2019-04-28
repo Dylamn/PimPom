@@ -12,6 +12,7 @@
                         <form method="POST" action=" {{ Route('utilisateurs.update', ['user' => $user->id]) }}" class="form-group">
                             @method('PATCH')
                             @csrf
+                            <input type="hidden" id="id" name="id" value="{{ $user->id }}">
                             <div class="row">
                                 <div class="col-md form-group">
                                     <label for="surname">Nom</label>
@@ -50,7 +51,7 @@
                                 </div>
                                 <div class="col-md form-group">
                                     <label for="privilege">Privilège</label>
-                                    <input type="number" min="0" max="1" id="privilege" name="privilege" value="0"
+                                    <input type="number" min="0" max="1" id="privilege" name="privilege" value="{{ $user->privilege }}"
                                            class="form-control rounded {{ $errors->has('privilege') ? 'is-invalid' : '' }}">
 
                                     @if ($errors->has('privilege'))
@@ -79,15 +80,15 @@
                                     @endif
                                 </div>
                                 <div class="col-md form-group">
-                                    <label for="newPassword">Confirmation du mot de passe</label>
-                                    <input type="password" id="newPassword" name="newPassword" placeholder="Réécrire le nouveau mot de passe"
-                                           class="form-control rounded {{ $errors->has('password') ? 'is-invalid' : '' }}">
+                                    <label for="password_confirmation">Confirmation du mot de passe</label>
+                                    <input type="password" id="password_confirmation" name="password_confirmation" placeholder="Réécrire le nouveau mot de passe"
+                                           class="form-control rounded">
 
-                                    @if ($errors->has('password'))
-                                        <span class="invalid-feedback" role="alert">
-                                        <strong>{{ __($errors->first('password')) }}</strong>
-                                    </span>
-                                    @endif
+{{--                                    @if ($errors->has('password'))--}}
+{{--                                        <span class="invalid-feedback" role="alert">--}}
+{{--                                        <strong>{{ __($errors->first('password')) }}</strong>--}}
+{{--                                    </span>--}}
+{{--                                    @endif--}}
                                 </div>
                             </div>
                             <div class="row">

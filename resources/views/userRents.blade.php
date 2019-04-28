@@ -9,7 +9,7 @@
                     <div class="card-header">Mes réservations</div>
 
                     <div class="card-body container table-responsive">
-                        @if(empty($rents))
+                        @if(!empty($rents))
                             <div class="row">
                                 <div class="col-md">
                                     Vous n'avez aucune réservation.

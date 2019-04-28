@@ -22,12 +22,12 @@
                     </tr>
                     </thead>
 
-                    @foreach($all as $oneRent)
+                    @foreach($all as $oneRecord)
                         <tr>
-                            <td class="text-center">{{ $oneRent->userName }}</td>
-                            <td class="text-center">{{ $oneRent->label }}</td>
-                            <td class="text-center">{{ (new DateTime($oneRent->start))->format('d-m-Y') }}</td>
-                            <td class="text-center">{{ (new DateTime($oneRent->end))->format('d-m-Y') }}</td>
+                            <td class="text-center">{{ $oneRecord->userName }}</td>
+                            <td class="text-center">{{ $oneRecord->label }}</td>
+                            <td class="text-center">{{ (new DateTime($oneRecord->start))->format('d-m-Y') }}</td>
+                            <td class="text-center">{{ (new DateTime($oneRecord->end))->format('d-m-Y') }}</td>
                         </tr>
                     @endforeach
                 </table>

@@ -26,11 +26,8 @@ class Record extends Base\Record
         'end'
     ];
 
-    public static function getRentsByName(String $name)
+    public static function getRecordByName(String $name)
     {
-        // TODO : Régler le problème lié à l'utilisation de l'ORM
-        return DB::select("SELECT * FROM rents WHERE userName = '$name'");
-
-        // return DB::table('rents')->select('*')->where('userName', '=', $name);
+        return Record::where('username', '=', $name)->get();
     }
 }
