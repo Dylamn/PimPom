@@ -3,36 +3,43 @@
 @extends('layouts.sidebar')
 
 @section('content')
+
     <div class="container" id="side">
-        <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#disponible">Equipements disponibles</button>
-        <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#reserve">Equipements réservés</button>
-        <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#reparation">Equipements en réparation</button>
         <div class="container table-responsive pt-5">
-            <div id="disponible" class="collapse">
-                <table class="table table-striped table-bordered table-hover">
-                    @if(!isset($equipment))
-                        <tr>
-                            {{ "Aucun équipement n'est actuellement enregistré." }}
-                        </tr>
-                    @endif
+            <ul class="nav nav-tabs">
+                <li class="active"><a data-toggle="tab" href="#menu1">Disponible(s)</a></li>
+                <li><a data-toggle="tab" href="#menu2">Réservé(s)</a></li>
+                <li><a data-toggle="tab" href="#menu3">Réparation</a></li>
+            </ul>
 
-                    @foreach($equipment as $oneEquipment)
-                        <thead class="thead-light">
-                        <tr>
-                            <th class="text-center">{{ ! empty(current($oneEquipment)) ? current($oneEquipment)->label : '' }}</th>
-                            <th class="text-center">Référence</th>
-                            <th class="text-center">Taille</th>
-                            <th class="text-center">Prix adulte</th>
-                            <th class="text-center">Prix enfant</th>
-                            <th class="text-center">Modifier</th>
-                            <th class="text-center">Supprimer</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        @foreach($oneEquipment as $statement)
-                            <tr>
-                                @if($statement->statusLabel == "Disponible")
-                                    <td class="text-center flex flex-row align-content-center">
+            <div class="tab-content">
+                <div id="menu1" class="tab-pane fade in active">
+                    <h3>Disponible</h3>
+                    <div id="disponible">
+                        <table class="table table-striped table-bordered table-hover">
+                            @if(!isset($equipment))
+                                <tr>
+                                    {{ "Aucun équipement n'est actuellement enregistré." }}
+                                </tr>
+                            @endif
+
+                            @foreach($equipment as $oneEquipment)
+                                <thead class="thead-light">
+                                <tr>
+                                    <th class="text-center">{{ ! empty(current($oneEquipment)) ? current($oneEquipment)->label : '' }}</th>
+                                    <th class="text-center">Référence</th>
+                                    <th class="text-center">Taille</th>
+                                    <th class="text-center">Prix adulte</th>
+                                    <th class="text-center">Prix enfant</th>
+                                    <th class="text-center">Modifier</th>
+                                    <th class="text-center">Supprimer</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach($oneEquipment as $statement)
+                                    <tr>
+                                        @if($statement->statusLabel == "Disponible")
+                                            <td class="text-center flex flex-row align-content-center">
                                         <span data-toggle="tooltip" data-placement="top"
                                               title="{{ $statement->statusLabel }}">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="100" height="7">
@@ -40,50 +47,53 @@
                                                       stroke="{{ __($statement->hexaColor) }}"></line>
                                             </svg>
                                         </span>
-                                    </td>
-                                    <td class="text-center">{{ $statement->internalId }}</td>
-                                    <td class="text-center">{{ $statement->size }} cm</td>
-                                    <td class="text-center">{{ $statement->adultPrice }} €</td>
-                                    <td class="text-center">{{ $statement->childrenPrice }} €</td>
-                                    <td class="text-center">
-                                        <a href="{{ Route('equipements.edit', ['equipment' => $statement->id]) }}">
-                                            <i class="fa fa-pencil" style="color:orange; font-size: 1.4em;"> </i>
-                                        </a>
-                                    </td>
-                                    <td class="text-center">
-                                        <delete-form
-                                                action="{{ Route('equipements.destroy', ['equipment' => $statement->id]) }}"
-                                                method="{{ __('DELETE') }}"
-                                                csrf="{{ csrf_token() }}">
-                                        </delete-form>
-                                    </td>
-                                @endif
-                            </tr>
-                        @endforeach
-                        </tbody>
-                    @endforeach
-                </table>
-            </div>
-
-            <div id="reserve" class="collapse">
-                <table class="table table-striped table-bordered table-hover">
-                    @foreach($equipment as $oneEquipment)
-                        <thead class="thead-light">
-                        <tr>
-                            <th class="text-center">{{ ! empty(current($oneEquipment)) ? current($oneEquipment)->label : '' }}</th>
-                            <th class="text-center">Référence</th>
-                            <th class="text-center">Taille</th>
-                            <th class="text-center">Prix adulte</th>
-                            <th class="text-center">Prix enfant</th>
-                            <th class="text-center">Modifier</th>
-                            <th class="text-center">Supprimer</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        @foreach($oneEquipment as $statement)
-                            <tr>
-                                @if($statement->statusLabel == "Réservé")
-                                    <td class="text-center flex flex-row align-content-center">
+                                            </td>
+                                            <td class="text-center">{{ $statement->internalId }}</td>
+                                            <td class="text-center">{{ $statement->size }} cm</td>
+                                            <td class="text-center">{{ $statement->adultPrice }} €</td>
+                                            <td class="text-center">{{ $statement->childrenPrice }} €</td>
+                                            <td class="text-center">
+                                                <a href="{{ Route('equipements.edit', ['equipment' => $statement->id]) }}">
+                                                    <i class="fa fa-pencil"
+                                                       style="color:orange; font-size: 1.4em;"> </i>
+                                                </a>
+                                            </td>
+                                            <td class="text-center">
+                                                <delete-form
+                                                        action="{{ Route('equipements.destroy', ['equipment' => $statement->id]) }}"
+                                                        method="{{ __('DELETE') }}"
+                                                        csrf="{{ csrf_token() }}">
+                                                </delete-form>
+                                            </td>
+                                        @endif
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            @endforeach
+                        </table>
+                    </div>
+                </div>
+                <div id="menu2" class="tab-pane fade">
+                    <h3>Réservé</h3>
+                    <div id="reserve">
+                        <table class="table table-striped table-bordered table-hover">
+                            @foreach($equipment as $oneEquipment)
+                                <thead class="thead-light">
+                                <tr>
+                                    <th class="text-center">{{ ! empty(current($oneEquipment)) ? current($oneEquipment)->label : '' }}</th>
+                                    <th class="text-center">Référence</th>
+                                    <th class="text-center">Taille</th>
+                                    <th class="text-center">Prix adulte</th>
+                                    <th class="text-center">Prix enfant</th>
+                                    <th class="text-center">Modifier</th>
+                                    <th class="text-center">Supprimer</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach($oneEquipment as $statement)
+                                    <tr>
+                                        @if($statement->statusLabel == "Réservé")
+                                            <td class="text-center flex flex-row align-content-center">
                                         <span data-toggle="tooltip" data-placement="top"
                                               title="{{ $statement->statusLabel }}">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="100" height="7">
@@ -91,50 +101,53 @@
                                                       stroke="{{ __($statement->hexaColor) }}"></line>
                                             </svg>
                                         </span>
-                                    </td>
-                                    <td class="text-center">{{ $statement->internalId }}</td>
-                                    <td class="text-center">{{ $statement->size }} cm</td>
-                                    <td class="text-center">{{ $statement->adultPrice }} €</td>
-                                    <td class="text-center">{{ $statement->childrenPrice }} €</td>
-                                    <td class="text-center">
-                                        <a href="{{ Route('equipements.edit', ['equipment' => $statement->id]) }}">
-                                            <i class="fa fa-pencil" style="color:orange; font-size: 1.4em;"> </i>
-                                        </a>
-                                    </td>
-                                    <td class="text-center">
-                                        <delete-form
-                                                action="{{ Route('equipements.destroy', ['equipment' => $statement->id]) }}"
-                                                method="{{ __('DELETE') }}"
-                                                csrf="{{ csrf_token() }}">
-                                        </delete-form>
-                                    </td>
-                                @endif
-                            </tr>
-                        @endforeach
-                        </tbody>
-                    @endforeach
-                </table>
-            </div>
-
-            <div id="reparation" class="collapse">
-                <table class="table table-striped table-bordered table-hover">
-                    @foreach($equipment as $oneEquipment)
-                        <thead class="thead-light">
-                        <tr>
-                            <th class="text-center">{{ ! empty(current($oneEquipment)) ? current($oneEquipment)->label : '' }}</th>
-                            <th class="text-center">Référence</th>
-                            <th class="text-center">Taille</th>
-                            <th class="text-center">Prix adulte</th>
-                            <th class="text-center">Prix enfant</th>
-                            <th class="text-center">Modifier</th>
-                            <th class="text-center">Supprimer</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        @foreach($oneEquipment as $statement)
-                            <tr>
-                                @if($statement->statusLabel == "Réparation")
-                                    <td class="text-center flex flex-row align-content-center">
+                                            </td>
+                                            <td class="text-center">{{ $statement->internalId }}</td>
+                                            <td class="text-center">{{ $statement->size }} cm</td>
+                                            <td class="text-center">{{ $statement->adultPrice }} €</td>
+                                            <td class="text-center">{{ $statement->childrenPrice }} €</td>
+                                            <td class="text-center">
+                                                <a href="{{ Route('equipements.edit', ['equipment' => $statement->id]) }}">
+                                                    <i class="fa fa-pencil"
+                                                       style="color:orange; font-size: 1.4em;"> </i>
+                                                </a>
+                                            </td>
+                                            <td class="text-center">
+                                                <delete-form
+                                                        action="{{ Route('equipements.destroy', ['equipment' => $statement->id]) }}"
+                                                        method="{{ __('DELETE') }}"
+                                                        csrf="{{ csrf_token() }}">
+                                                </delete-form>
+                                            </td>
+                                        @endif
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            @endforeach
+                        </table>
+                    </div>
+                </div>
+                <div id="menu3" class="tab-pane fade">
+                    <h3>Réparation</h3>
+                    <div id="reparation">
+                        <table class="table table-striped table-bordered table-hover">
+                            @foreach($equipment as $oneEquipment)
+                                <thead class="thead-light">
+                                <tr>
+                                    <th class="text-center">{{ ! empty(current($oneEquipment)) ? current($oneEquipment)->label : '' }}</th>
+                                    <th class="text-center">Référence</th>
+                                    <th class="text-center">Taille</th>
+                                    <th class="text-center">Prix adulte</th>
+                                    <th class="text-center">Prix enfant</th>
+                                    <th class="text-center">Modifier</th>
+                                    <th class="text-center">Supprimer</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach($oneEquipment as $statement)
+                                    <tr>
+                                        @if($statement->statusLabel == "Réparation")
+                                            <td class="text-center flex flex-row align-content-center">
                                         <span data-toggle="tooltip" data-placement="top"
                                               title="{{ $statement->statusLabel }}">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="100" height="7">
@@ -142,29 +155,32 @@
                                                       stroke="{{ __($statement->hexaColor) }}"></line>
                                             </svg>
                                         </span>
-                                    </td>
-                                    <td class="text-center">{{ $statement->internalId }}</td>
-                                    <td class="text-center">{{ $statement->size }} cm</td>
-                                    <td class="text-center">{{ $statement->adultPrice }} €</td>
-                                    <td class="text-center">{{ $statement->childrenPrice }} €</td>
-                                    <td class="text-center">
-                                        <a href="{{ Route('equipements.edit', ['equipment' => $statement->id]) }}">
-                                            <i class="fa fa-pencil" style="color:orange; font-size: 1.4em;"> </i>
-                                        </a>
-                                    </td>
-                                    <td class="text-center">
-                                        <delete-form
-                                                action="{{ Route('equipements.destroy', ['equipment' => $statement->id]) }}"
-                                                method="{{ __('DELETE') }}"
-                                                csrf="{{ csrf_token() }}">
-                                        </delete-form>
-                                    </td>
-                                @endif
-                            </tr>
-                        @endforeach
-                        </tbody>
-                    @endforeach
-                </table>
+                                            </td>
+                                            <td class="text-center">{{ $statement->internalId }}</td>
+                                            <td class="text-center">{{ $statement->size }} cm</td>
+                                            <td class="text-center">{{ $statement->adultPrice }} €</td>
+                                            <td class="text-center">{{ $statement->childrenPrice }} €</td>
+                                            <td class="text-center">
+                                                <a href="{{ Route('equipements.edit', ['equipment' => $statement->id]) }}">
+                                                    <i class="fa fa-pencil"
+                                                       style="color:orange; font-size: 1.4em;"> </i>
+                                                </a>
+                                            </td>
+                                            <td class="text-center">
+                                                <delete-form
+                                                        action="{{ Route('equipements.destroy', ['equipment' => $statement->id]) }}"
+                                                        method="{{ __('DELETE') }}"
+                                                        csrf="{{ csrf_token() }}">
+                                                </delete-form>
+                                            </td>
+                                        @endif
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            @endforeach
+                        </table>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
