@@ -6,14 +6,29 @@
 
     <div class="container" id="side">
         <div class="container table-responsive pt-5">
-            <ul class="nav nav-tabs">
-                <li class="active"><a data-toggle="tab" href="#menu1">Disponible(s)</a></li>
-                <li><a data-toggle="tab" href="#menu2">Réservé(s)</a></li>
-                <li><a data-toggle="tab" href="#menu3">Réparation</a></li>
+            <ul class="nav nav-tabs" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#menu1" data-toggle="tab" role="tab" aria-controls="menu1"
+                       aria-selected="true">Disponible(s)</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#menu2" data-toggle="tab" role="tab" aria-controls="menu2"
+                       aria-selected="false">Réservé(s)</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#menu3" data-toggle="tab" role="tab" aria-controls="menu3"
+                       aria-selected="false">Réparation</a>
+                </li>
             </ul>
 
+            {{--<ul class="nav nav-tabs">--}}
+            {{--<li class="nav-item active"><a data-toggle="tab" href="#menu1">Disponible(s)</a></li>--}}
+            {{--<li class="nav-item"><a data-toggle="tab" href="#menu2">Réservé(s)</a></li>--}}
+            {{--<li class="nav-item"><a data-toggle="tab" href="#menu3">Réparation</a></li>--}}
+            {{--</ul>--}}
+
             <div class="tab-content">
-                <div id="menu1" class="tab-pane fade in active">
+                <div id="menu1" class="tab-pane fade active" role="tabpanel" aria-labelledby="menu1-tab">
                     <h3>Disponible</h3>
                     <div id="disponible">
                         <table class="table table-striped table-bordered table-hover">
@@ -73,7 +88,7 @@
                         </table>
                     </div>
                 </div>
-                <div id="menu2" class="tab-pane fade">
+                <div id="menu2" class="tab-pane fade" role="tabpanel" aria-labelledby="menu2-tab">
                     <h3>Réservé</h3>
                     <div id="reserve">
                         <table class="table table-striped table-bordered table-hover">
@@ -92,8 +107,8 @@
                                 <tbody>
                                 @foreach($oneEquipment as $statement)
                                     <tr>
-                                        @if($statement->statusLabel == "Réservé")
-                                            <td class="text-center flex flex-row align-content-center">
+                                    @if($statement->statusLabel == "Réservé")
+                                        <td class="text-center flex flex-row align-content-center">
                                         <span data-toggle="tooltip" data-placement="top"
                                               title="{{ $statement->statusLabel }}">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="100" height="7">
@@ -101,33 +116,33 @@
                                                       stroke="{{ __($statement->hexaColor) }}"></line>
                                             </svg>
                                         </span>
-                                            </td>
-                                            <td class="text-center">{{ $statement->internalId }}</td>
-                                            <td class="text-center">{{ $statement->size }} cm</td>
-                                            <td class="text-center">{{ $statement->adultPrice }} €</td>
-                                            <td class="text-center">{{ $statement->childrenPrice }} €</td>
-                                            <td class="text-center">
-                                                <a href="{{ Route('equipements.edit', ['equipment' => $statement->id]) }}">
-                                                    <i class="fa fa-pencil"
-                                                       style="color:orange; font-size: 1.4em;"> </i>
-                                                </a>
-                                            </td>
-                                            <td class="text-center">
-                                                <delete-form
-                                                        action="{{ Route('equipements.destroy', ['equipment' => $statement->id]) }}"
-                                                        method="{{ __('DELETE') }}"
-                                                        csrf="{{ csrf_token() }}">
-                                                </delete-form>
-                                            </td>
+                                        </td>
+                                        <td class="text-center">{{ $statement->internalId }}</td>
+                                        <td class="text-center">{{ $statement->size }} cm</td>
+                                        <td class="text-center">{{ $statement->adultPrice }} €</td>
+                                        <td class="text-center">{{ $statement->childrenPrice }} €</td>
+                                        <td class="text-center">
+                                            <a href="{{ Route('equipements.edit', ['equipment' => $statement->id]) }}">
+                                                <i class="fa fa-pencil"
+                                                   style="color:orange; font-size: 1.4em;"> </i>
+                                            </a>
+                                        </td>
+                                        <td class="text-center">
+                                            <delete-form
+                                                    action="{{ Route('equipements.destroy', ['equipment' => $statement->id]) }}"
+                                                    method="{{ __('DELETE') }}"
+                                                    csrf="{{ csrf_token() }}">
+                                            </delete-form>
+                                        </td>
                                         @endif
-                                    </tr>
-                                @endforeach
+                                        </tr>
+                                        @endforeach
                                 </tbody>
                             @endforeach
                         </table>
                     </div>
                 </div>
-                <div id="menu3" class="tab-pane fade">
+                <div id="menu3" class="tab-pane fade" role="tabpanel" aria-labelledby="menu3-tab">
                     <h3>Réparation</h3>
                     <div id="reparation">
                         <table class="table table-striped table-bordered table-hover">
