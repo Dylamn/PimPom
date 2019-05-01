@@ -71,7 +71,7 @@ class EquipmentController extends Controller
      */
     public function edit(Equipment $equipment)
     {
-        $equipement = Equipment::select('equipments.id', 'internalId', 'size', 'adultPrice', 'childrenPrice')
+        $equipement = Equipment::select('equipments.id', 'internalId', 'size', 'adultPrice', 'childrenPrice', 'statusId')
             ->leftJoin('categories AS c', 'equipments.categoryId', '=', 'c.id')
             ->where('equipments.id', '=', $equipment->id)->get()[0];
 
@@ -90,6 +90,7 @@ class EquipmentController extends Controller
         $equipment->update([
             'internalId' => $request->internalId,
             'size' => $request->size,
+            'statusId' => $request->statusId,
         ]);
 
         return redirect(route('equipements.index'));

@@ -35,6 +35,7 @@ class EquipmentRequest extends FormRequest
             return [
                 'internalId' => 'required|String|between:3,8|unique:equipments,internalId',
                 'size' => 'required|Integer|between:0,999',
+                'statusId' => 'required|Integer|between:1,3',
             ];
         }
     }
