@@ -13,6 +13,7 @@ const store = new Vuex.Store({
         fetching: false,
         equipments: [],
         categories: [],
+        error: null,
     },
 
     getters: {
@@ -39,15 +40,33 @@ const store = new Vuex.Store({
         },
 
         [types.FETCH_DATA_BEGAN] (state) {
-            state.fetch = types.FETCH_DATA_BEGAN;
+            state.fetching = true;
         },
+
         [types.FETCH_DATA_FAILED] (state) {
-            state.fetch = types.FETCH_DATA_FAILED;
+            state.fetching = false;
+            state.error = types.FETCH_DATA_FAILED;
         },
 
         [types.FETCH_DATA_SUCCESS] (state, payload) {
-            state.equipments = payload;
-            state.fetch = types.FETCH_DATA_SUCCESS;
+
+            switch (payload.target) {
+                case 'equipment': {
+                    state.equipments = payload.data;
+                    break;
+                }
+                case 'category': {
+                    state.categories = payload.data;
+                    break;
+                }
+
+                default: {
+                    state.error = "No target found.";
+                    break;
+                }
+            }
+
+            state.fetching = false;
         }
     },
 
@@ -65,22 +84,34 @@ const store = new Vuex.Store({
             try {
                 let result = await axios.get('/api/equipments');
 
-                commit(types.FETCH_DATA_SUCCESS, result.data);
+                commit(types.FETCH_DATA_SUCCESS, {
+                    target: 'equipment',
+                    data: result.data
+                });
             } catch (error) {
                 commit(types.FETCH_DATA_FAILED);
             }
         },
 
+        /**
+         * Retrieve the list of all categories.
+         *
+         * @param commit
+         * @returns {Promise<void>}
+         */
         async fetchCategories ({ commit }) {
-          commit(types.FETCH_DATA_BEGAN);
+            commit(types.FETCH_DATA_BEGAN);
 
-          try {
-              let result = await axios.get('/api/categories');
+            try {
+                let result = await axios.get('/api/categories');
 
-              commit(types.FETCH_DATA_SUCCESS, result.data);
-          } catch (error) {
-              commit(types.FETCH_DATA_FAILED);
-          }
+                commit(types.FETCH_DATA_SUCCESS, {
+                    target: 'category',
+                    data: result.data
+                });
+            } catch (error) {
+                commit(types.FETCH_DATA_FAILED);
+            }
         },
 
         async incrementASync ({ commit, state }, value) {
