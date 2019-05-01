@@ -68,7 +68,7 @@
                     _this.categories = response.data;
                 });
 
-            axios.get(this.equipment_url)
+            axios.get(`/api/equipments`)
                 .then(function (response) {
                     _this.equipments = response.data;
                 });

@@ -13,6 +13,7 @@ try {
     window.$ = window.jQuery = require('jquery');
 
     $.ajaxSetup({
+        baseURL: '127.0.0.1:8000',
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }

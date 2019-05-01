@@ -3,7 +3,6 @@
 @extends('layouts.sidebar')
 
 @section('content')
-
     <div class="container" id="side">
         <div class="container table-responsive pt-5">
             <ul class="nav nav-tabs" role="tablist">
