@@ -10,11 +10,20 @@ Vue.use(Vuex);
 const store = new Vuex.Store({
     state: {
         count: 0,
-        fetch: null,
+        fetching: false,
         equipments: [],
+        categories: [],
     },
 
     getters: {
+        getEquipments: state => {
+            return state.equipments;
+        },
+
+        getCategories: state => {
+            return state.categories;
+        },
+
         getCount: state => {
             return state.count;
         }
@@ -34,9 +43,9 @@ const store = new Vuex.Store({
         },
         [types.FETCH_DATA_FAILED] (state) {
             state.fetch = types.FETCH_DATA_FAILED;
-        }
-        ,
-        getData (state, payload) {
+        },
+
+        [types.FETCH_DATA_SUCCESS] (state, payload) {
             state.equipments = payload;
             state.fetch = types.FETCH_DATA_SUCCESS;
         }
@@ -50,16 +59,28 @@ const store = new Vuex.Store({
          * @param commit
          * @returns {Promise<void>}
          */
-        async getEquipments ({ commit }) {
+        async fetchEquipments ({ commit }) {
             commit(types.FETCH_DATA_BEGAN);
 
             try {
                 let result = await axios.get('/api/equipments');
 
-                commit('getData', result.data);
+                commit(types.FETCH_DATA_SUCCESS, result.data);
             } catch (error) {
                 commit(types.FETCH_DATA_FAILED);
             }
+        },
+
+        async fetchCategories ({ commit }) {
+          commit(types.FETCH_DATA_BEGAN);
+
+          try {
+              let result = await axios.get('/api/categories');
+
+              commit(types.FETCH_DATA_SUCCESS, result.data);
+          } catch (error) {
+              commit(types.FETCH_DATA_FAILED);
+          }
         },
 
         async incrementASync ({ commit, state }, value) {
