@@ -9,7 +9,7 @@
                 <div class="card">
                     <div class="card-header">Modifier un équipement</div>
                     <div class="card-body">
-                        <form method="POST" action="{{ Route('equipements.update', ['equipment' => $equipement->id]) }}" class="form-group">
+                        <form method="POST" action="{{ Route('equipement.update', ['equipment' => $equipement->id]) }}" class="form-group">
                             @method('PATCH')
                             @csrf
                             <div class="row">
@@ -42,21 +42,28 @@
 
                             <div class="row">
                                 <div class="col-md form-group">
-                                    <label for="adultPrice">État de l'équipement</label>
-                                    <SELECT name="statusId" id="statusId" class="form-control rounded" {{ $errors->has('statusId') ? 'is-invalid' : '' }}>
-                                        <option value="1" @if($equipement->statusId == 1) selected @endif>Disponible</option>
-                                        <option value="2" @if($equipement->statusId == 2) selected @endif>Réservé</option>
-                                        <option value="3" @if($equipement->statusId == 3) selected @endif>En réparation</option>
-                                    </SELECT>
-                                    {{--<input type="number" min="0" step="0.01" id="adultPrice" name="adultPrice"--}}
-                                    {{--value="{{ old('adultPrice') ? old('adultPrice') : $equipement->adultPrice}}"--}}
-                                    {{--class="form-control rounded {{ $errors->has('adultPrice') ? 'is-invalid' : '' }}">--}}
+                                    <label for="adultPrice">Prix adulte de l'équipement</label>
+                                    <input type="number" min="0" step="0.01" id="adultPrice" name="adultPrice"
+                                           value="{{ old('adultPrice') ? old('adultPrice') : $equipement->adultPrice}}"
+                                           class="form-control rounded {{ $errors->has('adultPrice') ? 'is-invalid' : '' }}">
 
-                                    {{--@if ($errors->has('adultPrice'))--}}
-                                    {{--<span class="invalid-feedback" role="alert">--}}
-                                    {{--<strong>{{ __($errors->first('adultPrice')) }}</strong>--}}
-                                    {{--</span>--}}
-                                    {{--@endif--}}
+                                    @if ($errors->has('adultPrice'))
+                                        <span class="invalid-feedback" role="alert">
+                                        <strong>{{ __($errors->first('adultPrice')) }}</strong>
+                                    </span>
+                                    @endif
+                                </div>
+                                <div class="col-md form-group">
+                                    <label for="childrenPrice">Prix enfant de l'équipement</label>
+                                    <input type="number" min="0" step="0.01" id="childrenPrice" name="childrenPrice"
+                                           value="{{ old('childrenPrice') ? old('childrenPrice') : $equipement->childrenPrice }}"
+                                           class="form-control rounded {{ $errors->has('childrenPrice') ? 'is-invalid' : '' }}">
+
+                                    @if ($errors->has('childrenPrice'))
+                                        <span class="invalid-feedback" role="alert">
+                                        <strong>{{ __($errors->first('childrenPrice')) }}</strong>
+                                    </span>
+                                    @endif
                                 </div>
                             </div>
 
