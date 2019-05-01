@@ -24,7 +24,7 @@ class Equipment extends Base\Equipment
 		'internalId',
 		'size',
 		'categoryId',
-		'use'
+		'statusId'
 	];
 
     public static function getCountEquipment()
