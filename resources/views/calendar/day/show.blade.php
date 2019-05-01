@@ -53,7 +53,7 @@
                                             <td class="text-center">{{ $rent->end }}</td>
                                             <td class="text-center">{{ $rent->settled }}</td>
                                             <td class="text-center">
-                                                <a href="{{ Route('calendar.show.rent', ['date' => $date->format('d-m-Y'), 'rentalId' => $rent->id]) }}">
+                                                <a href="{{ route('calendar.show.rent', ['date' => $date->format('d-m-Y'), 'rentalId' => $rent->id]) }}">
                                                     <i class="fa fa-eye" style="font-size: 1.4em;"></i>
                                                 </a>
                                             </td>
@@ -101,7 +101,7 @@
                                             <td class="text-center">{{ $rent->end }}</td>
                                             <td class="text-center">{{ $rent->settled }}</td>
                                             <td class="text-center">
-                                                <a href="{{ Route('calendar.show.rent', ['date' => $date->format('d-m-Y'), 'rentalId' => $rent->id]) }}">
+                                                <a href="{{ route('calendar.show.rent', ['date' => $date->format('d-m-Y'), 'rentalId' => $rent->id]) }}">
                                                     <i class="fa fa-eye" style="font-size: 1.4em;"></i>
                                                 </a>
                                             </td>
@@ -149,7 +149,7 @@
                                             <td class="text-center">{{ $rent->end }}</td>
                                             <td class="text-center">{{ $rent->settled }}</td>
                                             <td class="text-center">
-                                                <a href="{{ Route('calendar.show.rent', ['date' => $date->format('d-m-Y'), 'rentalId' => $rent->id]) }}">
+                                                <a href="{{ route('calendar.show.rent', ['date' => $date->format('d-m-Y'), 'rentalId' => $rent->id]) }}">
                                                     <i class="fa fa-eye" style="font-size: 1.4em;"></i>
                                                 </a>
                                             </td>

@@ -31,13 +31,13 @@
                             <td class="text-center">{{ (new DateTime($one->start))->format('d-m-Y') }}</td>
                             <td class="text-center">{{ (new DateTime($one->end))->format('d-m-Y') }}</td>
                             <td class="text-center">
-                                <a href="{{ Route('reservations.edit', ['rent' => $one->id]) }}">
+                                <a href="{{ route('reservations.edit', ['rent' => $one->id]) }}">
                                     <i class="fa fa-pencil" style="color:orange; font-size: 1.4em;"></i>
                                 </a>
                             </td>
                             <td class="text-center">
                                 <delete-form
-                                    action="{{ Route('reservations.destroy', ['rent' => $one->id]) }}"
+                                    action="{{ route('reservations.destroy', ['rent' => $one->id]) }}"
                                     method="{{ __('DELETE') }}"
                                     csrf="{{ csrf_token() }}">
                                 </delete-form>

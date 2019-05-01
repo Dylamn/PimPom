@@ -9,7 +9,7 @@
                 <div class="card">
                     <div class="card-header">Modifier une catégorie</div>
                     <div class="card-body">
-                        <form method="POST" action="{{ Route('categorie.update', ['category' => $category->id]) }}" class="form-group">
+                        <form method="POST" action="{{ route('categorie.update', ['category' => $category->id]) }}" class="form-group">
                             @method('PATCH')
                             @csrf
                             <div class="row">

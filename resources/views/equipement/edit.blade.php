@@ -9,7 +9,7 @@
                 <div class="card">
                     <div class="card-header">Modifier un équipement</div>
                     <div class="card-body">
-                        <form method="POST" action="{{ Route('equipements.update', ['equipment' => $equipement->id]) }}" class="form-group">
+                        <form method="POST" action="{{ route('equipements.update', ['equipment' => $equipement->id]) }}" class="form-group">
                             @method('PATCH')
                             @csrf
                             <div class="row">
