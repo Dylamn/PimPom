@@ -20,15 +20,8 @@
                 </li>
             </ul>
 
-            {{--<ul class="nav nav-tabs">--}}
-            {{--<li class="nav-item active"><a data-toggle="tab" href="#menu1">Disponible(s)</a></li>--}}
-            {{--<li class="nav-item"><a data-toggle="tab" href="#menu2">Réservé(s)</a></li>--}}
-            {{--<li class="nav-item"><a data-toggle="tab" href="#menu3">Réparation</a></li>--}}
-            {{--</ul>--}}
-
             <div class="tab-content">
-                <div id="menu1" class="tab-pane fade active" role="tabpanel" aria-labelledby="menu1-tab">
-                    <h3>Disponible</h3>
+                <div id="menu1" class="tab-pane fade show active" role="tabpanel" aria-labelledby="menu1-tab">
                     <div id="disponible">
                         <table class="table table-striped table-bordered table-hover">
                             @if(!isset($equipment))
@@ -67,14 +60,14 @@
                                             <td class="text-center">{{ $statement->adultPrice }} €</td>
                                             <td class="text-center">{{ $statement->childrenPrice }} €</td>
                                             <td class="text-center">
-                                                <a href="{{ Route('equipements.edit', ['equipment' => $statement->id]) }}">
+                                                <a href="{{ route('equipements.edit', ['equipment' => $statement->id]) }}">
                                                     <i class="fa fa-pencil"
                                                        style="color:orange; font-size: 1.4em;"> </i>
                                                 </a>
                                             </td>
                                             <td class="text-center">
                                                 <delete-form
-                                                        action="{{ Route('equipements.destroy', ['equipment' => $statement->id]) }}"
+                                                        action="{{ route('equipements.destroy', ['equipment' => $statement->id]) }}"
                                                         method="{{ __('DELETE') }}"
                                                         csrf="{{ csrf_token() }}">
                                                 </delete-form>
@@ -88,7 +81,6 @@
                     </div>
                 </div>
                 <div id="menu2" class="tab-pane fade" role="tabpanel" aria-labelledby="menu2-tab">
-                    <h3>Réservé</h3>
                     <div id="reserve">
                         <table class="table table-striped table-bordered table-hover">
                             @foreach($equipment as $oneEquipment)
@@ -121,15 +113,15 @@
                                         <td class="text-center">{{ $statement->adultPrice }} €</td>
                                         <td class="text-center">{{ $statement->childrenPrice }} €</td>
                                         <td class="text-center">
-                                            <a href="{{ Route('equipements.edit', ['equipment' => $statement->id]) }}">
+                                            <a href="{{ route('equipements.edit', ['equipment' => $statement->id]) }}">
                                                 <i class="fa fa-pencil"
                                                    style="color:orange; font-size: 1.4em;"> </i>
                                             </a>
                                         </td>
                                         <td class="text-center">
                                             <delete-form
-                                                    action="{{ Route('equipements.destroy', ['equipment' => $statement->id]) }}"
-                                                    method="{{ __('DELETE') }}"
+                                                    action="{{ route('equipements.destroy', ['equipment' => $statement->id]) }}"
+                                                    method="{{ 'DELETE' }}"
                                                     csrf="{{ csrf_token() }}">
                                             </delete-form>
                                         </td>
@@ -142,7 +134,6 @@
                     </div>
                 </div>
                 <div id="menu3" class="tab-pane fade" role="tabpanel" aria-labelledby="menu3-tab">
-                    <h3>Réparation</h3>
                     <div id="reparation">
                         <table class="table table-striped table-bordered table-hover">
                             @foreach($equipment as $oneEquipment)
@@ -175,14 +166,14 @@
                                             <td class="text-center">{{ $statement->adultPrice }} €</td>
                                             <td class="text-center">{{ $statement->childrenPrice }} €</td>
                                             <td class="text-center">
-                                                <a href="{{ Route('equipements.edit', ['equipment' => $statement->id]) }}">
+                                                <a href="{{ route('equipements.edit', ['equipment' => $statement->id]) }}">
                                                     <i class="fa fa-pencil"
                                                        style="color:orange; font-size: 1.4em;"> </i>
                                                 </a>
                                             </td>
                                             <td class="text-center">
                                                 <delete-form
-                                                        action="{{ Route('equipements.destroy', ['equipment' => $statement->id]) }}"
+                                                        action="{{ route('equipements.destroy', ['equipment' => $statement->id]) }}"
                                                         method="{{ __('DELETE') }}"
                                                         csrf="{{ csrf_token() }}">
                                                 </delete-form>

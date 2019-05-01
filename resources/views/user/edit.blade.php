@@ -9,7 +9,7 @@
                 <div class="card">
                     <div class="card-header">Modifier une catégorie</div>
                     <div class="card-body">
-                        <form method="POST" action=" {{ Route('utilisateurs.update', ['user' => $user->id]) }}" class="form-group">
+                        <form method="POST" action=" {{ route('utilisateurs.update', ['user' => $user->id]) }}" class="form-group">
                             @method('PATCH')
                             @csrf
                             <input type="hidden" id="id" name="id" value="{{ $user->id }}">

@@ -24,13 +24,13 @@
                         <td class="text-center">{{ $statement->email }}</td>
                         <td class="text-center">{{ $statement->privilege }}</td>
                         <td class="text-center">
-                            <a href="{{ Route('utilisateurs.edit', ['user' => $statement->id]) }}">
+                            <a href="{{ route('utilisateurs.edit', ['user' => $statement->id]) }}">
                                 <i class="fa fa-pencil" style="color:orange; font-size: 1.4em;"></i>
                             </a>
                         </td>
                         <td class="text-center">
                             <delete-form
-                                    action="{{ Route('utilisateurs.destroy', ['user' => $statement->id]) }}"
+                                    action="{{ route('utilisateurs.destroy', ['user' => $statement->id]) }}"
                                     method="{{ __('DELETE') }}"
                                     csrf="{{ csrf_token() }}">
                             </delete-form>

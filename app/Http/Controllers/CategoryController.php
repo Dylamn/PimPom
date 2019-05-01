@@ -55,9 +55,7 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        // Todo : Créer la vue category.show
-
-        return response($category)->json();
+        //
     }
 
     /**

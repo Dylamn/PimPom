@@ -22,13 +22,13 @@
                         <td class="text-center">{{ $statement->adultPrice }} €</td>
                         <td class="text-center">{{ $statement->childrenPrice }} €</td>
                         <td class="text-center">
-                            <a href="{{ Route('categorie.edit', ['category' => $statement->id]) }}">
+                            <a href="{{ route('categorie.edit', ['category' => $statement->id]) }}">
                                 <i class="fa fa-pencil" style="color: orange; font-size: 1.4em;"></i>
                             </a>
                         </td>
                         <td class="text-center">
                             <delete-form
-                                action="{{ Route('categorie.destroy', ['category' => $statement->id]) }}"
+                                action="{{ route('categorie.destroy', ['category' => $statement->id]) }}"
                                 method="{{ __('DELETE') }}"
                                 csrf="{{ csrf_token() }}">
                             </delete-form>
