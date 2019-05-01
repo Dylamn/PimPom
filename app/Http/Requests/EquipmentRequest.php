@@ -56,6 +56,9 @@ class EquipmentRequest extends FormRequest
             'size.required' => 'Une valeur est requise ',
             'size.integer' => 'La valeur renseignée doit être numérique. (entière ou réelle)',
             'size.between' => 'La size renseignée est incorrecte (minimum : 0, maximum : 999)',
+
+            'statusId.required' => 'Il faut renseigner un état',
+            'statusId.between' => 'La size renseignée est incorrecte (minimum : 1, maximum : 3)',
         ];
     }
 }

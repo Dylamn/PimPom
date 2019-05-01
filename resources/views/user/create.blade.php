@@ -24,7 +24,12 @@
                                 </div>
                                 <div class="col-md form-group">
                                     <label for="firstname">Prénom</label>
-                                    <input type="text" id="firstname" name="firstname" class="form-control rounded" value="{{ old('firstname') }}">
+                                    <input type="text" id="firstname" name="firstname" class="form-control rounded {{ $errors->has('firstname') ? ' is-invalid' : '' }}" value="{{ old('firstname') }}">
+                                    @if ($errors->has('firstname'))
+                                        <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('firstname') }}</strong>
+                                    </span>
+                                    @endif
                                 </div>
                             </div>
                             <div class="row">
@@ -45,7 +50,12 @@
                             <div class="row">
                                 <div class="col-md-6 form-group">
                                     <label for="username">Nom d'utilisateur</label>
-                                    <input type="text" id="username" name="username" class="form-control rounded" value="{{ old('username') }}">
+                                    <input type="text" id="username" name="username" class="form-control rounded {{ $errors->has('username') ? ' is-invalid' : '' }}" value="{{ old('username') }}">
+                                    @if ($errors->has('username'))
+                                        <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('username') }}</strong>
+                                    </span>
+                                    @endif
                                 </div>
                             </div>
                             <div class="row">
@@ -59,8 +69,8 @@
                                     @endif
                                 </div>
                                 <div class="col-md form-group">
-                                    <label for="rePassword">Confirmation du mot de passe</label>
-                                    <input type="password" id="rePassword" name="rePassword" placeholder="Confirmation du nouveau mot de passe" class="form-control rounded {{ $errors->has('password') ? ' is-invalid' : '' }}">
+                                    <label for="password_confirmation">Confirmation du mot de passe</label>
+                                    <input type="password" id="password_confirmation" name="password_confirmation" placeholder="Confirmation du nouveau mot de passe" class="form-control rounded {{ $errors->has('password') ? ' is-invalid' : '' }}">
                                 </div>
                             </div>
                             <div class="row">

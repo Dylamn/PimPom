@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\UserRequest;
+use App\Http\Requests\UpdateRequest;
+use App\Http\Requests\CreateRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -33,10 +34,10 @@ class UserController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\UserRequest  $userRequest
+     * @param  \App\Http\Requests\UpdateRequest  $userRequest
      * @return \Illuminate\Http\Response
      */
-    public function store(UserRequest $userRequest)
+    public function store(CreateRequest $userRequest)
     {
         User::create([
             'surname' => $userRequest->surname,
@@ -75,11 +76,11 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param \App\Http\Requests\UserRequest $userRequest
+     * @param \App\Http\Requests\UpdateRequest $userRequest
      * @param User $user
      * @return \Illuminate\Http\Response
      */
-    public function update(UserRequest $userRequest, User $user)
+    public function update(UpdateRequest $userRequest, User $user)
     {
         $user->update([
             'surname' => $userRequest->surname,

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Exception;
+use App\Http\Requests\UpdateRequest;
+use App\Http\Requests\CreateRequest;
 
 class CategoryController extends Controller
 {
@@ -33,15 +35,15 @@ class CategoryController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\CreateRequest  $categoryRequest
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateRequest $categoryRequest)
     {
         Category::create([
-        'label' => $request->label,
-        'adultPrice' => $request->adultPrice,
-        'childrenPrice' => $request->childrenPrice,
+        'label' => $categoryRequest->label,
+        'adultPrice' => $categoryRequest->adultPrice,
+        'childrenPrice' => $categoryRequest->childrenPrice,
         ]);
 
         return redirect(route('categorie.index'));
@@ -74,16 +76,16 @@ class CategoryController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\UpdateRequest  $categoryRequest
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update(UpdateRequest $categoryRequest, Category $category)
     {
         $category->update([
-            'label' => $request->label,
-            'adultPrice' => $request->adultPrice,
-            'childrenPrice' => $request->childrenPrice,
+            'label' => $categoryRequest->label,
+            'adultPrice' => $categoryRequest->adultPrice,
+            'childrenPrice' => $categoryRequest->childrenPrice,
         ]);
 
         return redirect(route('categorie.index'));

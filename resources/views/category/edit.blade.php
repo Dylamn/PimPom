@@ -12,6 +12,7 @@
                         <form method="POST" action="{{ route('categorie.update', ['category' => $category->id]) }}" class="form-group">
                             @method('PATCH')
                             @csrf
+                            <input type="hidden" id="id" name="id" value="{{ $category->id }}">
                             <div class="row">
                                 <div class="col-md form-group">
                                     <label for="label">Catégorie</label>
@@ -29,7 +30,7 @@
                                 <div class="col-md form-group">
                                     <label for="adultPrice">Prix adulte (en €)</label>
                                     <input type="number" min="0" max="999" step="0.01" id="adultPrice" name="adultPrice"
-                                           value="{{ $category->adultPrice }}"
+                                           value="{{ old('adultPrice') ? old('adultPrice') : $category->adultPrice }}"
                                            class="form-control rounded {{ $errors->has('adultPrice') ? 'is-invalid' : '' }}">
 
                                     @if ($errors->has('adultPrice'))
@@ -41,7 +42,7 @@
                                 <div class="col-md form-group">
                                     <label for="childrenPrice">Prix enfant (en €)</label>
                                     <input type="number" min="0" step="0.01" id="childrenPrice" name="childrenPrice"
-                                           value="{{ $category->childrenPrice}}"
+                                           value="{{ old('childrenPrice') ? old('childrenPrice') : $category->childrenPrice}}"
                                            class="form-control rounded {{ $errors->has('childrenPrice') ? 'is-invalid' : '' }}">
 
                                     @if ($errors->has('childrenPrice'))

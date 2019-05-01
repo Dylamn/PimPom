@@ -15,19 +15,38 @@
                             <div class="row">
                                 <div class="col-md form-group">
                                     <label for="label">Libellé de la catégorie</label>
-                                    <input type="text" id="label" name="label" class="form-control rounded">
+                                    <input type="text" id="label" name="label"
+                                           class="form-control rounded {{ $errors->has('label') ? ' is-invalid' : '' }}"
+                                           value="{{ old('label') }}">
+                                    @if ($errors->has('label'))
+                                        <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('label') }}</strong>
+                                    </span>
+                                    @endif
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md form-group">
                                     <label for="adultPrice">Prix adulte des équipements de la catégorie</label>
                                     <input type="number" min="0" step="0.01" id="adultPrice" name="adultPrice"
-                                           class="form-control rounded">
+                                           class="form-control rounded {{ $errors->has('adultPrice') ? ' is-invalid' : '' }}"
+                                           value="{{ old('adultPrice') ? old('adultPrice') : 0 }}">
+                                    @if ($errors->has('adultPrice'))
+                                        <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('adultPrice') }}</strong>
+                                    </span>
+                                    @endif
                                 </div>
                                 <div class="col-md form-group">
                                     <label for="childrenPrice">Prix enfant des équipements de la catégorie</label>
                                     <input type="number" min="0" step="0.01" id="childrenPrice" name="childrenPrice"
-                                           class="form-control rounded">
+                                           class="form-control rounded {{ $errors->has('childrenPrice') ? ' is-invalid' : '' }}"
+                                           value="{{ old('childrenPrice') ? old('childrenPrice') : 0 }}">
+                                    @if ($errors->has('childrenPrice'))
+                                        <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('childrenPrice') }}</strong>
+                                    </span>
+                                    @endif
                                 </div>
                             </div>
                             <div class="row">

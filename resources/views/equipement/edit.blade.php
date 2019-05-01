@@ -28,7 +28,7 @@
                                 </div>
                                 <div class="col-md form-group">
                                     <label for="size">taille de l'équipement (en cm)</label>
-                                    <input type="number" min="0" max="999" step="0.01" id="size" name="size"
+                                    <input type="number" min="0" max="999"  id="size" name="size"
                                            value="{{ old('size') ? old('size') : $equipement->size }}"
                                            class="form-control rounded {{ $errors->has('size') ? 'is-invalid' : '' }}">
 
