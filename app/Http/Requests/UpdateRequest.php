@@ -23,12 +23,24 @@ class UpdateRequest extends FormRequest
      */
     public function rules()
     {
-        //return dd($this);
         $id = $this->id;
+        //if (isset($this->password) && isset($this->password_confirmation))
         if ($this->password === null && $this->password_confirmation === null)
         {
+            //return dd(test);
             return [
-                'email' => 'unique:users,email,'.$id,
+                'email' => 'required|unique:users,email,'.$id,
+                'surname' => 'required',
+                'firstname' => 'required',
+                'privilege' => 'required|between:0,1',
+
+                'label' => 'required|String|unique:categories,label,'.$id,
+                'adultPrice' => 'required|min:0',
+                'childrenPrice' => 'required|min:0',
+
+                'internalId' => 'required|String|between:3,8|unique:equipments,internalId,'.$id,
+                'size' => 'required|Integer|between:0,999',
+                'statusId' => 'required|Integer|between:1,3',
             ];
         }
         return [

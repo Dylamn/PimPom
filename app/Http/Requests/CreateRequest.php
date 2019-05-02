@@ -23,7 +23,6 @@ class CreateRequest extends FormRequest
      */
     public function rules()
     {
-        //return dd($this);
         return [
             'surname' => 'required',
             'firstname' => 'required',
@@ -32,7 +31,7 @@ class CreateRequest extends FormRequest
             'username' => 'required|unique:users,username',
             'password' => 'required|String|between:5,50|confirmed',
 
-            'label' => 'required|String|unique:categories',
+            'label' => 'required|String|unique:categories,label',
             'adultPrice' => 'required|min:0',
             'childrenPrice' => 'required|min:0',
 
