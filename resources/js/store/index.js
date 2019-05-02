@@ -12,17 +12,27 @@ const store = new Vuex.Store({
         count: 0,
         fetching: false,
         equipments: [],
+        availableEquipments: [],
+        selectedEquipments: [],
         categories: [],
         error: null,
     },
 
     getters: {
-        getEquipments: state => {
+        getAllEquipments: state => {
             return state.equipments;
+        },
+
+        getAvailableEquipments: state => {
+            return state.availableEquipments;
         },
 
         getCategories: state => {
             return state.categories;
+        },
+
+        correspondingEquipments: (state) => (catId) => {
+            return state.equipments.filter(equip => equip.categoryId === catId);
         },
 
         getCount: state => {
@@ -37,6 +47,20 @@ const store = new Vuex.Store({
 
         decrement (state, value) {
             state.count -= value;
+        },
+
+        switchToSelected (state, equipment) {
+                for (let i = 0, l = arr.length; i < l; i++) {
+                    if (state.equipments[i] === equipment) {
+                        let selected = state.equipments.splice(i, 1);
+                        
+                        state.selectedEquipments.push(selected);
+                    }
+                }
+        },
+
+        fromSelectedToAvailable (state, oldEquipment, newEquipment) {
+            
         },
 
         [types.FETCH_DATA_BEGAN] (state) {

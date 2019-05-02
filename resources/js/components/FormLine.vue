@@ -41,7 +41,7 @@
 </template>
 
 <script>
-    import { mapActions } from 'vuex';
+    import { mapActions, mapGetters } from 'vuex';
 
     export default {
         name: "FormLine",
@@ -60,6 +60,9 @@
             }
         },
         computed: {
+            ...mapGetters({
+
+            }),
           count () {
               return this.$store.getters.getCount;
           }
@@ -128,6 +131,7 @@
              * Put back the selectedEquipment in the array correspondingEquipments.
              */
             $_restore() {
+                // this.$store.commit('fromSelectedToAvailable', this.selectedEquipment, %NEW%)
                 this.correspondingEquipments.splice(this.equipmentPosition, 0, this.selectedEquipment);
             }
 

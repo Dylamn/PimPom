@@ -32,6 +32,7 @@
 </template>
 
 <script>
+    import { mapGetters, mapState } from 'vuex';
     import LightPick from "./LightPick";
     import FormLine from "./FormLine";
 
@@ -47,6 +48,13 @@
                 equipments: [],
             }
         },
+
+        computed: {
+            ...mapGetters({
+
+            })
+        },
+
         props: {
             category_url: String,
             equipment_url: String,
@@ -60,18 +68,9 @@
             },
         },
 
-        mounted() {
-            const _this = this;
-
-            axios.get(this.category_url)
-                .then(function (response) {
-                    _this.categories = response.data;
-                });
-
-            axios.get(`/api/equipments`)
-                .then(function (response) {
-                    _this.equipments = response.data;
-                });
+        beforeMount() {
+            this.$store.dispatch('fetchEquipments');
+            this.$store.dispatch('fetchCategories');
         }
     }
 </script>
