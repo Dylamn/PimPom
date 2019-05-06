@@ -24,15 +24,13 @@
         <LightPick></LightPick>
 
         <div id="rents">
-            <form-line v-for="nb in actual" :key="nb" v-bind:l-id="nb" v-bind:categories="categories"
-                       v-bind:equipments="equipments">
-            </form-line>
+            <form-line v-for="nb in actual" :key="nb" v-bind:l-id="nb"></form-line>
         </div>
     </div>
 </template>
 
 <script>
-    import { mapGetters, mapState } from 'vuex';
+    import { mapActions } from 'vuex';
     import LightPick from "./LightPick";
     import FormLine from "./FormLine";
 
@@ -40,37 +38,30 @@
         name: "RentForm",
         components: { FormLine, LightPick },
 
-        data() {
+        data () {
             return {
                 maxNumber: 10,
                 actual: 0,
-                categories: [],
-                equipments: [],
             }
         },
 
-        computed: {
-            ...mapGetters({
-
-            })
-        },
-
-        props: {
-            category_url: String,
-            equipment_url: String,
-        },
-
         methods: {
-            createLine(ev) {
+            ...mapActions({
+                getEquipments: "fetchEquipments",
+                getCategories: "fetchCategories",
+            }),
+
+            createLine (ev) {
                 if (isNaN(ev.target.value)) return console.warn("It's not a number. Isn't it ?");
 
                 this.actual = parseInt(ev.target.value, 10);
             },
         },
 
-        beforeMount() {
-            this.$store.dispatch('fetchEquipments');
-            this.$store.dispatch('fetchCategories');
+        beforeMount () {
+            // Dispatch to the vuex store
+            this.getCategories();
+            this.getEquipments();
         }
     }
 </script>

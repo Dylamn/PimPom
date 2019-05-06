@@ -32,7 +32,15 @@ const store = new Vuex.Store({
         },
 
         correspondingEquipments: (state) => (catId) => {
-            return state.equipments.filter(equip => equip.categoryId === catId);
+            let arr = state.equipments.filter(equip => equip.categoryId === catId);
+            arr.sort((a, b) => {
+                if (a.size > b.size) return 1;
+                if (a.size < b.size) return -1;
+
+                return 0;
+            });
+            
+            return arr;
         },
 
         getCount: state => {
@@ -41,6 +49,10 @@ const store = new Vuex.Store({
     },
 
     mutations: {
+        sortArray (state) {
+            state.equipments.sort();
+        },
+
         increment (state, value) {
             state.count += value;
         },
@@ -50,17 +62,17 @@ const store = new Vuex.Store({
         },
 
         switchToSelected (state, equipment) {
-                for (let i = 0, l = arr.length; i < l; i++) {
-                    if (state.equipments[i] === equipment) {
-                        let selected = state.equipments.splice(i, 1);
-                        
-                        state.selectedEquipments.push(selected);
-                    }
+            for (let i = 0, l = state.equipments.length; i < l; i++) {
+                if (state.equipments[i] === equipment) {
+                    let selected = state.equipments.splice(i, 1);
+
+                    state.selectedEquipments.push(selected);
                 }
+            }
         },
 
         fromSelectedToAvailable (state, oldEquipment, newEquipment) {
-            
+            return 0;
         },
 
         [types.FETCH_DATA_BEGAN] (state) {
@@ -91,7 +103,7 @@ const store = new Vuex.Store({
             }
 
             state.fetching = false;
-        }
+        },
     },
 
     actions: {
@@ -142,7 +154,7 @@ const store = new Vuex.Store({
             setTimeout(() => {
                 commit('increment', value);
             }, 2000);
-        }
+        },
     }
 });
 

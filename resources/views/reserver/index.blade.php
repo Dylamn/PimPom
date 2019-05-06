@@ -11,9 +11,8 @@
 
                         {{ Form::open(['url' => 'reserver']) }}
 
-                        <booking-form
-                            category_url="{{ route('api.categories') }}"
-                            equipment_url="{{ route('api.equipments') }}">
+                        <booking-form>
+                            <!-- Lines inside -->
                         </booking-form>
 
                         <div class="row">
